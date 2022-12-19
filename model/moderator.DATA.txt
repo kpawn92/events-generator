@@ -1,0 +1,20 @@
+{
+  "name": "Alejandro",
+  "lastname": "Pozo Castro",
+  "dni": "92102047481",
+  "email": "ale@gmail.com",
+  "password": "Alejo2423",
+  "role": "moderator"
+}
+
+User
+{
+  "name": "Oscar",
+  "lastname": "Pozo Castro",
+  "dni": "234520423456",
+  "email": "oscar@gmail.com",
+  "password": "Alejo2423",
+  "nation": "Cuba",
+  "category": 0,
+  "institution": "Fajardo"
+}

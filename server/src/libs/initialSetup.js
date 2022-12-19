@@ -1,0 +1,24 @@
+import { Roles, User } from '../models/entity/index.js';
+import { EMAIL_ADMIN, KEY_ADMIN } from '../config/env.js';
+
+export const createRoles = async () => {
+    try {
+        const { count } = await Roles.count();
+
+        if (count > 0) return;
+        await Roles.create();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const createAdmin = async () => {
+    try {
+        const { count_users } = await User.setAdmin();
+
+        if (count_users > 0) return;
+        await User.createAdmin(EMAIL_ADMIN, KEY_ADMIN);
+    } catch (error) {
+        console.log(error);
+    }
+};
