@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : FarmaRAM
+ Source Server         : Server
  Source Server Type    : MySQL
  Source Server Version : 100419
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 14/12/2022 19:49:10
+ Date: 19/12/2022 17:57:20
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,9 @@ CREATE TABLE `digest_instance`  (
   `abstract` varchar(400) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `status` int(1) NULL DEFAULT NULL,
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_subscriber`(`fk_subscriber`) USING BTREE,
+  CONSTRAINT `digest_instance_ibfk_1` FOREIGN KEY (`fk_subscriber`) REFERENCES `subscriber` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -45,12 +47,15 @@ CREATE TABLE `economist`  (
   `dni` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fk_user` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from users',
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_user`(`fk_user`) USING BTREE,
+  CONSTRAINT `economist_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of economist
 -- ----------------------------
+INSERT INTO `economist` VALUES ('c06e8d38-d40d-4cc7-b42f-5b64b60d2622', 'Alejandro', 'Pozo Castro', '92102047481', '0875ff13-7f67-4f65-b74b-cbf4311e5c16', '2022-12-19 14:25:47.519596');
 
 -- ----------------------------
 -- Table structure for event
@@ -65,6 +70,7 @@ CREATE TABLE `event`  (
   `date_beginning` int(15) NOT NULL COMMENT 'strToTime',
   `end_date` int(15) NOT NULL COMMENT 'strToTime',
   `cost` decimal(10, 2) NULL DEFAULT NULL,
+  `target` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
@@ -83,7 +89,9 @@ CREATE TABLE `job`  (
   `name` varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `link_presentation` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'link de redes sociales',
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_subscriber`(`fk_subscriber`) USING BTREE,
+  CONSTRAINT `job_ibfk_1` FOREIGN KEY (`fk_subscriber`) REFERENCES `subscriber` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -99,9 +107,11 @@ CREATE TABLE `living_room`  (
   `fk_event` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from event',
   `name` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `description` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `fk_manager` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from manager',
+  `fk_manager_living` int(11) NULL DEFAULT NULL COMMENT 'uuid from manager',
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `living_room_ibfk_1`(`fk_event`) USING BTREE,
+  CONSTRAINT `living_room_ibfk_1` FOREIGN KEY (`fk_event`) REFERENCES `event` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -117,13 +127,36 @@ CREATE TABLE `manager`  (
   `name` varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `dni` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `fk_users` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from users',
+  `fk_user` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from users',
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_users`(`fk_user`) USING BTREE,
+  CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of manager
+-- ----------------------------
+INSERT INTO `manager` VALUES ('1a588fda-9551-4af8-aa85-8164124ca950', 'Oscar', 'Pozo Castro', '234520423456', '9b557e67-361b-45e3-a96a-f35fd6dd5fe5', '2022-12-19 14:21:42.069901');
+
+-- ----------------------------
+-- Table structure for manager_living_room
+-- ----------------------------
+DROP TABLE IF EXISTS `manager_living_room`;
+CREATE TABLE `manager_living_room`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_manager` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `fk_living` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_manager`(`fk_manager`) USING BTREE,
+  INDEX `fk_living`(`fk_living`) USING BTREE,
+  CONSTRAINT `manager_living_room_ibfk_1` FOREIGN KEY (`fk_manager`) REFERENCES `manager` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `manager_living_room_ibfk_2` FOREIGN KEY (`fk_living`) REFERENCES `living_room` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of manager_living_room
 -- ----------------------------
 
 -- ----------------------------
@@ -137,12 +170,15 @@ CREATE TABLE `moderator`  (
   `dni` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fk_user` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from users',
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_user`(`fk_user`) USING BTREE,
+  CONSTRAINT `moderator_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of moderator
 -- ----------------------------
+INSERT INTO `moderator` VALUES ('c1310722-42cd-4422-81a1-b8ca0c92fae7', 'Oscar', 'Pozo Castro', '234520423456', 'd5c804a3-f1e7-402b-9948-0c185828afdd', '2022-12-19 14:19:54.412611');
 
 -- ----------------------------
 -- Table structure for payment_instance
@@ -154,7 +190,9 @@ CREATE TABLE `payment_instance`  (
   `transaction` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `status` int(1) NULL DEFAULT NULL,
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `payment_instance_ibfk_1`(`fk_subscriber`) USING BTREE,
+  CONSTRAINT `payment_instance_ibfk_1` FOREIGN KEY (`fk_subscriber`) REFERENCES `subscriber` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -169,15 +207,16 @@ CREATE TABLE `roles`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rol_name` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 135 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of roles
 -- ----------------------------
-INSERT INTO `roles` VALUES (14, 'admin');
-INSERT INTO `roles` VALUES (15, 'manager');
-INSERT INTO `roles` VALUES (16, 'moderator');
-INSERT INTO `roles` VALUES (17, 'user');
+INSERT INTO `roles` VALUES (130, 'admin');
+INSERT INTO `roles` VALUES (131, 'moderator');
+INSERT INTO `roles` VALUES (132, 'manager');
+INSERT INTO `roles` VALUES (133, 'economist');
+INSERT INTO `roles` VALUES (134, 'user');
 
 -- ----------------------------
 -- Table structure for subscriber
@@ -190,16 +229,18 @@ CREATE TABLE `subscriber`  (
   `nation` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'getJson(cuba-cu)',
   `dni` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `institution` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
-  `type` tinyint(2) NOT NULL DEFAULT 1 COMMENT '1: Estudiante, 0: Trabajador',
+  `category` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1: Estudiante, 0: Trabajador',
   `fk_user` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid => table users',
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `fk_user`(`fk_user`) USING BTREE,
+  CONSTRAINT `subscriber_ibfk_1` FOREIGN KEY (`fk_user`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of subscriber
 -- ----------------------------
+INSERT INTO `subscriber` VALUES ('3a4e5c13-059c-4c3b-bcab-047d26fca2ce', 'Oscar', 'Pozo Castro', 'Cuba', '234520423456', 'Fajardo', 1, 'a6ca6906-1d43-48c0-bb5a-f0a0904aea28', '2022-12-19 14:23:25.495359');
 
 -- ----------------------------
 -- Table structure for users
@@ -210,12 +251,19 @@ CREATE TABLE `users`  (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `rol` int(11) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  `status` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `rol`(`rol`) USING BTREE,
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('f5c8fcfd-f47f-4730-818d-7348e929a3bd', 'admin@admin.com', '$2a$10$s13DTJ5fbENcroWoBxLX/OzOqX9Cil0oaZg9dPdKL0zw1Lr2A4xey', 14);
+INSERT INTO `users` VALUES ('0875ff13-7f67-4f65-b74b-cbf4311e5c16', 'ale@gmail.com', '$2a$10$ZtA9B5o5p3gmv9xzJDkL1eOIzcCznGQJLaUvr5uIPGgFfgzZHdSFi', 133, 1);
+INSERT INTO `users` VALUES ('77d226a2-f7b2-445c-b74a-729de570d481', 'admin@admin.com', '$2a$10$0MXhYC75nkivMwxslnqFSufhf.gFzzqYTGRYXFCx9LzRd4t3/h.Ka', 130, 1);
+INSERT INTO `users` VALUES ('9b557e67-361b-45e3-a96a-f35fd6dd5fe5', 'oscar_manager@gmail.com', '$2a$10$yJYOFfCkqm3WJ7h9UgyZ2ej28C05W/JA1mOaQpBAkrPR8bH5Khuky', 132, 1);
+INSERT INTO `users` VALUES ('a6ca6906-1d43-48c0-bb5a-f0a0904aea28', 'oscar@gmail.com', '$2a$10$WeU1rIVf.Ao2Ssi63AGJ3uOWBQ8/B.hqb07Hle4r.Nwhr/TSAOgRG', 134, 1);
+INSERT INTO `users` VALUES ('d5c804a3-f1e7-402b-9948-0c185828afdd', 'oscar_moderator@gmail.com', '$2a$10$fCIgxFJJSL.fpcXbalaIlu1P7nVdYjD3MG8EbZsKk4XFxznTp5KPa', 131, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
