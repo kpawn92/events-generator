@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 //--------------------------------------#
 
-// Step users #----------------------------#
+// Step users #-------------------------#
 app.use('/api/auth/', auth);
 app.use('/api/users/', users);
 //--------------------------------------#
