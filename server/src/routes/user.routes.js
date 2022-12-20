@@ -4,6 +4,7 @@ import { isAdmin, verifyToken } from '../middlewares/authJwt.js';
 import { validateEditUserDTO } from '../validators/userEdit.validate.js';
 import { verifyUserAndEmailById } from '../middlewares/verifyEmail.js';
 import { verifyUserByParams } from '../middlewares/verifyParams.js';
+import { cacheInit } from '../middlewares/turboCache.js'
 
 const router = Router();
 
@@ -13,7 +14,7 @@ const router = Router();
  * @coment : Admin obtiene, edita/elimina a todos los usuarios del sistema (verificacion de header and token) PUT
  */
 
-router.get('/', [verifyToken, isAdmin], userCtrl.users);
+router.get('/', [verifyToken, isAdmin, cacheInit], userCtrl.users);
 router.get('/:userId', [verifyToken, isAdmin], userCtrl.user);
 
 router.put(
