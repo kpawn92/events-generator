@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import * as userCtrl from '../controllers/user.controller.js';
 import { isAdmin, verifyToken } from '../middlewares/authJwt.js';
-import { validateEditUserDTO } from '../validators/userEdit.validate.js'
+import { validateEditUserDTO } from '../validators/userEdit.validate.js';
 import { verifyUserAndEmailById } from '../middlewares/verifyEmail.js';
+import { verifyUserByParams } from '../middlewares/verifyParams.js';
 
 const router = Router();
 
@@ -19,6 +20,12 @@ router.put(
     '/:userId',
     [verifyToken, isAdmin, validateEditUserDTO, verifyUserAndEmailById],
     userCtrl.editUserById
+);
+
+router.delete(
+    '/:userId',
+    [verifyToken, isAdmin, verifyUserByParams],
+    userCtrl.toInvalidateUser
 );
 
 export default router;

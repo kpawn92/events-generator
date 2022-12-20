@@ -32,10 +32,20 @@ export const editUserById = async (req, res) => {
         const { password } = req.body;
 
         const pass = await passwordHelper.encryptPassword(password);
-        const update = await User.updateUser(userId, pass);
+        const update = await User.updateUser(userId, pass, 1);
 
         res.status(200).json(update);
     } catch (error) {
         return res.status(500).json({ message: 'Error edit user, ' + error });
+    }
+};
+
+export const toInvalidateUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const invalidate = await User.invalidating(userId, 0);
+        res.status(200).json(invalidate);
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server' + error });
     }
 };

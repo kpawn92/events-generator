@@ -70,10 +70,18 @@ export const getUserById = async (id) => {
     return result;
 };
 
-export const updateUser = async (id, password) => {
+export const updateUser = async (id, password, status) => {
     const [result] = await pool.query(
-        'UPDATE users SET password = ? WHERE id = ?',
-        [password, id]
+        'UPDATE users SET password = ?, `status` = ? WHERE id = ?',
+        [password, status, id]
+    );
+    return result;
+};
+
+export const invalidating = async (id, status) => {
+    const [result] = await pool.query(
+        'UPDATE users SET `status` = ? WHERE id = ?',
+        [status, id]
     );
     return result;
 };
