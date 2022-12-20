@@ -4,5 +4,6 @@ import * as Roles from './roles/roles.model.js';
 import * as Moderator from './moderator/moderator.model.js';
 import * as Manager from './manager/manager.model.js';
 import * as Economist from './economist/economist.model.js';
+import * as Event from './event/event.model.js';
 
-export { User, Subscribers, Roles, Moderator, Manager, Economist };
+export { User, Subscribers, Roles, Moderator, Manager, Economist, Event };

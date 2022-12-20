@@ -1,9 +1,13 @@
 import { Router } from 'express';
-import * as eventCtrl from '../controllers/event.controller.js'
-import { isModelator, verifyToken } from '../middlewares/authJwt.js'
+import * as eventCtrl from '../controllers/event.controller.js';
+import {
+    isEconomist,
+    isModelator,
+    verifyToken,
+} from '../middlewares/authJwt.js';
+import { validateEventDTO } from '../validators/event.validate.dto.js';
 
 const router = Router();
-
 
 // TODO: Todos los usuarios obtienen los eventos y su descripcion a travez del ID del event
 /**
@@ -12,9 +16,18 @@ const router = Router();
  * @coment : Creating Subscribers sera free, a travez de una url sin headers and sin roles
  */
 
-router.get('/', eventCtrl.getEvents)
-router.get('/:eventId', eventCtrl.getEventById)
-router.post('/', [verifyToken, isModelator], eventCtrl.createEvent)
-router.put('/:eventId', [verifyToken, isModelator], eventCtrl.updateEventsById)
+router.get('/', eventCtrl.getEvents);
+router.get('/:eventId', eventCtrl.getEventById);
+router.post(
+    '/',
+    [verifyToken, isModelator, validateEventDTO],
+    eventCtrl.createEvent
+);
+router.put('/:eventId', [verifyToken, isModelator], eventCtrl.updateEventsById);
+router.put(
+    '/cost/:eventId',
+    [verifyToken, isEconomist],
+    eventCtrl.setCostEvent
+);
 
 export default router;

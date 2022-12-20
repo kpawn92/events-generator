@@ -4,7 +4,7 @@ import { isAdmin, verifyToken } from '../middlewares/authJwt.js';
 import { validateEditUserDTO } from '../validators/userEdit.validate.js';
 import { verifyUserAndEmailById } from '../middlewares/verifyEmail.js';
 import { verifyUserByParams } from '../middlewares/verifyParams.js';
-import { cacheInit } from '../middlewares/turboCache.js'
+import { cacheInit } from '../middlewares/turboCache.js';
 
 const router = Router();
 

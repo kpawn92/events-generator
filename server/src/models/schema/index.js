@@ -121,4 +121,43 @@ const SubscriberSchema = Type.Object({
     }),
 });
 
-export { LoginSchema, ModeratorSchema, SubscriberSchema, EditUserSchema };
+const EventSchema = Type.Object({
+    name: Type.String({
+        errorMessage: {
+            type: 'string',
+        },
+    }),
+    description: Type.String({
+        errorMessage: {
+            type: 'string',
+        },
+    }),
+    date_beginning_inscription: Type.Number({
+        errorMessage: {
+            type: 'type number',
+        },
+    }),
+    end_date_inscription: Type.Number({
+        errorMessage: {
+            type: 'type number',
+        },
+    }),
+    date_beginning: Type.Number({
+        errorMessage: {
+            type: 'type number',
+        },
+    }),
+    end_date: Type.Number({
+        errorMessage: {
+            type: 'type number',
+        },
+    }),
+});
+
+export {
+    LoginSchema,
+    ModeratorSchema,
+    SubscriberSchema,
+    EditUserSchema,
+    EventSchema,
+};
