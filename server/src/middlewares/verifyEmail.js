@@ -8,7 +8,7 @@ const verifyRole = async (req, res, next) => {
     } catch (error) {
         return res
             .status(404)
-            .json({ message: 'Error getting role, ' + error });
+            .json({ message: 'Error getting role: (invalid), ' + error });
     }
 };
 
