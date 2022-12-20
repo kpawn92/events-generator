@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Server
+ Source Server         : FarmaRAM
  Source Server Type    : MySQL
  Source Server Version : 100419
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 19/12/2022 17:57:20
+ Date: 20/12/2022 18:49:31
 */
 
 SET NAMES utf8mb4;
@@ -69,15 +69,18 @@ CREATE TABLE `event`  (
   `end_date_inscription` int(15) NOT NULL,
   `date_beginning` int(15) NOT NULL COMMENT 'strToTime',
   `end_date` int(15) NOT NULL COMMENT 'strToTime',
-  `cost` decimal(10, 2) NULL DEFAULT NULL,
-  `target` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
+  `cost` decimal(10, 2) NULL DEFAULT NULL COMMENT 'campo para economist',
+  `target` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL COMMENT 'campo para economist',
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of event
 -- ----------------------------
+INSERT INTO `event` VALUES ('d8bacbca-899e-45a1-87d6-ec9b606ca2e4', 'Matematicas', 'A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 1671577145, 1671577146, 1671577147, 1671577148, NULL, NULL, '2022-12-20 18:13:51.016195', 0);
+INSERT INTO `event` VALUES ('f0d17a2f-6cea-4d5c-85cf-c60f056bea04', 'Español Literatura', 'A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 1671577145, 1671577146, 1671577147, 1671577148, NULL, NULL, '2022-12-20 18:24:06.274543', 0);
 
 -- ----------------------------
 -- Table structure for job
@@ -251,7 +254,7 @@ CREATE TABLE `users`  (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `rol` int(11) NOT NULL,
-  `status` int(1) NOT NULL DEFAULT 1,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `rol`(`rol`) USING BTREE,
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -260,10 +263,10 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('0875ff13-7f67-4f65-b74b-cbf4311e5c16', 'ale@gmail.com', '$2a$10$ZtA9B5o5p3gmv9xzJDkL1eOIzcCznGQJLaUvr5uIPGgFfgzZHdSFi', 133, 1);
+INSERT INTO `users` VALUES ('0875ff13-7f67-4f65-b74b-cbf4311e5c16', 'ale@gmail.com', '$2a$10$dgK/aJolOeo9sra4tsUcrewMSz/c64WceAnlOfZYfpGWHyyvDqK.e', 133, 1);
 INSERT INTO `users` VALUES ('77d226a2-f7b2-445c-b74a-729de570d481', 'admin@admin.com', '$2a$10$0MXhYC75nkivMwxslnqFSufhf.gFzzqYTGRYXFCx9LzRd4t3/h.Ka', 130, 1);
-INSERT INTO `users` VALUES ('9b557e67-361b-45e3-a96a-f35fd6dd5fe5', 'oscar_manager@gmail.com', '$2a$10$yJYOFfCkqm3WJ7h9UgyZ2ej28C05W/JA1mOaQpBAkrPR8bH5Khuky', 132, 1);
+INSERT INTO `users` VALUES ('9b557e67-361b-45e3-a96a-f35fd6dd5fe5', 'oscar_manager@gmail.com', '$2a$10$hGSNCXtHUY5WJkx6rWaOGuPWVRw3.3Yd33Q2sPoDCNdLTRDp.IObK', 132, 1);
 INSERT INTO `users` VALUES ('a6ca6906-1d43-48c0-bb5a-f0a0904aea28', 'oscar@gmail.com', '$2a$10$WeU1rIVf.Ao2Ssi63AGJ3uOWBQ8/B.hqb07Hle4r.Nwhr/TSAOgRG', 134, 1);
-INSERT INTO `users` VALUES ('d5c804a3-f1e7-402b-9948-0c185828afdd', 'oscar_moderator@gmail.com', '$2a$10$fCIgxFJJSL.fpcXbalaIlu1P7nVdYjD3MG8EbZsKk4XFxznTp5KPa', 131, 1);
+INSERT INTO `users` VALUES ('d5c804a3-f1e7-402b-9948-0c185828afdd', 'oscar_moderator@gmail.com', '$2a$10$sFys3MU9M6BXlOLLrvYo.OiDF2TACkLD9g4zqVwvXtSoHvOzrp3qS', 131, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
