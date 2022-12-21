@@ -11,7 +11,7 @@ const router = Router();
  * @coment : Admin create Moderator and Economist (verificacion de header and token)
  * @coment : Moderator create Manager (verificacion de header and token)
  * @coment : Creating Subscribers sera free, a travez de una url sin headers and sin roles
- * @coment : El Moderator, Manager como el Economist tambien puede poseer cuentas Subscribers con el mismo email
+ * @coment : El Moderator, Manager como el Economist tambien puede poseer cuentas Subscribers con diferentes emails
  */
 
 router.post('/signup', [verifyData, verifyEmail], authCtrl.signUp); // Created user

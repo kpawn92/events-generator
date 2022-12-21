@@ -3,10 +3,11 @@
     "version": "1.0.0",
     "description": "Api para gestionar las peticiones del cliente",
     "main": "index.js",
-    "type": "module",
     "scripts": {
-        "dev": "nodemon src/index.js",
-        "format": "prettier --write ."
+        "dev": "nodemon src/index.js --exec babel-node",
+        "format": "prettier --write .",
+        "build": "babel src --out-dir build",
+        "start": "node build/index.js"
     },
     "keywords": [],
     "author": "Ing. Alejandro Pozo Castro",
@@ -29,6 +30,10 @@
         "uuid": "9.0.0"
     },
     "devDependencies": {
+        "@babel/cli": "^7.19.3",
+        "@babel/core": "^7.20.5",
+        "@babel/node": "^7.20.5",
+        "@babel/preset-env": "^7.20.2",
         "nodemon": "2.0.20"
     }
 }
