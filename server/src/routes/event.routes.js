@@ -2,6 +2,7 @@ import { Router } from 'express';
 import * as eventCtrl from '../controllers/event.controller';
 import { isEconomist, isModelator, verifyToken } from '../middlewares/authJwt';
 import { validateEventDTO } from '../validators/event.validate.dto';
+import { validateCostEventDTO } from '../validators/costEvent.validate.dto';
 import { cacheInit } from '../middlewares/turboCache';
 import { verifyEventByParams } from '../middlewares/verifyParams';
 
@@ -31,7 +32,7 @@ router.put(
 
 router.put(
     '/cost/:eventId',
-    [verifyToken, isEconomist],
+    [verifyToken, isEconomist, verifyEventByParams, validateCostEventDTO],
     eventCtrl.setCostEvent
 );
 

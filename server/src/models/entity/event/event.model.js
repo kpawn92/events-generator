@@ -46,17 +46,20 @@ export const updateEventById = async (id, body) => {
         date_beginning_inscription,
         end_date_inscription,
         date_beginning,
-        end_date
-    } = body
-    const [result] = await pool.query('UPDATE event SET name = ?, description = ?, date_beginning_inscription = ?, end_date_inscription = ?, date_beginning = ?, end_date = ?  WHERE id = ?', [
-        name,
-        description,
-        date_beginning_inscription,
-        end_date_inscription,
-        date_beginning,
         end_date,
-        id
-    ])
-    return result
+    } = body;
+    const [result] = await pool.query(
+        'UPDATE event SET name = ?, description = ?, date_beginning_inscription = ?, end_date_inscription = ?, date_beginning = ?, end_date = ?  WHERE id = ?',
+        [
+            name,
+            description,
+            date_beginning_inscription,
+            end_date_inscription,
+            date_beginning,
+            end_date,
+            id,
+        ]
+    );
+    return result;
 };
-export const cancelEventById = async () => { };
+export const cancelEventById = async () => {};

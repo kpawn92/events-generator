@@ -154,10 +154,24 @@ const EventSchema = Type.Object({
     }),
 });
 
+const CostEventSchema = Type.Object({
+    cost: Type.Number({
+        errorMessage: {
+            type: 'type number',
+        },
+    }),
+    target: Type.String({
+        errorMessage: {
+            type: 'string',
+        },
+    }),
+});
+
 export {
     LoginSchema,
     ModeratorSchema,
     SubscriberSchema,
     EditUserSchema,
     EventSchema,
+    CostEventSchema,
 };
