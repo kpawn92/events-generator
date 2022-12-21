@@ -1,11 +1,9 @@
 import { Router } from 'express';
 import * as eventCtrl from '../controllers/event.controller';
-import {
-    isEconomist,
-    isModelator,
-    verifyToken,
-} from '../middlewares/authJwt';
+import { isEconomist, isModelator, verifyToken } from '../middlewares/authJwt';
 import { validateEventDTO } from '../validators/event.validate.dto';
+import { cacheInit } from '../middlewares/turboCache';
+import { verifyEventByParams } from '../middlewares/verifyParams';
 
 const router = Router();
 
@@ -16,14 +14,14 @@ const router = Router();
  * @coment : Creating Subscribers sera free, a travez de una url sin headers and sin roles
  */
 
-router.get('/', eventCtrl.getEvents);
-router.get('/:eventId', eventCtrl.getEventById);
+router.get('/', cacheInit, eventCtrl.getEvents);
+router.get('/:eventId', verifyEventByParams, eventCtrl.getEventById);
 router.post(
     '/',
     [verifyToken, isModelator, validateEventDTO],
     eventCtrl.createEvent
 );
-router.put('/:eventId', [verifyToken, isModelator], eventCtrl.updateEventsById);
+router.put('/:eventId', [verifyToken, isModelator], eventCtrl.updateEventById);
 router.put(
     '/cost/:eventId',
     [verifyToken, isEconomist],

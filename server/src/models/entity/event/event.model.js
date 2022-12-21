@@ -29,7 +29,15 @@ export const getEventByName = async (name) => {
     return result;
 };
 
-export const getEvents = async () => { };
-export const getEventsById = async () => { };
-export const updateEventById = async () => { };
-export const cancelEventById = async () => { };
+export const getEvents = async (status) => {
+    const [result] = await pool.query('SELECT * FROM event WHERE status = ?', [
+        status,
+    ]);
+    return result;
+};
+export const getEventById = async (id) => {
+    const [result] = await pool.query('SELECT * FROM event WHERE id = ?', [id]);
+    return result;
+};
+export const updateEventById = async () => {};
+export const cancelEventById = async () => {};

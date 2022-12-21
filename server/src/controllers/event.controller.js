@@ -15,14 +15,25 @@ export const createEvent = async (req, res) => {
 };
 
 export const getEvents = async (req, res) => {
-    res.send('geting events');
+    try {
+        const events = await Event.getEvents(0);
+        return res.status(200).json(events);
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server, ' + error });
+    }
 };
 
 export const getEventById = async (req, res) => {
-    res.send('get event');
+    try {
+        const { eventId } = req.params;
+        const event = await Event.getEventById(eventId);
+        return res.status(200).json(event);
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server, ' + error });
+    }
 };
 
-export const updateEventsById = async (req, res) => {
+export const updateEventById = async (req, res) => {
     res.send('updating event');
 };
 
