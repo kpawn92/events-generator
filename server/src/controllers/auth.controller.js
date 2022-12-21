@@ -1,14 +1,14 @@
+import jwt from 'jsonwebtoken';
 import {
     User,
     Moderator,
     Manager,
     Economist,
     Subscribers,
-} from '../models/entity/index.js';
-import { KEY_SECRET } from '../config/env.js';
-import { passwordHelper } from '../helpers/index.js';
-import jwt from 'jsonwebtoken';
-import { userHelper } from '../helpers/index.js';
+} from '../models/entity';
+import { KEY_SECRET } from '../config/env';
+import { passwordHelper } from '../helpers';
+import { userHelper } from '../helpers';
 
 export const signUp = async (req, res) => {
     try {

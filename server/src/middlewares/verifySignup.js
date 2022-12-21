@@ -6,10 +6,10 @@ import {
     VOID_KEY_HEADER_ADMIN,
     KEY_HEADER_MODERATOR,
     VOID_KEY_HEADER_MODERATOR,
-} from '../config/env.js';
-import { validateModeratorDTO } from '../validators/moderator.validator.dto.js';
-import { validateSubscriberDTO } from '../validators/subscriber.validate.dto.js';
-import { User } from '../models/entity/index.js';
+} from '../config/env';
+import { validateModeratorDTO } from '../validators/moderator.validator.dto';
+import { validateSubscriberDTO } from '../validators/subscriber.validate.dto';
+import { User } from '../models/entity';
 
 const verifyHeaders = async (header, key, void_key, id) => {
     const headerUserAdvanced = header[key];

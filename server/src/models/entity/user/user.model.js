@@ -1,7 +1,7 @@
-import { pool } from '../../../config/db.js';
+import { pool } from '../../../config/db';
 import { v4 } from 'uuid';
-import { getRoleByName } from '../roles/roles.model.js';
-import { passwordHelper } from '../../../helpers/index.js';
+import { getRoleByName } from '../roles/roles.model';
+import { passwordHelper } from '../../../helpers';
 
 export const setAdmin = async () => {
     const [result] = await pool.query(

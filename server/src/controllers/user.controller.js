@@ -1,6 +1,6 @@
-import { User } from '../models/entity/index.js';
-import { EMAIL_ADMIN } from '../config/env.js';
-import { passwordHelper } from '../helpers/index.js';
+import { User } from '../models/entity';
+import { EMAIL_ADMIN } from '../config/env';
+import { passwordHelper } from '../helpers';
 
 export const users = async (req, res) => {
     try {

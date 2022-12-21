@@ -1,4 +1,4 @@
-import { User, Roles } from '../models/entity/index.js';
+import { User, Roles } from '../models/entity';
 
 const verifyRole = async (req, res, next) => {
     try {

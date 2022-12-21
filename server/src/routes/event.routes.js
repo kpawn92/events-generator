@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import * as eventCtrl from '../controllers/event.controller.js';
+import * as eventCtrl from '../controllers/event.controller';
 import {
     isEconomist,
     isModelator,
     verifyToken,
-} from '../middlewares/authJwt.js';
-import { validateEventDTO } from '../validators/event.validate.dto.js';
+} from '../middlewares/authJwt';
+import { validateEventDTO } from '../validators/event.validate.dto';
 
 const router = Router();
 

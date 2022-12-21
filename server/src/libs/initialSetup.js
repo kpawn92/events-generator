@@ -1,5 +1,5 @@
-import { Roles, User } from '../models/entity/index.js';
-import { EMAIL_ADMIN, KEY_ADMIN } from '../config/env.js';
+import { Roles, User } from '../models/entity';
+import { EMAIL_ADMIN, KEY_ADMIN } from '../config/env';
 
 export const createRoles = async () => {
     try {

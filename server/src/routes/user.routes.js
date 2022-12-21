@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import * as userCtrl from '../controllers/user.controller.js';
-import { isAdmin, verifyToken } from '../middlewares/authJwt.js';
-import { validateEditUserDTO } from '../validators/userEdit.validate.js';
-import { verifyUserAndEmailById } from '../middlewares/verifyEmail.js';
-import { verifyUserByParams } from '../middlewares/verifyParams.js';
-import { cacheInit } from '../middlewares/turboCache.js';
+import * as userCtrl from '../controllers/user.controller';
+import { isAdmin, verifyToken } from '../middlewares/authJwt';
+import { validateEditUserDTO } from '../validators/userEdit.validate';
+import { verifyUserAndEmailById } from '../middlewares/verifyEmail';
+import { verifyUserByParams } from '../middlewares/verifyParams';
+import { cacheInit } from '../middlewares/turboCache';
 
 const router = Router();
 

@@ -1,4 +1,4 @@
-import * as passwordHelper from './password.helper.js';
-import * as userHelper from './user.helper.js';
+import * as passwordHelper from './password.helper';
+import * as userHelper from './user.helper';
 
 export { passwordHelper, userHelper };

@@ -1,5 +1,5 @@
-import { pool } from '../../../config/db.js';
 import { v4 } from 'uuid';
+import { pool } from '../../../config/db';
 
 export const createEvents = async ({
     name,
@@ -29,7 +29,7 @@ export const getEventByName = async (name) => {
     return result;
 };
 
-export const getEvents = async () => {};
-export const getEventsById = async () => {};
-export const updateEventById = async () => {};
-export const cancelEventById = async () => {};
+export const getEvents = async () => { };
+export const getEventsById = async () => { };
+export const updateEventById = async () => { };
+export const cancelEventById = async () => { };

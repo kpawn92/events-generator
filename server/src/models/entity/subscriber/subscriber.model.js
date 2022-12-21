@@ -1,5 +1,5 @@
-import { pool } from '../../../config/db.js';
 import { v4 } from 'uuid';
+import { pool } from '../../../config/db';
 
 export const create = async (id, body) => {
     const _id = v4();

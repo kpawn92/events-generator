@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { verifyData } from '../middlewares/verifySignup.js';
-import { validateLoginDTO } from '../validators/login.validate.dto.js';
-import { verifyEmail } from '../middlewares/verifyEmail.js';
-import * as authCtrl from '../controllers/auth.controller.js';
+import { verifyData } from '../middlewares/verifySignup';
+import { validateLoginDTO } from '../validators/login.validate.dto';
+import { verifyEmail } from '../middlewares/verifyEmail';
+import * as authCtrl from '../controllers/auth.controller';
 
 const router = Router();
 

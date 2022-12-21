@@ -1,4 +1,4 @@
-import { Roles, User } from '../models/entity/index.js';
+import { Roles, User } from '../models/entity';
 
 const createUser = async (role = 'user', email, password) => {
     const id = await Roles.getRoleByName(role);

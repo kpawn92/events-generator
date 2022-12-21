@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { KEY_SECRET, KEY_TOKEN_HEADER } from '../config/env.js';
-import { User } from '../models/entity/index.js';
+import { KEY_SECRET, KEY_TOKEN_HEADER } from '../config/env';
+import { User } from '../models/entity';
 
 export const verifyToken = async (req, res, next) => {
     try {

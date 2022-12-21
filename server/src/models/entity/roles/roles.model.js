@@ -1,4 +1,4 @@
-import { pool } from '../../../config/db.js';
+import { pool } from '../../../config/db';
 
 export const create = async () => {
     const admin = pool.query(`INSERT INTO roles VALUES(rol_name, 'admin')`);

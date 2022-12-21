@@ -1,10 +1,10 @@
 import express from 'express';
 import morgan from 'morgan';
-import { createRoles, createAdmin } from './libs/initialSetup.js';
 import cors from 'cors';
-import auth from './routes/auth.routes.js';
-import users from './routes/user.routes.js';
-import events from './routes/event.routes.js';
+import { createRoles, createAdmin } from './libs/initialSetup';
+import auth from './routes/auth.routes';
+import users from './routes/user.routes';
+import events from './routes/event.routes';
 
 const app = express();
 

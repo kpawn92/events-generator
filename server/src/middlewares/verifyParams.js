@@ -1,4 +1,4 @@
-import { User } from '../models/entity/index.js';
+import { User } from '../models/entity';
 
 export const verifyUserByParams = async (req, res, next) => {
     const { userId } = req.params;

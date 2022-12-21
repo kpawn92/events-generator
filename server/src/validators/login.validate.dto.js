@@ -1,7 +1,7 @@
-import { LoginSchema } from '../models/schema/index.js';
 import addFormats from 'ajv-formats';
 import addErrors from 'ajv-errors';
 import Ajv from 'ajv';
+import { LoginSchema } from '../models/schema';
 
 const ajv = new Ajv({ allErrors: true });
 addFormats(ajv, ['email']).addKeyword('kind').addKeyword('modifier');
