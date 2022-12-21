@@ -39,5 +39,24 @@ export const getEventById = async (id) => {
     const [result] = await pool.query('SELECT * FROM event WHERE id = ?', [id]);
     return result;
 };
-export const updateEventById = async () => {};
-export const cancelEventById = async () => {};
+export const updateEventById = async (id, body) => {
+    const {
+        name,
+        description,
+        date_beginning_inscription,
+        end_date_inscription,
+        date_beginning,
+        end_date
+    } = body
+    const [result] = await pool.query('UPDATE event SET name = ?, description = ?, date_beginning_inscription = ?, end_date_inscription = ?, date_beginning = ?, end_date = ?  WHERE id = ?', [
+        name,
+        description,
+        date_beginning_inscription,
+        end_date_inscription,
+        date_beginning,
+        end_date,
+        id
+    ])
+    return result
+};
+export const cancelEventById = async () => { };

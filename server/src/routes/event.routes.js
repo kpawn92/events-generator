@@ -11,17 +11,24 @@ const router = Router();
 /**
  * @coment : Moderator crea el event (verificacion de token y rol)
  * @coment : Moderator actualiza el event (verificacion de token y rol)
- * @coment : Creating Subscribers sera free, a travez de una url sin headers and sin roles
+ * @coment : Economist actualiza el costo de los events (verificacion idEvent, token y rol)
  */
 
 router.get('/', cacheInit, eventCtrl.getEvents);
+
 router.get('/:eventId', verifyEventByParams, eventCtrl.getEventById);
+
 router.post(
     '/',
     [verifyToken, isModelator, validateEventDTO],
     eventCtrl.createEvent
 );
-router.put('/:eventId', [verifyToken, isModelator], eventCtrl.updateEventById);
+router.put(
+    '/:eventId',
+    [verifyToken, isModelator, verifyEventByParams, validateEventDTO],
+    eventCtrl.updateEventById
+);
+
 router.put(
     '/cost/:eventId',
     [verifyToken, isEconomist],

@@ -34,7 +34,13 @@ export const getEventById = async (req, res) => {
 };
 
 export const updateEventById = async (req, res) => {
-    res.send('updating event');
+    try {
+        const { eventId } = req.params;
+        const updateEvent = await Event.updateEventById(eventId, req.body);
+        return res.status(200).json(updateEvent);
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server, ' + error });
+    }
 };
 
 export const setCostEvent = async (req, res) => {
