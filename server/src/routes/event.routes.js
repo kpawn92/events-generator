@@ -4,18 +4,20 @@ import { isEconomist, isModelator, verifyToken } from '../middlewares/authJwt';
 import { validateEventDTO } from '../validators/event.validate.dto';
 import { validateCostEventDTO } from '../validators/costEvent.validate.dto';
 import { cacheInit } from '../middlewares/turboCache';
-import { verifyEventByParams } from '../middlewares/verifyParams';
+import { verifyEventByParams, verifyHeaderModeratorOrEconomist } from '../middlewares/verifyParams';
 
 const router = Router();
 
 // TODO: Todos los usuarios obtienen los eventos y su descripcion a travez del ID del event
 /**
+ * @coment : Moderator and Economist obtienen todos los eventos (verificacion headers-moderator)
+ * @coment : Los usuarios solo obtendran los eventos validos
  * @coment : Moderator crea el event (verificacion de token y rol)
- * @coment : Moderator edita/invalida el event (verificacion de params, token y rol)
- * @coment : Economist actualiza el costo de los events (verificacion params, token y rol)
+ * @coment : Moderator edita/invalida el event (verificacion de token y rol)
+ * @coment : Economist actualiza el costo y #tarjeta de los events (verificacion de token y rol)
  */
 
-router.get('/', cacheInit, eventCtrl.getEvents);
+router.get('/', [verifyHeaderModeratorOrEconomist, cacheInit], eventCtrl.getEvents);
 
 router.get('/:eventId', verifyEventByParams, eventCtrl.getEventById);
 

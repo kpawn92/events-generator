@@ -45,3 +45,8 @@ export const isEconomist = (req, res, next) => {
     if (req.userRol === 'economist') return next();
     return res.status(403).json({ message: 'Requer economist role' });
 };
+
+export const isManager = (req, res, next) => {
+    if (req.userRol === 'manager') return next();
+    return res.status(403).json({ message: 'Requer manager role' });
+};

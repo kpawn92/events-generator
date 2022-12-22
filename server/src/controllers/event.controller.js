@@ -33,7 +33,7 @@ export const getEvents = async (req, res) => {
 export const getEventById = async (req, res) => {
     try {
         const { eventId } = req.params;
-        const event = await Event.getEventById(eventId);
+        const event = await Event.getById(eventId);
         return res.status(200).json(event);
     } catch (error) {
         return res.status(500).json({ message: 'Error server, ' + error });

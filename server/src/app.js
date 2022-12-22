@@ -5,6 +5,7 @@ import { createRoles, createAdmin } from './libs/initialSetup';
 import auth from './routes/auth.routes';
 import users from './routes/user.routes';
 import events from './routes/event.routes';
+import livingRoom from './routes/livingroom.routes';
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/api/users/', users);
 
 // Management events #------------------#
 app.use('/api/events/', events);
+app.use('/api/living-room/', livingRoom);
 //--------------------------------------#
 
 export { app };

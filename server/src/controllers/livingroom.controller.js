@@ -1,0 +1,1 @@
+export const createLivingRoom = async (req, res) => { };
