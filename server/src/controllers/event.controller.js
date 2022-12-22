@@ -1,5 +1,12 @@
 import { Event } from '../models/entity';
 
+/**
+ * Funciones CRUD de la entidad Event
+ * @param {Request} req Peticion del cliente
+ * @param {Response} res Solucion que brinda el servidor web
+ * @returns status de la respuesta del consulta a la base de datos
+ */
+
 export const createEvent = async (req, res) => {
     try {
         const { name } = req.body;
@@ -16,7 +23,7 @@ export const createEvent = async (req, res) => {
 
 export const getEvents = async (req, res) => {
     try {
-        const events = await Event.getEvents(0);
+        const events = await Event.getEvents(1);
         return res.status(200).json(events);
     } catch (error) {
         return res.status(500).json({ message: 'Error server, ' + error });
@@ -44,5 +51,25 @@ export const updateEventById = async (req, res) => {
 };
 
 export const setCostEvent = async (req, res) => {
-    res.send('setting event cost');
+    try {
+        const { eventId } = req.params;
+        const updateCostEvent = await Event.updateCostEventById(
+            eventId,
+            req.body,
+            1
+        );
+        return res.status(200).json(updateCostEvent);
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server, ' + error });
+    }
+};
+
+export const cancelEventById = async (req, res) => {
+    try {
+        const { eventId } = req.params;
+        const setCancel = await Event.invalidEventById(eventId, 0);
+        res.status(200).json(setCancel);
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server, ' + error });
+    }
 };

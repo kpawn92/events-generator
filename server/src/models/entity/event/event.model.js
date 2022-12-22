@@ -62,4 +62,19 @@ export const updateEventById = async (id, body) => {
     );
     return result;
 };
-export const cancelEventById = async () => {};
+
+export const updateCostEventById = async (id, body, status) => {
+    const { cost, target } = body;
+    const [result] = await pool.query(
+        'UPDATE event SET cost = ?, target = ?, status = ? WHERE id = ?',
+        [cost, target, status, id]
+    );
+    return result;
+};
+export const invalidEventById = async (id, status) => {
+    const [result] = await pool.query(
+        'UPDATE event SET `status` = ? WHERE id = ?',
+        [status, id]
+    );
+    return result;
+};

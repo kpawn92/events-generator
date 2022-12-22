@@ -11,8 +11,8 @@ const router = Router();
 // TODO: Todos los usuarios obtienen los eventos y su descripcion a travez del ID del event
 /**
  * @coment : Moderator crea el event (verificacion de token y rol)
- * @coment : Moderator actualiza el event (verificacion de token y rol)
- * @coment : Economist actualiza el costo de los events (verificacion idEvent, token y rol)
+ * @coment : Moderator edita/invalida el event (verificacion de params, token y rol)
+ * @coment : Economist actualiza el costo de los events (verificacion params, token y rol)
  */
 
 router.get('/', cacheInit, eventCtrl.getEvents);
@@ -30,10 +30,16 @@ router.put(
     eventCtrl.updateEventById
 );
 
-router.put(
-    '/cost/:eventId',
+router.patch(
+    '/:eventId',
     [verifyToken, isEconomist, verifyEventByParams, validateCostEventDTO],
     eventCtrl.setCostEvent
+);
+
+router.delete(
+    '/:eventId',
+    [verifyToken, isModelator, verifyEventByParams],
+    eventCtrl.cancelEventById
 );
 
 export default router;
