@@ -23,6 +23,8 @@ export const setUser = async (dni) => {
 };
 
 export const getManagerById = async (id) => {
-    const [result] = await pool.query('SELECT * FROM manager WHERE id = ?', [id]);
+    const [result] = await pool.query('SELECT * FROM manager WHERE id = ?', [
+        id,
+    ]);
     return result;
 };

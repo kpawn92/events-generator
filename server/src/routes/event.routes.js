@@ -4,7 +4,10 @@ import { isEconomist, isModelator, verifyToken } from '../middlewares/authJwt';
 import { validateEventDTO } from '../validators/event.validate.dto';
 import { validateCostEventDTO } from '../validators/costEvent.validate.dto';
 import { cacheInit } from '../middlewares/turboCache';
-import { verifyEventByParams, verifyHeaderModeratorOrEconomist } from '../middlewares/verifyParams';
+import {
+    verifyEventByParams,
+    verifyHeaderModeratorOrEconomist,
+} from '../middlewares/verifyParams';
 
 const router = Router();
 
@@ -17,7 +20,11 @@ const router = Router();
  * @coment : Economist actualiza el costo y #tarjeta de los events (verificacion de token y rol)
  */
 
-router.get('/', [verifyHeaderModeratorOrEconomist, cacheInit], eventCtrl.getEvents);
+router.get(
+    '/',
+    [verifyHeaderModeratorOrEconomist, cacheInit],
+    eventCtrl.getEvents
+);
 
 router.get('/:eventId', verifyEventByParams, eventCtrl.getEventById);
 

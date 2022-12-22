@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import * as livingRoomCtrl from '../controllers/livingroom.controller'
-import { verifyToken, isModelator } from '../middlewares/authJwt'
-import { verifyEventByParams } from '../middlewares/verifyParams'
-import { verifyManagerByBody } from '../middlewares/verifyFkBody'
-import { validateLivingRoomDTO } from '../validators/livingroom.validate.dto'
+import * as livingRoomCtrl from '../controllers/livingroom.controller';
+import { verifyToken, isModelator } from '../middlewares/authJwt';
+import { verifyEventByParams } from '../middlewares/verifyParams';
+import { verifyManagerByBody } from '../middlewares/verifyFkBody';
+import { validateLivingRoomDTO } from '../validators/livingroom.validate.dto';
 const router = Router();
 
 // TODO: Las salas seran asignadas al evento, guardando el Id del evento en la entidad de Sala
@@ -12,6 +12,18 @@ const router = Router();
  * @coment : Modelator asigna el manager por cada sala (verficación de token y rol)
  */
 
-router.post('/:eventId', [verifyToken, isModelator, verifyEventByParams, validateLivingRoomDTO, verifyManagerByBody], livingRoomCtrl.createLivingRoom)
+router.post(
+    '/:eventId',
+    [
+        verifyToken,
+        isModelator,
+        verifyEventByParams,
+        validateLivingRoomDTO,
+        verifyManagerByBody,
+    ],
+    livingRoomCtrl.createLivingRoom
+);
 
+// Obener salas por evento
+router.get('/:eventId', livingRoomCtrl.livingRoomsByEvent);
 export default router;

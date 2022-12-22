@@ -7,4 +7,13 @@ import * as Economist from './economist/economist.model';
 import * as Event from './event/event.model';
 import * as LivingRoom from './livingroom/livingroom.model';
 
-export { User, Subscribers, Roles, Moderator, Manager, Economist, Event, LivingRoom };
+export {
+    User,
+    Subscribers,
+    Roles,
+    Moderator,
+    Manager,
+    Economist,
+    Event,
+    LivingRoom,
+};

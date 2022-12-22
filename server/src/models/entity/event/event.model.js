@@ -42,10 +42,10 @@ export const events = async () => {
 };
 
 export const getEventById = async (id, status) => {
-    const [result] = await pool.query('SELECT * FROM event WHERE status = ? AND id = ?', [
-        status,
-        id
-    ]);
+    const [result] = await pool.query(
+        'SELECT * FROM event WHERE status = ? AND id = ?',
+        [status, id]
+    );
     return result;
 };
 

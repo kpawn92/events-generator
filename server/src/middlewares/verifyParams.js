@@ -1,5 +1,5 @@
 import { Event, User } from '../models/entity';
-import { KEY_HEADER_MODERATOR, VOID_KEY_HEADER_MODERATOR } from '../config/env'
+import { KEY_HEADER_MODERATOR, VOID_KEY_HEADER_MODERATOR } from '../config/env';
 
 export const verifyUserByParams = async (req, res, next) => {
     const { userId } = req.params;
