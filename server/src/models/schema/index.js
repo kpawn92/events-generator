@@ -167,6 +167,24 @@ const CostEventSchema = Type.Object({
     }),
 });
 
+const LivingRoomSchema = Type.Object({
+    name: Type.String({
+        errorMessage: {
+            type: 'type string',
+        },
+    }),
+    description: Type.String({
+        errorMessage: {
+            type: 'type string',
+        },
+    }),
+    fk_manager: Type.String({
+        errorMessage: {
+            type: 'type string',
+        },
+    }),
+});
+
 export {
     LoginSchema,
     ModeratorSchema,
@@ -174,4 +192,5 @@ export {
     EditUserSchema,
     EventSchema,
     CostEventSchema,
+    LivingRoomSchema,
 };
