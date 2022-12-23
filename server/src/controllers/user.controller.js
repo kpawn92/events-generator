@@ -50,9 +50,8 @@ export const toInvalidateUser = async (req, res) => {
     }
 };
 
-
 export const usersByRole = async (req, res) => {
-    const { role } = req.params
-    const result = await User.getUsersByRol(role, 1)
-    return res.send(result)
+    const { role } = req.params;
+    const result = await User.getUsersByRol(role, 1);
+    return res.send(result);
 };

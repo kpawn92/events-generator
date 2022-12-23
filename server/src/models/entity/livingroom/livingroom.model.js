@@ -39,6 +39,8 @@ export const getElementById = async (id) => {
 };
 
 export const deleteElementById = async (id) => {
-    const [result] = await pool.query('DELETE FROM living_room WHERE id = ?', [id]);
+    const [result] = await pool.query('DELETE FROM living_room WHERE id = ?', [
+        id,
+    ]);
     return result;
 };

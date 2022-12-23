@@ -1,1 +1,1 @@
-export const debugIntances = async (date) => { };
+export const debugIntances = async (date) => {};

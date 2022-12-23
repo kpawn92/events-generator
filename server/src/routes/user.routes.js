@@ -16,7 +16,7 @@ const router = Router();
 
 router.get('/', [verifyToken, isAdmin, cacheInit], userCtrl.users);
 router.get('/:userId', [verifyToken, isAdmin], userCtrl.user);
-router.get('/get/:role', userCtrl.usersByRole)
+router.get('/get/:role', userCtrl.usersByRole);
 
 router.put(
     '/:userId',
@@ -29,6 +29,5 @@ router.delete(
     [verifyToken, isAdmin, verifyUserByParams],
     userCtrl.toInvalidateUser
 );
-
 
 export default router;
