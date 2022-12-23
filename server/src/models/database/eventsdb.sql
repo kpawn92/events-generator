@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Farmram
+ Source Server         : FarmaRAM
  Source Server Type    : MySQL
- Source Server Version : 100421
+ Source Server Version : 100419
  Source Host           : localhost:3306
  Source Schema         : eventsdb
 
  Target Server Type    : MySQL
- Target Server Version : 100421
+ Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 22/12/2022 12:52:48
+ Date: 22/12/2022 22:27:43
 */
 
 SET NAMES utf8mb4;
@@ -123,8 +123,7 @@ CREATE TABLE `living_room`  (
 -- ----------------------------
 -- Records of living_room
 -- ----------------------------
-INSERT INTO `living_room` VALUES ('1ba79f82-1525-488d-9ba9-1b4f887be5a0', 'd8bacbca-899e-45a1-87d6-ec9b606ca2e4', 'Dpto Informatica', '2do piso Bloque2', '1a588fda-9551-4af8-aa85-8164124ca950', '2022-12-22 12:46:19.236901');
-INSERT INTO `living_room` VALUES ('3f9f4da5-064d-4217-8bd6-b93ad5935e9a', 'd8bacbca-899e-45a1-87d6-ec9b606ca2e4', 'Dpto Español Literatura', '2do piso Bloque2', '1a588fda-9551-4af8-aa85-8164124ca950', '2022-12-22 12:46:36.476504');
+INSERT INTO `living_room` VALUES ('61664e35-0715-49b2-8a15-195c8e183bcc', 'd8bacbca-899e-45a1-87d6-ec9b606ca2e4', 'Dpto Ciencias', '2d alto bloque 2', '1a588fda-9551-4af8-aa85-8164124ca950', '2022-12-22 21:47:03.893470');
 
 -- ----------------------------
 -- Table structure for manager
@@ -253,7 +252,7 @@ INSERT INTO `users` VALUES ('0875ff13-7f67-4f65-b74b-cbf4311e5c16', 'ale@gmail.c
 INSERT INTO `users` VALUES ('77d226a2-f7b2-445c-b74a-729de570d481', 'admin@admin.com', '$2a$10$0MXhYC75nkivMwxslnqFSufhf.gFzzqYTGRYXFCx9LzRd4t3/h.Ka', 130, 1);
 INSERT INTO `users` VALUES ('9b557e67-361b-45e3-a96a-f35fd6dd5fe5', 'oscar_manager@gmail.com', '$2a$10$hGSNCXtHUY5WJkx6rWaOGuPWVRw3.3Yd33Q2sPoDCNdLTRDp.IObK', 132, 1);
 INSERT INTO `users` VALUES ('a6ca6906-1d43-48c0-bb5a-f0a0904aea28', 'oscar@gmail.com', '$2a$10$WeU1rIVf.Ao2Ssi63AGJ3uOWBQ8/B.hqb07Hle4r.Nwhr/TSAOgRG', 134, 1);
-INSERT INTO `users` VALUES ('d5c804a3-f1e7-402b-9948-0c185828afdd', 'oscar_moderator@gmail.com', '$2a$10$pa28iPOPj0jQBhqpFJ59AuiN20kpvZXZK2vUra2eDhBscoxr6lfeG', 131, 1);
-INSERT INTO `users` VALUES ('e2fb04e5-9536-4633-8278-042f01e32bc4', 'jhon@gmail.com', '$2a$10$gSjGFzWn4pE1QT050tvoG.SecwHow/Mq2TeVTGtQKCLgCXUwfAT0u', 131, 1);
+INSERT INTO `users` VALUES ('d5c804a3-f1e7-402b-9948-0c185828afdd', 'oscar_moderator@gmail.com', '$2a$10$jYBebt37OMSBcZyz0h6rruyYxP7.enCpZpUdh8YIjenMKaDxtjqQW', 131, 1);
+INSERT INTO `users` VALUES ('e2fb04e5-9536-4633-8278-042f01e32bc4', 'jhon@gmail.com', '$2a$10$RFVwbARNdmm3clAeGa7fberGLLBuV4HpFWKf9JRGa7BT2Rcf9gpsG', 131, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

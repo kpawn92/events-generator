@@ -22,3 +22,8 @@ export const setUser = async (dni) => {
     );
     return result;
 };
+
+export const getModerators = async (status) => {
+    const [result] = await pool.query('SELECT name, lastname, dni, email FROM moderator JOIN users ON users.id = fk_user WHERE status = ?', [status]);
+    return result;
+};

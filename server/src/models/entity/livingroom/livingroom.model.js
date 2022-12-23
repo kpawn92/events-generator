@@ -22,7 +22,23 @@ export const getLivingRoomByName = async (name) => {
     return result[0];
 };
 
-export const getlivingroomsByEventId = async (fk_event) => {
-    const [result] = await pool.query('SELECT living_room.id, living_room.name, living_room.description, manager.name as name_manager, manager.lastname, living_room.createdAt FROM living_room JOIN `event` ON `event`.id = living_room.fk_event JOIN manager ON manager.id = living_room.fk_manager WHERE living_room.fk_event= ?', [fk_event]);
-    return result
+export const getlivingroomsByEventId = async (fk_event, status) => {
+    const [result] = await pool.query(
+        'SELECT living_room.id, living_room.name, living_room.description, manager.name as name_manager, manager.lastname, users.email, living_room.createdAt FROM living_room JOIN `event` ON `event`.id = living_room.fk_event JOIN manager ON manager.id = living_room.fk_manager JOIN users ON users.id = manager.fk_user WHERE users.status = ? AND living_room.fk_event= ?',
+        [status, fk_event]
+    );
+    return result;
+};
+
+export const getElementById = async (id) => {
+    const [result] = await pool.query(
+        'SELECT * FROM living_room WHERE id = ?',
+        [id]
+    );
+    return result;
+};
+
+export const deleteElementById = async (id) => {
+    const [result] = await pool.query('DELETE FROM living_room WHERE id = ?', [id]);
+    return result;
 };

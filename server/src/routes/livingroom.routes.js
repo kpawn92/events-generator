@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import * as livingRoomCtrl from '../controllers/livingroom.controller';
 import { verifyToken, isModelator } from '../middlewares/authJwt';
-import { verifyEventByParams } from '../middlewares/verifyParams';
+import {
+    verifyEventByParams,
+    verifyLivingRoomByParams,
+} from '../middlewares/verifyParams';
 import { verifyManagerByBody } from '../middlewares/verifyFkBody';
 import { validateLivingRoomDTO } from '../validators/livingroom.validate.dto';
 const router = Router();
@@ -10,6 +13,8 @@ const router = Router();
 /**
  * @coment : Modelator crea las salas incluyendole el id del evento que sera enviado en la url (verficación de params, token ,rol y validar los datos enviados)
  * @coment : Modelator asigna el manager por cada sala (verficación de token y rol)
+ * @coment : Modelator obtiene todas las salas pasando el id del evento como parametro
+ * @coment : Modelator elimina la sala a obteniendo el id por parametro
  */
 
 router.post(
@@ -24,6 +29,12 @@ router.post(
     livingRoomCtrl.createLivingRoom
 );
 
-// Obener salas por evento
-router.get('/:eventId', livingRoomCtrl.livingRoomsByEvent);
+router.get('/:eventId', verifyEventByParams, livingRoomCtrl.livingRoomsByEvent);
+
+router.delete(
+    '/:livingRoomId',
+    [verifyToken, isModelator, verifyLivingRoomByParams],
+    livingRoomCtrl.deleteLivingRoom
+);
+
 export default router;

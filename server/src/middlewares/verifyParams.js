@@ -1,4 +1,4 @@
-import { Event, User } from '../models/entity';
+import { Event, User, LivingRoom } from '../models/entity';
 import { KEY_HEADER_MODERATOR, VOID_KEY_HEADER_MODERATOR } from '../config/env';
 
 export const verifyUserByParams = async (req, res, next) => {
@@ -14,6 +14,14 @@ export const verifyEventByParams = async (req, res, next) => {
     const id = await Event.getById(eventId);
     if (id.length === 0)
         return res.status(404).json({ message: 'Event not found' });
+    next();
+};
+
+export const verifyLivingRoomByParams = async (req, res, next) => {
+    const { livingRoomId } = req.params;
+    const id = await LivingRoom.getElementById(livingRoomId);
+    if (id.length === 0)
+        return res.status(404).json({ message: 'Living Room not found' });
     next();
 };
 
