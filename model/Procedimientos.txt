@@ -1,0 +1,45 @@
+Ideas que van surgiendo:
+	Desde el front valorar el tiempo de validez del token en la inactividad
+Iniciar el servidor/api...
+
+	Se crean los roles
+	Se crea la cuenta Admin
+
+	Logear el Admin[method: POST, endpoint: auth/signin]
+		Verificar el body
+			Crear los usuarios Moderator: {Jefe de Eventos} y Economist: {Contador} [method: POST, endpoint: auth/signup]
+				Verificar el body: {role: valid}
+					? verificar el token: {valid}
+						decodificar el token: {id}
+							? role = moderator || role = economist
+								verificar los headers[keys] = void_key
+								obtener el rol del id que se decodifico pasado en el token
+								verificar que el rol[token] === admin
+								verificar en el body: {...: valid}
+								verficar en el body: {email: not repet}
+								verficar en el body: {dni: not repet}
+			Cerrar la session.
+
+	El Moderator crea el manager: {Jefe de Salas}
+		Verificar el body
+			Crear Manager: {Jefe de Sala} [method: POST, endpoint: auth/signup]
+				Verificar el body: {role: valid}
+					? verificar el token: {valid}
+						decodificar el token: {id}
+							? role = manager
+								verificar los headers[keys] = void_key
+								obtener el rol del id que se decodifico pasado en el token
+								verificar que el rol[token] === moderator
+								verificar en el body: {...: valid}
+								verficar en el body: {email: no repet}
+								verficar en el body: {dnil: no repet}
+			Cerrar la session.
+
+	El Subscriber se crea sin pasar en el body el rol
+		Verificar el body: {...: valid}
+		verficar en el body: {email: no repet}
+		verficar en el body: {dnil: no repet}
+
+	Para acceder los usuarios el sistema valida:
+			verificar email: {valid}
+			verificar password: {valid}

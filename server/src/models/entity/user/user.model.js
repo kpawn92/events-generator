@@ -85,3 +85,13 @@ export const invalidating = async (id, status) => {
     );
     return result;
 };
+
+// El admin obtiene los usuarios activos por rol tambien
+export const getUsersByRol = async (role_name, status) => {
+    if (role_name !== 'user') {
+        const [result] = await pool.query(`SELECT ${role_name}.id, ${role_name}.name, ${role_name}.lastname, ${role_name}.dni, email, ${role_name}.createdAt FROM ${role_name} JOIN users ON users.id = ${role_name}.fk_user WHERE status = ?`, [status])
+        return result
+    }
+    const [result] = pool.query('SELECT subscriber.id, subscriber.name, subscriber.lastname, subscriber.dni, institution, nation, category FROM subscriber JOIN users ON users.id = subscriber.fk_user JOIN roles ON roles.id = users.rol WHERE users.status = 1 AND rol_name = ?', [role_name])
+    return result
+}

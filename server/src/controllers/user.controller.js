@@ -49,3 +49,10 @@ export const toInvalidateUser = async (req, res) => {
         return res.status(500).json({ message: 'Error server' + error });
     }
 };
+
+
+export const usersByRole = async (req, res) => {
+    const { role } = req.params
+    const result = await User.getUsersByRol(role, 1)
+    return res.send(result)
+};

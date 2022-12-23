@@ -1,0 +1,26 @@
+/*
+* Autenticacion y autorizacion
+*/
+POST
+http://localhost:4000/api/auth/signin
+http://localhost:4000/api/auth/signup
+
+/*
+* Gestion de usuarios
+*/
+GET
+role: [moderator, economist, manager, subscriber]
+http://localhost:4000/api/users
+http://localhost:4000/api/users/:id
+http://localhost:4000/api/users/:${role}
+PUT
+http://localhost:4000/api/users/:id
+DELETE
+http://localhost:4000/api/users/:id
+
+/*
+* Gestion de eventos
+*/
+GET
+http://localhost:4000/api/events
+http://localhost:4000/api/events/:id
