@@ -18,6 +18,7 @@ const router = Router();
  * @coment : Moderator crea el event (verificacion de token y rol)
  * @coment : Moderator edita/invalida el event (verificacion de token y rol)
  * @coment : Economist actualiza el costo y #tarjeta de los events (verificacion de token y rol)
+ * @coment : Moderator cancela el event (verificacion de token , rol, params)
  */
 
 router.get(

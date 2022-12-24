@@ -3,7 +3,7 @@ import * as userCtrl from '../controllers/user.controller';
 import { isAdmin, verifyToken } from '../middlewares/authJwt';
 import { validateEditUserDTO } from '../validators/userEdit.validate';
 import { verifyUserAndEmailById } from '../middlewares/verifyEmail';
-import { verifyUserByParams } from '../middlewares/verifyParams';
+import { verifyUserByParams, verifyRoleByParams } from '../middlewares/verifyParams';
 import { cacheInit } from '../middlewares/turboCache';
 
 const router = Router();
@@ -16,7 +16,7 @@ const router = Router();
 
 router.get('/', [verifyToken, isAdmin, cacheInit], userCtrl.users);
 router.get('/:userId', [verifyToken, isAdmin], userCtrl.user);
-router.get('/get/:role', userCtrl.usersByRole);
+router.get('/get/:role', [verifyToken, isAdmin, verifyRoleByParams], userCtrl.usersByRole);
 
 router.put(
     '/:userId',

@@ -11,10 +11,10 @@ const router = Router();
 
 // TODO: Las salas seran asignadas al evento, guardando el Id del evento en la entidad de Sala
 /**
- * @coment : Modelator crea las salas incluyendole el id del evento que sera enviado en la url (verficación de params, token ,rol y validar los datos enviados)
+ * @coment : Modelator crea las salas incluyendole el id del evento que sera enviado en la url (verficacion token, rol, params, body)
  * @coment : Modelator asigna el manager por cada sala (verficación de token y rol)
  * @coment : Modelator obtiene todas las salas pasando el id del evento como parametro
- * @coment : Modelator elimina la sala a obteniendo el id por parametro
+ * @coment : Modelator elimina la sala a obteniendo el id por parametro (verficacion token, rol, params)
  */
 
 router.post(

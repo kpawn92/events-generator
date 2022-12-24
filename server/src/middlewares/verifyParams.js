@@ -1,4 +1,4 @@
-import { Event, User, LivingRoom } from '../models/entity';
+import { Event, User, LivingRoom, Roles } from '../models/entity';
 import { KEY_HEADER_MODERATOR, VOID_KEY_HEADER_MODERATOR } from '../config/env';
 
 export const verifyUserByParams = async (req, res, next) => {
@@ -33,5 +33,15 @@ export const verifyHeaderModeratorOrEconomist = async (req, res, next) => {
         return res.status(200).json(events);
     } catch (error) {
         return res.status(500).json({ message: 'Error server, ' + error });
+    }
+};
+
+export const verifyRoleByParams = async (req, res, next) => {
+    try {
+        const { role } = req.params
+        await Roles.getRoleByName(role)
+        next()
+    } catch (error) {
+        return res.status(500).json({ message: 'Params invalid' })
     }
 };

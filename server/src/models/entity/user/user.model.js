@@ -96,7 +96,7 @@ export const getUsersByRol = async (role_name, status) => {
         return result;
     }
     const [result] = await pool.query(
-        'SELECT subscriber.id, subscriber.name, subscriber.lastname, subscriber.dni, institution, nation, category FROM subscriber JOIN users ON users.id = subscriber.fk_user JOIN roles ON roles.id = users.rol WHERE users.status = ? AND rol_name = ?',
+        'SELECT subscriber.id, subscriber.name, subscriber.lastname, subscriber.dni, institution, nation, category, email FROM subscriber JOIN users ON users.id = subscriber.fk_user JOIN roles ON roles.id = users.rol WHERE users.status = ? AND rol_name = ?',
         [status, role_name]
     );
     return result;

@@ -185,6 +185,19 @@ const LivingRoomSchema = Type.Object({
     }),
 });
 
+const DigesInstanceSchema = Type.Object({
+    fk_subscriber: Type.String({
+        errorMessage: {
+            type: 'type string',
+        },
+    }),
+    abstract: Type.String({
+        errorMessage: {
+            type: 'type string',
+        },
+    }),
+});
+
 export {
     LoginSchema,
     ModeratorSchema,
@@ -193,4 +206,5 @@ export {
     EventSchema,
     CostEventSchema,
     LivingRoomSchema,
+    DigesInstanceSchema,
 };
