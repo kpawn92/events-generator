@@ -9,13 +9,18 @@ http://localhost:4000/api/auth/signup
 * Gestion de usuarios
 */
 GET
-role: [moderator, economist, manager, subscriber]
+Obtiene todos los usuarios{email, password}
 http://localhost:4000/api/users
+Obtiene el usuario{email, password} por el id
 http://localhost:4000/api/users/:id
-http://localhost:4000/api/users/:${role}
+Usuarios por el rol
+role: [moderator, economist, manager, user]
+http://localhost:4000/api/users/get/:${role}
 PUT
+Edita el usuario por el id
 http://localhost:4000/api/users/:id
 DELETE
+Invalida el usuario{email, password}
 http://localhost:4000/api/users/:id
 
 /*

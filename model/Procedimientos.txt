@@ -1,10 +1,12 @@
 Ideas que van surgiendo:
 	Desde el front valorar el tiempo de validez del token en la inactividad
+
 Iniciar el servidor/api...
 
 	Se crean los roles
 	Se crea la cuenta Admin
 
+	AUTHENTICATION
 	Logear el Admin[method: POST, endpoint: auth/signin]
 		Verificar el body
 			Crear los usuarios Moderator: {Jefe de Eventos} y Economist: {Contador} [method: POST, endpoint: auth/signup]
@@ -43,3 +45,12 @@ Iniciar el servidor/api...
 	Para acceder los usuarios el sistema valida:
 			verificar email: {valid}
 			verificar password: {valid}
+
+	GESTION DE USUARIOS
+	El Admin es quien obtiene todos los usuarios
+		Obtiene el user por el id
+		Filtra los usuarios por rol
+		Edita e invalida los usuarios
+	
+	GESTION DE EVENTOS
+	Solo los Moderator y Economist obtienen todos los eventos, los subs obtienen solo los eventos validos

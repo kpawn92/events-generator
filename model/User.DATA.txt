@@ -28,3 +28,9 @@ Event
   "date_beginning": 1671577147
   "end_date": 1671577148
 }
+
+Digest instance
+{
+  "fk_subscriber": "3a4e5c13-059c-4c3b-bcab-047d26fca2ce",
+  "abstract": "A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp"
+}
