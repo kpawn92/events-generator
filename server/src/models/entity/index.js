@@ -7,6 +7,7 @@ import * as Economist from './economist/economist.model';
 import * as Event from './event/event.model';
 import * as LivingRoom from './livingroom/livingroom.model';
 import * as DigestInstance from './digest_instance/digestinstance.model';
+import * as PaymentInstance from './payment_instance/payinstance.model';
 
 export {
     User,
@@ -18,4 +19,5 @@ export {
     Event,
     LivingRoom,
     DigestInstance,
+    PaymentInstance,
 };

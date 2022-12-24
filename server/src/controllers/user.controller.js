@@ -56,6 +56,6 @@ export const usersByRole = async (req, res) => {
         const result = await User.getUsersByRol(role, 1);
         return res.status(200).json(result);
     } catch (error) {
-        return res.status(500).json({ message: 'Error server: ' + error })
+        return res.status(500).json({ message: 'Error server: ' + error });
     }
 };

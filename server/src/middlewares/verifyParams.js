@@ -1,4 +1,11 @@
-import { Event, User, LivingRoom, Roles } from '../models/entity';
+import {
+    Event,
+    User,
+    LivingRoom,
+    Roles,
+    Subscribers,
+    DigestInstance,
+} from '../models/entity';
 import { KEY_HEADER_MODERATOR, VOID_KEY_HEADER_MODERATOR } from '../config/env';
 
 export const verifyUserByParams = async (req, res, next) => {
@@ -38,10 +45,36 @@ export const verifyHeaderModeratorOrEconomist = async (req, res, next) => {
 
 export const verifyRoleByParams = async (req, res, next) => {
     try {
-        const { role } = req.params
-        await Roles.getRoleByName(role)
-        next()
+        const { role } = req.params;
+        await Roles.getRoleByName(role);
+        next();
     } catch (error) {
-        return res.status(500).json({ message: 'Params invalid' })
+        return res.status(500).json({ message: 'Params invalid' });
+    }
+};
+
+export const verifySubsByParams = async (req, res, next) => {
+    try {
+        const { subsId } = req.params;
+        const id = await Subscribers.getSubscriberById(subsId);
+        if (id.length === 0)
+            return res.status(404).json({ message: 'Subscriber not found' });
+        next();
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server: ' + error });
+    }
+};
+
+export const verifyInstance = async (req, res, next) => {
+    try {
+        const { instanceId } = req.params;
+        const id = await DigestInstance.getInstanceById(instanceId);
+        if (id.length === 0)
+            return res
+                .status(404)
+                .json({ message: 'Digest Instance not found' });
+        next();
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server: ' + error });
     }
 };

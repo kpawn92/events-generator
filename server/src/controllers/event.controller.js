@@ -24,7 +24,7 @@ export const createEvent = async (req, res) => {
 export const getEvents = async (req, res) => {
     try {
         const events = await Event.getEvents(1);
-        return res.status(200).json(events);
+        res.status(200).json(events);
     } catch (error) {
         return res.status(500).json({ message: 'Error server, ' + error });
     }
@@ -34,7 +34,7 @@ export const getEventById = async (req, res) => {
     try {
         const { eventId } = req.params;
         const event = await Event.getById(eventId);
-        return res.status(200).json(event);
+        res.status(200).json(event);
     } catch (error) {
         return res.status(500).json({ message: 'Error server, ' + error });
     }
@@ -44,7 +44,7 @@ export const updateEventById = async (req, res) => {
     try {
         const { eventId } = req.params;
         const updateEvent = await Event.updateEventById(eventId, req.body);
-        return res.status(200).json(updateEvent);
+        res.status(200).json(updateEvent);
     } catch (error) {
         return res.status(500).json({ message: 'Error server, ' + error });
     }
@@ -58,7 +58,7 @@ export const setCostEvent = async (req, res) => {
             req.body,
             1
         );
-        return res.status(200).json(updateCostEvent);
+        res.status(200).json(updateCostEvent);
     } catch (error) {
         return res.status(500).json({ message: 'Error server, ' + error });
     }

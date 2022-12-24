@@ -25,3 +25,11 @@ export const setUser = async (dni) => {
     );
     return result;
 };
+
+export const getSubscriberById = async (id) => {
+    const [result] = await pool.query(
+        'SELECT id FROM subscriber WHERE id = ?',
+        [id]
+    );
+    return result;
+};

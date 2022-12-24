@@ -7,6 +7,7 @@ import users from './routes/user.routes';
 import events from './routes/event.routes';
 import livingRoom from './routes/livingroom.routes';
 import digestinstance from './routes/digestinstance.routes';
+import payment from './routes/payment.routes';
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/living-room/', livingRoom);
 
 // Management event participants #---------------#
 app.use('/api/digest-instance/', digestinstance);
+app.use('/api/payment-instance/', payment);
 //-----------------------------------------------#
 
 export { app };
