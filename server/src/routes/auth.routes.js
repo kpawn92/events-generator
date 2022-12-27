@@ -7,10 +7,29 @@ import * as authCtrl from '../controllers/auth.controller';
 const router = Router();
 
 // TODO: Verificar que usuario puede crear (Economist, Moderator, Manager) a traves del rol
+
 /**
  * @swagger
  * components:
+ *  parameters:
+ *      token:
+ *          in: header
+ *          name: x-access-token
+ *          description: Token de autenticacion.
+ *          required: true
  *  schemas:
+ *      HeaderToken:
+ *          type: object
+ *          properties:
+ *              name:
+ *                  type: string
+ *                  description: Nombre de la cabecera
+ *              key:
+ *                  type: string
+ *                  description: Token generado
+ *          example:
+ *              token: x-access-token
+ *              key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3ZDIyNmEyLWY3YjItNDQ1Yy1iNzRhLTcyOWRlNTcwZDQ4MSIsImlhdCI6MTY3MjE3MzA5NiwiZXhwIjoxNjcyMjU5NDk2fQ.i1n2aDX69brjXJkOrIRHfoU0vKYhI5SZmJCmZ9UYw0M
  *      SignIn:
  *          type: object
  *          properties:
@@ -33,9 +52,31 @@ const router = Router();
  * @swagger
  * tags:
  *  name: Auth
- *  description: Auth endpoint
+ *  description: Autenticacion y autorizacion - endpoints
  */
 
+
+/**
+ * @swagger
+ * /api/auth/signup:
+ *  post:
+ *      summary: Requisitos para crear usuario
+ *      tags: [Auth]
+ *      parameters:
+ *         - $ref: '#/components/parameters/token'
+ *      requestBody:
+ *          description: Acceder al sistema
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#/components/schemas/SignIn'
+ *      responses:
+ *          200:
+ *              description: Usuario creado
+ */
+
+
+router.post('/signup', [verifyData, verifyEmail], authCtrl.signUp); // Created user
 
 /**
  * @swagger
@@ -57,8 +98,6 @@ const router = Router();
  *          401:
  *              description: Contraseña invalida
  */
-
-router.post('/signup', [verifyData, verifyEmail], authCtrl.signUp); // Created user
 
 router.post('/signin', validateLoginDTO, authCtrl.signIn); // Login user
 
