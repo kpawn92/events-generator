@@ -32,7 +32,6 @@ app.use(express.json());
 app.use('/public', express.static(join(__dirname, '../uploads')))
 
 const specs = swaggerJsdoc(options)
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs));
 //-----------------------------------------------#
 
 // Endpoints #-----------------------------------#
@@ -51,5 +50,6 @@ app.use('/api/digest-instance/', digestinstance);
 app.use('/api/payment-instance/', payment);
 app.use('/api/job/', job);
 //-----------------------------------------------#
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs));
 
 export { app };

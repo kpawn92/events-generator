@@ -1,3 +1,4 @@
+import { join } from 'path'
 import { HOSTING } from '../config/env'
 
 export const options = {
@@ -14,5 +15,5 @@ export const options = {
             }
         ]
     },
-    apis: ["../routes/*.js"]
+    apis: [`${join(__dirname, "../routes/*.js")}`]
 }
