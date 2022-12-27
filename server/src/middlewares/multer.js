@@ -1,7 +1,7 @@
 import multer from 'multer'
 import { extname, join } from 'path'
 
-const MYMETYPES = ['application/pdf'];
+const MIMETYPE = ['application/pdf'];
 
 const multerUpload = multer({
     storage: multer.diskStorage({
@@ -13,8 +13,8 @@ const multerUpload = multer({
         }
     }),
     fileFilter: (req, file, cb) => {
-        if (MYMETYPES.includes(file.mimetype)) cb(null, true)
-        else cb(new Error(`Only ${MYMETYPES.join('')} mimetype is supported`))
+        if (MIMETYPE.includes(file.mimetype)) cb(null, true)
+        else cb(new Error(`Only ${MIMETYPE.join('')} mimetype is supported`))
     },
     limits: {
         fieldSize: 10000000,
