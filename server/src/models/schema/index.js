@@ -198,6 +198,19 @@ const DigesInstanceSchema = Type.Object({
     }),
 });
 
+const PaymentInstanceSchema = Type.Object({
+    fk_subscriber: Type.String({
+        errorMessage: {
+            type: 'type string',
+        },
+    }),
+    transaction: Type.String({
+        errorMessage: {
+            type: 'type string',
+        },
+    }),
+});
+
 export {
     LoginSchema,
     ModeratorSchema,
@@ -207,4 +220,5 @@ export {
     CostEventSchema,
     LivingRoomSchema,
     DigesInstanceSchema,
+    PaymentInstanceSchema,
 };

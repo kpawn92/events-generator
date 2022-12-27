@@ -11,7 +11,7 @@ import {
 
 const router = Router();
 
-// TODO: Todos los usuarios obtienen los eventos y su descripcion a travez del ID del event
+// TODO: Todos los usuarios obtienen los eventos y su descripcion
 /**
  * @coment : Moderator and Economist obtienen todos los eventos (verificacion headers-moderator)
  * @coment : Los usuarios solo obtendran los eventos validos

@@ -56,6 +56,7 @@ export const verifyRoleByParams = async (req, res, next) => {
 export const verifySubsByParams = async (req, res, next) => {
     try {
         const { subsId } = req.params;
+        console.log(req.userId);
         const id = await Subscribers.getSubscriberById(subsId);
         if (id.length === 0)
             return res.status(404).json({ message: 'Subscriber not found' });

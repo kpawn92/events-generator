@@ -1,29 +1,45 @@
-import { PaymentInstance } from '../models/entity'
+import { PaymentInstance, User } from '../models/entity';
 
 export const createPayment = async (req, res) => {
     try {
-        const payment = await PaymentInstance.create(req.body)
-        res.status(200).json(payment)
+        const payment = await PaymentInstance.create(req.body);
+        res.status(200).json(payment);
     } catch (error) {
-        return res.status(500).json({ message: error })
+        return res.status(500).json({ message: error });
     }
 };
 
 export const getPaymentsByState = async (req, res) => {
     try {
         const payments = await PaymentInstance.getPayments();
-        res.status(200).json(payments)
+        res.status(200).json(payments);
     } catch (error) {
-        return res.status(500).json({ message: error })
+        return res.status(500).json({ message: error });
     }
 };
 
 export const updateState = async (req, res) => {
     try {
-        const { paymentId } = req.params
-        const payment = await PaymentInstance.updateStatePaymentById(paymentId, 1)
-        res.status(200).json(payment)
+        const { paymentId } = req.params;
+        const payment = await PaymentInstance.updateStatePaymentById(
+            paymentId,
+            1
+        );
+        res.status(200).json(payment);
     } catch (error) {
-        return res.status(500).json({ message: error })
+        return res.status(500).json({ message: error });
+    }
+};
+
+export const getPaymentBySubscriber = async (req, res) => {
+    try {
+        const query = await User.userByIdAccess('subscriber', req.userId);
+        if (query.length === 0)
+            return res.status(404).json({ message: 'Subscriber not found' });
+        const { id } = query[0];
+        const result = await PaymentInstance.getStateBySubscriber(id);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ message: error });
     }
 };

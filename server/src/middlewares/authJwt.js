@@ -37,6 +37,7 @@ export const isModelator = async (req, res, next) => {
 };
 
 export const isAdmin = (req, res, next) => {
+    console.log(req.userId);
     if (req.userRol === 'admin') return next();
     return res.status(403).json({ message: 'Requer Admin role' });
 };

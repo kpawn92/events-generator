@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import helmet from 'helmet';
 import { createRoles, createAdmin } from './libs/initialSetup';
 import auth from './routes/auth.routes';
 import users from './routes/user.routes';
@@ -11,26 +12,28 @@ import payment from './routes/payment.routes';
 
 const app = express();
 
-// Initial Setup #----------------------#
+// Initial Setup #-------------------------------#
 createRoles();
 createAdmin();
-//--------------------------------------#
+//-----------------------------------------------#
 
-// Middlewares #------------------------#
+// Middlewares #---------------------------------#
 app.use(cors());
+app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
-//--------------------------------------#
+//-----------------------------------------------#
 
-// Management users #-------------------#
+// Endpoints #-----------------------------------#
+// Management users #----------------------------#
 app.use('/api/auth/', auth);
 app.use('/api/users/', users);
-//--------------------------------------#
+//-----------------------------------------------#
 
-// Management events #-------------------#
+// Management events #---------------------------#
 app.use('/api/events/', events);
 app.use('/api/living-room/', livingRoom);
-//---------------------------------------#
+//-----------------------------------------------#
 
 // Management event participants #---------------#
 app.use('/api/digest-instance/', digestinstance);

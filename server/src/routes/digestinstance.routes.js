@@ -1,10 +1,7 @@
 import { Router } from 'express';
 import { validateDigestInstanceDTO } from '../validators/digestinstance.validate.dto';
 import { verifyToken, isUser, isModelator } from '../middlewares/authJwt';
-import {
-    verifySubsByParams,
-    verifyInstance,
-} from '../middlewares/verifyParams';
+import { verifyInstance } from '../middlewares/verifyParams';
 import * as digestInstanceCtrl from '../controllers/digestinstance.controller';
 const router = Router();
 
@@ -19,17 +16,17 @@ const router = Router();
 router.post(
     '/',
     [verifyToken, isUser, validateDigestInstanceDTO],
-    digestInstanceCtrl.setDigestInsntance
+    digestInstanceCtrl.setDigestInstance
 );
 router.get(
-    '/:subsId',
-    [verifyToken, isUser, verifySubsByParams],
+    '/abstract',
+    [verifyToken, isUser],
     digestInstanceCtrl.getStatusByIdSubs
 );
 router.get(
     '/',
     [verifyToken, isModelator],
-    digestInstanceCtrl.getDigestInsntances
+    digestInstanceCtrl.getDigestInstances
 );
 router.put(
     '/:instanceId',
