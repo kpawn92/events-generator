@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Farmram
+ Source Server         : FarmaRAM
  Source Server Type    : MySQL
- Source Server Version : 100421
+ Source Server Version : 100419
  Source Host           : localhost:3306
  Source Schema         : eventsdb
 
  Target Server Type    : MySQL
- Target Server Version : 100421
+ Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 23/12/2022 14:26:18
+ Date: 27/12/2022 00:38:09
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `digest_instance`  (
   `id` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid',
   `fk_subscriber` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from subscriber',
   `abstract` varchar(400) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `status` int(1) NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_subscriber`(`fk_subscriber`) USING BTREE,
@@ -35,6 +35,9 @@ CREATE TABLE `digest_instance`  (
 -- ----------------------------
 -- Records of digest_instance
 -- ----------------------------
+INSERT INTO `digest_instance` VALUES ('32e76b76-c848-4f4a-ab2d-2424c908c1f1', '3a4e5c13-059c-4c3b-bcab-047d26fca2ce', 'A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 1, '2022-12-24 13:30:50.250350');
+INSERT INTO `digest_instance` VALUES ('49d133d9-ae43-4bd5-b30c-38f6149dcf85', '3a4e5c13-059c-4c3b-bcab-047d26fca2ce', 'Bas as lorem insut A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 1, '2022-12-24 12:07:44.431809');
+INSERT INTO `digest_instance` VALUES ('8f81e7c9-a8ed-42c6-aa1f-d520157fbf0e', '3a4e5c13-059c-4c3b-bcab-047d26fca2ce', 'Bas as lorem insut A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 0, '2022-12-24 11:46:52.154599');
 
 -- ----------------------------
 -- Table structure for economist
@@ -55,7 +58,7 @@ CREATE TABLE `economist`  (
 -- ----------------------------
 -- Records of economist
 -- ----------------------------
-INSERT INTO `economist` VALUES ('de57eb6e-7063-4535-94ed-ed72dca8edb0', 'Alejandro', 'Pozo Castro', '92102047481', '9e5f7068-13a4-4d96-b945-d9f8a6ab3157', '2022-12-23 12:24:10.532263');
+INSERT INTO `economist` VALUES ('c06e8d38-d40d-4cc7-b42f-5b64b60d2622', 'Alejandro', 'Pozo Castro', '92102047481', '0875ff13-7f67-4f65-b74b-cbf4311e5c16', '2022-12-19 14:25:47.519596');
 
 -- ----------------------------
 -- Table structure for event
@@ -79,6 +82,9 @@ CREATE TABLE `event`  (
 -- ----------------------------
 -- Records of event
 -- ----------------------------
+INSERT INTO `event` VALUES ('d8bacbca-899e-45a1-87d6-ec9b606ca2e4', 'Matematicas', 'A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 1671577145, 1671577146, 1671577147, 1671577148, NULL, NULL, '2022-12-20 18:13:51.016195', 0);
+INSERT INTO `event` VALUES ('da4f08a4-7eb4-4e5f-a77e-2c8b2082c8f8', 'Humanidades', 'A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 1671577145, 1671577146, 1671577147, 1671577148, NULL, NULL, '2022-12-21 11:34:57.396138', 0);
+INSERT INTO `event` VALUES ('f0d17a2f-6cea-4d5c-85cf-c60f056bea04', 'Español Literatura y Didactica', 'Pasaje Lorem ipsum... se ha extraído del texto que dice Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..., que se traduciría como No hay nadie que ame el do', 1671577145, 1671577146, 1671577147, 1671577148, NULL, NULL, '2022-12-20 18:24:06.274543', 0);
 
 -- ----------------------------
 -- Table structure for job
@@ -89,6 +95,7 @@ CREATE TABLE `job`  (
   `fk_subscriber` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from users',
   `name` varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `link_presentation` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'link de redes sociales',
+  `link_job` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_subscriber`(`fk_subscriber`) USING BTREE,
@@ -120,6 +127,7 @@ CREATE TABLE `living_room`  (
 -- ----------------------------
 -- Records of living_room
 -- ----------------------------
+INSERT INTO `living_room` VALUES ('61664e35-0715-49b2-8a15-195c8e183bcc', 'd8bacbca-899e-45a1-87d6-ec9b606ca2e4', 'Dpto Ciencias', '2d alto bloque 2', '1a588fda-9551-4af8-aa85-8164124ca950', '2022-12-22 21:47:03.893470');
 
 -- ----------------------------
 -- Table structure for manager
@@ -140,7 +148,7 @@ CREATE TABLE `manager`  (
 -- ----------------------------
 -- Records of manager
 -- ----------------------------
-INSERT INTO `manager` VALUES ('74796a22-2ef4-417d-ab9d-946de0245a01', 'Alejandro', 'Pozo Castro', '92102047481', 'b3971fd9-dc1f-47a8-8503-2e57672be11e', '2022-12-23 12:35:19.307633');
+INSERT INTO `manager` VALUES ('1a588fda-9551-4af8-aa85-8164124ca950', 'Oscar', 'Pozo Castro', '234520423456', '9b557e67-361b-45e3-a96a-f35fd6dd5fe5', '2022-12-19 14:21:42.069901');
 
 -- ----------------------------
 -- Table structure for moderator
@@ -161,7 +169,8 @@ CREATE TABLE `moderator`  (
 -- ----------------------------
 -- Records of moderator
 -- ----------------------------
-INSERT INTO `moderator` VALUES ('2bad10f6-b7b7-4cfd-a44d-44b1af07c708', 'Alejandro', 'Pozo Castro', '92102047481', '94c9d2db-4acd-4640-972d-0ea83088db2e', '2022-12-23 12:23:29.041629');
+INSERT INTO `moderator` VALUES ('1b1eb631-62f9-46ff-af27-a6b8d39e9d20', 'Jhon', 'Wick', '93102047481', 'e2fb04e5-9536-4633-8278-042f01e32bc4', '2022-12-21 11:00:06.127139');
+INSERT INTO `moderator` VALUES ('c1310722-42cd-4422-81a1-b8ca0c92fae7', 'Oscar', 'Pozo Castro', '234520423456', 'd5c804a3-f1e7-402b-9948-0c185828afdd', '2022-12-19 14:19:54.412611');
 
 -- ----------------------------
 -- Table structure for payment_instance
@@ -171,7 +180,7 @@ CREATE TABLE `payment_instance`  (
   `id` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fk_subscriber` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `transaction` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `status` int(1) NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `payment_instance_ibfk_1`(`fk_subscriber`) USING BTREE,
@@ -181,6 +190,8 @@ CREATE TABLE `payment_instance`  (
 -- ----------------------------
 -- Records of payment_instance
 -- ----------------------------
+INSERT INTO `payment_instance` VALUES ('a408caac-72ed-4eed-ae24-443b15be6385', '3a4e5c13-059c-4c3b-bcab-047d26fca2ce', 'EDR576', 0, '2022-12-26 17:28:14.018820');
+INSERT INTO `payment_instance` VALUES ('c0326149-6890-48ae-81d7-ecd77d958278', '3a4e5c13-059c-4c3b-bcab-047d26fca2ce', 'NWDR576', 0, '2022-12-26 18:01:47.043672');
 
 -- ----------------------------
 -- Table structure for roles
@@ -190,16 +201,16 @@ CREATE TABLE `roles`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rol_name` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 135 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of roles
 -- ----------------------------
-INSERT INTO `roles` VALUES (135, 'admin');
-INSERT INTO `roles` VALUES (136, 'moderator');
-INSERT INTO `roles` VALUES (137, 'manager');
-INSERT INTO `roles` VALUES (138, 'user');
-INSERT INTO `roles` VALUES (139, 'economist');
+INSERT INTO `roles` VALUES (130, 'admin');
+INSERT INTO `roles` VALUES (131, 'moderator');
+INSERT INTO `roles` VALUES (132, 'manager');
+INSERT INTO `roles` VALUES (133, 'economist');
+INSERT INTO `roles` VALUES (134, 'user');
 
 -- ----------------------------
 -- Table structure for subscriber
@@ -223,8 +234,7 @@ CREATE TABLE `subscriber`  (
 -- ----------------------------
 -- Records of subscriber
 -- ----------------------------
-INSERT INTO `subscriber` VALUES ('76b6b9bc-d9e0-4538-af25-ef792c7cf2fc', 'Alejandro', 'Pozo Castro', 'Cuba', '92102047481', 'Fajardo', 1, '1977bf6c-01f8-4641-84bb-58e4f8bb3bef', '2022-12-23 12:14:48.707615');
-INSERT INTO `subscriber` VALUES ('a0451654-0089-4952-85c0-62c4be270758', 'Oscar', 'Pozo Castro', 'Cuba', '234520423456', 'Fajardo', 0, '344ba753-8b74-4ac3-b5ae-2d5987cf472d', '2022-12-23 12:10:53.621154');
+INSERT INTO `subscriber` VALUES ('3a4e5c13-059c-4c3b-bcab-047d26fca2ce', 'Oscar', 'Pozo Castro', 'Cuba', '234520423456', 'Fajardo', 1, 'a6ca6906-1d43-48c0-bb5a-f0a0904aea28', '2022-12-19 14:23:25.495359');
 
 -- ----------------------------
 -- Table structure for users
@@ -244,11 +254,11 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1977bf6c-01f8-4641-84bb-58e4f8bb3bef', 'ale@gmail.com', '$2a$10$VqDGJwBIlKqtdYUmmjKPbePkRCb5V9uqhJLG4.hH3gFHQY9Aj1x4K', 138, 1);
-INSERT INTO `users` VALUES ('1cf7ad04-f29b-4fd1-9c47-531b3c42e5ef', 'admin@admin.com', '$2a$10$A6rRTOHylcjHqgAvxYvgTufHvB/cOzlPv6gTybMrUEZmWuZw/N3q6', 135, 1);
-INSERT INTO `users` VALUES ('344ba753-8b74-4ac3-b5ae-2d5987cf472d', 'oscar@gmail.com', '$2a$10$KYLuIbFc3PJVx8l7SVk4ou5PK.QRR4ZS7s7vJq3bLp5a2fEtJtrnO', 138, 1);
-INSERT INTO `users` VALUES ('94c9d2db-4acd-4640-972d-0ea83088db2e', 'ale45@gmail.com', '$2a$10$rccGrU46GdugGSLQ60lgHOdFipFZUJP6svGBJhdWX3oyjtH.FBbji', 136, 1);
-INSERT INTO `users` VALUES ('9e5f7068-13a4-4d96-b945-d9f8a6ab3157', 'ale445@gmail.com', '$2a$10$ea/BJcRsu7vN/fdxdAIpUu1kbuR.K/SWosHv4bFo9b3zYxEr3gWtu', 139, 1);
-INSERT INTO `users` VALUES ('b3971fd9-dc1f-47a8-8503-2e57672be11e', 'ale_manager@gmail.com', '$2a$10$K5oODO1YlolmLGGsff9cXO0njVcwVV5ngsrrF6Cd6w6.iucSxsQUK', 137, 1);
+INSERT INTO `users` VALUES ('0875ff13-7f67-4f65-b74b-cbf4311e5c16', 'ale@gmail.com', '$2a$10$Ca/WWaGmAAdGxE1bgC8ea.wCF2YKnc17yFtte.lg68jYfEBK1MKFO', 133, 1);
+INSERT INTO `users` VALUES ('77d226a2-f7b2-445c-b74a-729de570d481', 'admin@admin.com', '$2a$10$0MXhYC75nkivMwxslnqFSufhf.gFzzqYTGRYXFCx9LzRd4t3/h.Ka', 130, 1);
+INSERT INTO `users` VALUES ('9b557e67-361b-45e3-a96a-f35fd6dd5fe5', 'oscar_manager@gmail.com', '$2a$10$hGSNCXtHUY5WJkx6rWaOGuPWVRw3.3Yd33Q2sPoDCNdLTRDp.IObK', 132, 1);
+INSERT INTO `users` VALUES ('a6ca6906-1d43-48c0-bb5a-f0a0904aea28', 'oscar@gmail.com', '$2a$10$Iwr4eGttmRgidq2FTVK5BeY6JkZXfVfiJE/1tDJjBfLlcHQPpmx8u', 134, 1);
+INSERT INTO `users` VALUES ('d5c804a3-f1e7-402b-9948-0c185828afdd', 'oscar_moderator@gmail.com', '$2a$10$jYBebt37OMSBcZyz0h6rruyYxP7.enCpZpUdh8YIjenMKaDxtjqQW', 131, 1);
+INSERT INTO `users` VALUES ('e2fb04e5-9536-4633-8278-042f01e32bc4', 'jhon@gmail.com', '$2a$10$RFVwbARNdmm3clAeGa7fberGLLBuV4HpFWKf9JRGa7BT2Rcf9gpsG', 131, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

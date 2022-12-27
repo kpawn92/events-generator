@@ -1,4 +1,6 @@
-import { DigestInstance, User } from '../models/entity';
+import { DigestInstance } from '../models/entity';
+import { getUserById } from '../helpers'
+
 
 export const getDigestInstances = async (req, res) => {
     try {
@@ -19,10 +21,7 @@ export const setDigestInstance = async (req, res) => {
 
 export const getStatusByIdSubs = async (req, res) => {
     try {
-        const query = await User.userByIdAccess('subscriber', req.userId);
-        if (query.length === 0)
-            return res.status(404).json({ message: 'Subscriber not found' });
-        const { id } = query[0];
+        const id = await getUserById(req, res)
         const result = await DigestInstance.getStatusBySubscriber(id);
         res.status(200).json(result);
     } catch (error) {

@@ -1,4 +1,5 @@
-import { PaymentInstance, User } from '../models/entity';
+import { PaymentInstance } from '../models/entity';
+import { getUserById } from '../helpers'
 
 export const createPayment = async (req, res) => {
     try {
@@ -33,10 +34,7 @@ export const updateState = async (req, res) => {
 
 export const getPaymentBySubscriber = async (req, res) => {
     try {
-        const query = await User.userByIdAccess('subscriber', req.userId);
-        if (query.length === 0)
-            return res.status(404).json({ message: 'Subscriber not found' });
-        const { id } = query[0];
+        const id = await getUserById(req, res)
         const result = await PaymentInstance.getStateBySubscriber(id);
         res.status(200).json(result);
     } catch (error) {
