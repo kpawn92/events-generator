@@ -17,4 +17,5 @@ export const {
     KEY_HEADER_MODERATOR,
     VOID_KEY_HEADER_MODERATOR,
     KEY_TOKEN_HEADER,
+    HOSTING,
 } = process.env;

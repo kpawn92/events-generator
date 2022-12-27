@@ -3,6 +3,11 @@ import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
 import { join } from 'path'
+// Swagger
+import swaggerUI from 'swagger-ui-express';
+import { options } from './libs/swaggerOptions'
+import swaggerJsdoc from 'swagger-jsdoc';
+
 import { createRoles, createAdmin } from './libs/initialSetup';
 import auth from './routes/auth.routes';
 import users from './routes/user.routes';
@@ -25,6 +30,9 @@ app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use('/public', express.static(join(__dirname, '../uploads')))
+
+const specs = swaggerJsdoc(options)
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs));
 //-----------------------------------------------#
 
 // Endpoints #-----------------------------------#
