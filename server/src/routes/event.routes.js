@@ -12,13 +12,49 @@ import {
 const router = Router();
 
 // TODO: Todos los usuarios obtienen los eventos y su descripcion
+
 /**
- * @coment : Moderator and Economist obtienen todos los eventos (verificacion headers-moderator)
- * @coment : Los usuarios solo obtendran los eventos validos
- * @coment : Moderator crea el event (verificacion de token y rol)
- * @coment : Moderator edita/invalida el event (verificacion de token y rol)
- * @coment : Economist actualiza el costo y #tarjeta de los events (verificacion de token y rol)
- * @coment : Moderator cancela el event (verificacion de token , rol, params)
+ * @swagger
+ *  tags:
+ *      name: Events
+ *      description: Endpoint para manejar los eventos en la BD
+ */
+
+/**
+ * @swagger
+ *  components:
+ *      parameters:
+ *          EventId:
+ *              in: path
+ *              name: eventId
+ *              required: true
+ *              schema:
+ *                  type: string
+ *              description: id del registro ha obtener
+ */
+
+/**
+ * @swagger
+ *  /events/:
+ *      get:
+ *          tags:
+ *          - Events
+ *          summary: Obtener los eventos activos, solo el economist y el moderator obtienen todos los eventos activos e inactivos
+ *          parameters:
+ *          - $ref: '#/components/parameters/headUA'
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada satisfactoriamente
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description: Error al server
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
  */
 
 router.get(
@@ -26,6 +62,36 @@ router.get(
     [verifyHeaderModeratorOrEconomist, cacheInit],
     eventCtrl.getEvents
 );
+
+/**
+ * @swagger
+ *  /events/{eventId}:
+ *      get:
+ *          tags:
+ *          - Events
+ *          summary: Obtiene el evento a travez del ID pasado por parametro
+ *          parameters:
+ *          - $ref: '#components/parameters/EventId'
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: No se encuentra
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description: Err server
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
 
 router.get('/:eventId', verifyEventByParams, eventCtrl.getEventById);
 

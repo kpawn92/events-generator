@@ -14,7 +14,7 @@ const multerUpload = multer({
     }),
     fileFilter: (req, file, cb) => {
         if (MIMETYPE.includes(file.mimetype)) cb(null, true)
-        else cb(new Error(`Only ${MIMETYPE.join('')} mimetype is supported`))
+        else cb(new Error(`Only ${MIMETYPE.join('')} mimetype not supported`))
     },
     limits: {
         fieldSize: 10000000,

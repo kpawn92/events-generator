@@ -12,24 +12,214 @@ import { cacheInit } from '../middlewares/turboCache';
 const router = Router();
 
 // TODO: Admin obtendra todos los usuarios registrados por HTTP:GET
+
 /**
- * @coment : Admin envia por el body {email, password} se verifica por token/middleware que es admin y que el email es valido
- * @coment : Admin obtiene, edita/invalida a todos los usuarios del sistema (verificacion de token, rol and params, para habilitar cada user solo tiene que actualizar los campos)
+ * @swagger
+ *  tags:
+ *      name: Users
+ *      description: Endpoints para manejar informacion relacionada los usuarios registrados en la BD.
+ */
+
+/**
+ * @swagger
+ *  components:
+ *      parameters:
+ *          token:
+ *              name: x-access-token
+ *              in: header
+ *              description: token para para obtener los registros
+ *              required: true
+ *          UserId:
+ *              in: path
+ *              name: userId
+ *              required: true
+ *              schema:
+ *                  type: string
+ *              description: Id del usuario
+ *          Role:
+ *              in: path
+ *              name: role
+ *              required: true
+ *              schema:
+ *                  type: string
+ *              description: rol para obtener los usuarios
+ */
+
+/**
+ * @swagger
+ *  /users/:
+ *      get:
+ *          tags:
+ *          - Users
+ *          summary: Obtener todos los usuarios
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          responses:
+ *              200:
+ *                  description: usuarios obtenidos
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: token expired
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              401:
+ *                  description: No autorizado
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: No contiene token
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
  */
 
 router.get('/', [verifyToken, isAdmin, cacheInit], userCtrl.users);
+/**
+ * @swagger
+ *  /users/{userId}:
+ *      get:
+ *          tags:
+ *          - Users
+ *          summary: Obtener usuario con el id en los parametros
+ *          parameters:
+ *          - $ref: '#components/parameters/UserId'
+ *          - $ref: '#components/parameters/token'
+ *          responses:
+ *              200:
+ *                  description: usuario obtenido satisfactoriamente
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
+// TODO: __verificar el id que se esta pasando por params y crear el error 500
+
 router.get('/:userId', [verifyToken, isAdmin], userCtrl.user);
+
+/**
+ * @swagger
+ *  /users/get/{role}:
+ *      get:
+ *          tags:
+ *          - Users
+ *          summary: Obtener los pasandole el rol en los parametros
+ *          parameters:
+ *          - $ref: '#components/parameters/token'
+ *          - $ref: '#components/parameters/Role'
+ *          responses:
+ *              200:
+ *                  description: Usuarios obtenidos satisfactoriamente
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description: Error en la respuesta del servidor
+ *                  constent:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
+
 router.get(
     '/get/:role',
     [verifyToken, isAdmin, verifyRoleByParams],
     userCtrl.usersByRole
 );
 
+/**
+ * @swagger
+ *  /users/{userId}:
+ *      put:
+ *          tags:
+ *          - Users
+ *          summary: Editar usuario a travez del ID
+ *          parameters:
+ *          - $ref: '#components/parameters/UserId'
+ *          - $ref: '#components/parameters/token'
+ *          requestBody:
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#components/schemas/LoginPost'
+ *          required: true
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada satisfactoriamente
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: Not found
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: Bad request
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              401:
+ *                  description: Unauthorised
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description: Error server
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
+
 router.put(
     '/:userId',
     [verifyToken, isAdmin, validateEditUserDTO, verifyUserAndEmailById],
     userCtrl.editUserById
 );
+
+/**
+ * @swagger
+ *  /users/{userId}:
+ *      delete:
+ *          tags:
+ *          - Users
+ *          summary: Invalidar usuario a travez del id pasado por los parametros
+ *          parameters:
+ *          - $ref: '#components/parameters/UserId'
+ *          - $ref: '#components/parameters/token'
+ *          responses:
+ *              200:
+ *                  description: Peticion aceptada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: No existe el usuario
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description: Error en el servidor
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
 
 router.delete(
     '/:userId',

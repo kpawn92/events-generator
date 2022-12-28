@@ -10,95 +10,149 @@ const router = Router();
 
 /**
  * @swagger
- * components:
- *  parameters:
- *      token:
- *          in: header
- *          name: x-access-token
- *          description: Token de autenticacion.
- *          required: true
- *  schemas:
- *      HeaderToken:
- *          type: object
- *          properties:
- *              name:
- *                  type: string
- *                  description: Nombre de la cabecera
- *              key:
- *                  type: string
- *                  description: Token generado
- *          example:
- *              token: x-access-token
- *              key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc3ZDIyNmEyLWY3YjItNDQ1Yy1iNzRhLTcyOWRlNTcwZDQ4MSIsImlhdCI6MTY3MjE3MzA5NiwiZXhwIjoxNjcyMjU5NDk2fQ.i1n2aDX69brjXJkOrIRHfoU0vKYhI5SZmJCmZ9UYw0M
- *      SignIn:
- *          type: object
- *          properties:
- *              email:
- *                  type: string
- *                  description: Correo del usuario
- *              password:
- *                  type: string
- *                  description: Contraseña del usuario
- *          required:
- *              - email
- *              - password
- *          example:
- *              email: admin@admin.com
- *              password: P@ssw0rd
- *          description: Ejemplo de usuario
+ *  tags:
+ *      name: Auth
+ *      description: Endpoint para manejar informacion relacionada con autenticacion y autorizacion de los usuarios
  */
 
 /**
  * @swagger
- * tags:
- *  name: Auth
- *  description: Autenticacion y autorizacion - endpoints
- */
-
-
-/**
- * @swagger
- * /api/auth/signup:
- *  post:
- *      summary: Requisitos para crear usuario
- *      tags: [Auth]
+ *  components:
  *      parameters:
- *         - $ref: '#/components/parameters/token'
- *      requestBody:
- *          description: Acceder al sistema
- *          content:
- *              application/json:
- *                  schema:
- *                      $ref: '#/components/schemas/SignIn'
- *      responses:
- *          200:
- *              description: Usuario creado
+ *          keyToken:
+ *              name: x-access-token
+ *              in: header
+ *              description: token requerido para Admin y Moderators
+ *          headSU:
+ *              name: super-usuario
+ *              in: header
+ *              description: key del admin para crear moderator y economist
+ *          headUA:
+ *              name: usuario-advanced
+ *              in: header
+ *              description: key del moderator para crear el manager
+ *      schemas:
+ *          BodyUserAdvancedPost:
+ *              type: object
+ *              properties:
+ *                  name:
+ *                      type: string
+ *                  lastname:
+ *                      type: string
+ *                  dni:
+ *                      type: string
+ *                  email:
+ *                      type: string
+ *                  passwword:
+ *                      type: string
+ *                  role:
+ *                      type: string
+ *              example:
+ *                  name: Jhon
+ *                  lastname: Wick
+ *                  dni: 90102047481
+ *                  email: john@gamil.com
+ *                  password: test1234
+ *                  role: moderator || economist || manager
+ *          BodySubscriberPost:
+ *              type: object
+ *              properties:
+ *                  name:
+ *                      type: string
+ *                  lastname:
+ *                      type: string
+ *                  nation:
+ *                      type: string
+ *                  dni:
+ *                      type: string
+ *                  institution:
+ *                      type: string
+ *                  category:
+ *                      type: number
+ *                  email:
+ *                      type: string
+ *                  password:
+ *                      type: string
+ *          LoginPost:
+ *              type: object
+ *              properties:
+ *                  email:
+ *                      type: string
+ *                  password:
+ *                      type: string
  */
 
+/**
+ * @swagger
+ *  /auth/signup:
+ *      post:
+ *          tags:
+ *          - Auth
+ *          summary: Autenticacion para acceder al sistema consultando a la BD.
+ *          parameters:
+ *          - $ref: '#/components/parameters/keyToken'
+ *          - $ref: '#/components/parameters/headSU'
+ *          - $ref: '#/components/parameters/headUA'
+ *          requestBody:
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/BodySubscriberPost'
+ *          required: true
+ *          responses:
+ *              200:
+ *                  description: usuario creado
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *
+ */
 
 router.post('/signup', [verifyData, verifyEmail], authCtrl.signUp); // Created user
 
 /**
  * @swagger
- * /api/auth/signin:
- *  post:
- *      summary: Requisitos para acceder al sistema
- *      tags: [Auth]
- *      requestBody:
- *          description: Acceder al sistema
- *          content:
- *              application/json:
- *                  schema:
- *                      $ref: '#/components/schemas/SignIn'
- *      responses:
- *          200:
- *              description: Autorizacion aceptada
- *          403:
- *              description: Usuario invalido
- *          401:
- *              description: Contraseña invalida
+ *  /auth/signin:
+ *      post:
+ *          tags:
+ *          - Auth
+ *          summary: Autorizacion para acceder al sistema consultando a la BD.
+ *          requestBody:
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/LoginPost'
+ *          required: true
+ *          responses:
+ *              200:
+ *                  description: usuario logeado
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: bad request
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              401:
+ *                  description: usuario invalid
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *
  */
 
 router.post('/signin', validateLoginDTO, authCtrl.signIn); // Login user
+
+
 
 export default router;

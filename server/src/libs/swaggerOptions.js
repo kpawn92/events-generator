@@ -5,9 +5,9 @@ export const options = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: 'Evenst API',
+            title: 'API gestor de eventos de trabajos',
             version: '1.0.0',
-            description: "Express library API"
+            description: "Mysql_DB, Express para el servidor y peticiones del cliente"
         },
         servers: [
             {
