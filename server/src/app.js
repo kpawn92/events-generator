@@ -2,10 +2,10 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
-import { join } from 'path'
+import { join } from 'path';
 // Swagger
 import swaggerUI from 'swagger-ui-express';
-import { options } from './libs/swaggerOptions'
+import { options } from './libs/swaggerOptions';
 import swaggerJsdoc from 'swagger-jsdoc';
 
 import { createRoles, createAdmin } from './libs/initialSetup';
@@ -29,9 +29,9 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use('/public', express.static(join(__dirname, '../uploads')))
+app.use('/public', express.static(join(__dirname, '../uploads')));
 
-const specs = swaggerJsdoc(options)
+const specs = swaggerJsdoc(options);
 //-----------------------------------------------#
 
 // Endpoints #-----------------------------------#

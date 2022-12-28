@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import * as jobCtrl from '../controllers/job.controller'
-import { multerUpload } from '../middlewares/multer'
+import * as jobCtrl from '../controllers/job.controller';
+import { multerUpload } from '../middlewares/multer';
 
 const router = Router();
 
@@ -10,6 +10,6 @@ const router = Router();
  */
 
 // router.post('/upload', jobCtrl.createItem);
-router.post('/upload', multerUpload.single('file'), jobCtrl.uploadFile)
+router.post('/upload', multerUpload.single('file'), jobCtrl.uploadFile);
 
 export default router;

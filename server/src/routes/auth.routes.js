@@ -153,6 +153,4 @@ router.post('/signup', [verifyData, verifyEmail], authCtrl.signUp); // Created u
 
 router.post('/signin', validateLoginDTO, authCtrl.signIn); // Login user
 
-
-
 export default router;

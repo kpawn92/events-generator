@@ -1,5 +1,5 @@
 import { PaymentInstance } from '../models/entity';
-import { getUserById } from '../helpers'
+import { getUserById } from '../helpers';
 
 export const createPayment = async (req, res) => {
     try {
@@ -34,7 +34,7 @@ export const updateState = async (req, res) => {
 
 export const getPaymentBySubscriber = async (req, res) => {
     try {
-        const id = await getUserById(req, res)
+        const id = await getUserById(req, res);
         const result = await PaymentInstance.getStateBySubscriber(id);
         res.status(200).json(result);
     } catch (error) {

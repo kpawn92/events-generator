@@ -1,7 +1,6 @@
 import { Roles, User } from '../models/entity';
 import { EMAIL_ADMIN, KEY_ADMIN } from '../config/env';
-import { join } from 'path'
-
+import { join } from 'path';
 
 export const createRoles = async () => {
     try {

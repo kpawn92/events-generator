@@ -17,7 +17,7 @@ const router = Router();
  * @swagger
  *  tags:
  *      name: Events
- *      description: Endpoint para manejar los eventos en la BD
+ *      description: Endpoints para manejar los eventos en la BD
  */
 
 /**
@@ -31,6 +31,33 @@ const router = Router();
  *              schema:
  *                  type: string
  *              description: id del registro ha obtener
+ *      schemas:
+ *          BodyEventsPost:
+ *              type: object
+ *              properties:
+ *                  name:
+ *                      type: string
+ *                  description:
+ *                      type: string
+ *                  date_beginning_inscription:
+ *                      description: fecha de inicio de inscripcion al evento
+ *                      type: number
+ *                  end_date_inscription:
+ *                      description: fecha final de inscripcion del evento
+ *                      type: number
+ *                  date_beginning:
+ *                      description: fecha inicio del evento
+ *                      type: number
+ *                  end_date:
+ *                      description: fecha final del evento
+ *                      type: number
+ *              example:
+ *                  name: Ciencia y tecnica
+ *                  description: A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp
+ *                  date_beginning_inscription: 1671577145
+ *                  end_date_inscription: 1671577145
+ *                  date_beginning: 1671577145
+ *                  end_date: 1671577145
  */
 
 /**
@@ -94,6 +121,48 @@ router.get(
  */
 
 router.get('/:eventId', verifyEventByParams, eventCtrl.getEventById);
+
+/**
+ * @swagger
+ *  /events/:
+ *      post:
+ *          tags:
+ *          - Events
+ *          summary: Crear eventos y guadarlos en la BD
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          requestBody:
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/BodyEventsPost'
+ *          required: true
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: Error en el body
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: El evento ya existe
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description:
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
 
 router.post(
     '/',
