@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import * as userCtrl from '../controllers/user.controller';
-import { isAdmin, verifyToken } from '../middlewares/authJwt';
+import { isAdmin, isModelator, verifyToken } from '../middlewares/authJwt';
 import { validateEditUserDTO } from '../validators/userEdit.validate';
 import { verifyUserAndEmailById } from '../middlewares/verifyEmail';
 import {
@@ -134,6 +134,45 @@ router.get(
     [verifyToken, isAdmin, verifyRoleByParams],
     userCtrl.usersByRole
 );
+
+/**
+ * @swagger
+ *  /users/mod/{role}:
+ *      get:
+ *          tags:
+ *          - Users
+ *          summary: El modelator obtiene todos los managers y economist
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          - $ref: '#/components/parameters/Role'
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              401:
+ *                  description: No autorizado
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: No existe
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description: Err server
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
+
+router.get('/mod/:role', [verifyToken, isModelator], userCtrl.getManagersActived)
 
 /**
  * @swagger

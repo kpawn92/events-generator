@@ -25,7 +25,7 @@ export const setUser = async (dni) => {
 
 export const getEconomists = async (status) => {
     const [result] = await pool.query(
-        'SELECT name, lastname, dni, email FROM economist JOIN users ON users.id = fk_user WHERE status = ?',
+        'SELECT economist.id, name, lastname, dni, email FROM economist JOIN users ON users.id = fk_user WHERE status = ?',
         [status]
     );
     return result;

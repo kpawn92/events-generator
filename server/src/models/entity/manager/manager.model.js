@@ -31,7 +31,7 @@ export const getManagerById = async (id) => {
 
 export const getManagers = async (status) => {
     const [result] = await pool.query(
-        'SELECT name, lastname, dni, email FROM manager JOIN users ON users.id = fk_user WHERE status = ?',
+        'SELECT manager.id, name, lastname, dni, email FROM manager JOIN users ON users.id = fk_user WHERE status = ?',
         [status]
     );
     return result;

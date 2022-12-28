@@ -1,4 +1,4 @@
-import { User } from '../models/entity';
+import { Economist, Manager, User } from '../models/entity';
 import { EMAIL_ADMIN } from '../config/env';
 import { passwordHelper } from '../helpers';
 
@@ -55,6 +55,23 @@ export const usersByRole = async (req, res) => {
         const { role } = req.params;
         const result = await User.getUsersByRol(role, 1);
         return res.status(200).json(result);
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server: ' + error });
+    }
+};
+
+export const getManagersActived = async (req, res) => {
+    try {
+        const { role } = req.params
+        if (role === 'manager') {
+            const manager = await Manager.getManagers(1);
+            return res.status(200).json(manager)
+        }
+        if (role === 'economist') {
+            const economist = await Economist.getEconomists(1);
+            return res.status(200).json(economist)
+        }
+        res.status(404).json({ message: 'Rol invalid' })
     } catch (error) {
         return res.status(500).json({ message: 'Error server: ' + error });
     }

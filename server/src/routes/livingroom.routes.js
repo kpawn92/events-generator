@@ -10,11 +10,26 @@ import { validateLivingRoomDTO } from '../validators/livingroom.validate.dto';
 const router = Router();
 
 // TODO: Las salas seran asignadas al evento, guardando el Id del evento en la entidad de Sala
+
 /**
- * @coment : Modelator crea las salas incluyendole el id del evento que sera enviado en la url (verficacion token, rol, params, body)
- * @coment : Modelator asigna el manager por cada sala (verficación de token y rol)
- * @coment : Modelator obtiene todas las salas pasando el id del evento como parametro
- * @coment : Modelator elimina la sala a obteniendo el id por parametro (verficacion token, rol, params)
+ * @swagger
+ *  tags:
+ *      name: Living room
+ *      description: Endpoint para manejar informacion relacionada con las salas donde se efectuaran los eventos
+ */
+
+/**
+ * @swagger
+ *  components:
+ *      parameters:
+ *      schemas:
+ *          BodyLivingPost:
+ *              type: object
+ *              properties:
+ *                  name:
+ *                      type: string
+ *                  description:
+ *                      type: string
  */
 
 router.post(
