@@ -51,7 +51,7 @@ const router = Router();
  *      get:
  *          tags:
  *          - Users
- *          summary: Obtener todos los usuarios
+ *          summary: El admin obtiene todos los usuarios
  *          parameters:
  *          - $ref: '#/components/parameters/token'
  *          responses:
@@ -88,7 +88,7 @@ router.get('/', [verifyToken, isAdmin, cacheInit], userCtrl.users);
  *      get:
  *          tags:
  *          - Users
- *          summary: Obtener usuario con el id en los parametros
+ *          summary: El admin obtiene el usuario
  *          parameters:
  *          - $ref: '#components/parameters/UserId'
  *          - $ref: '#components/parameters/token'
@@ -110,7 +110,7 @@ router.get('/:userId', [verifyToken, isAdmin], userCtrl.user);
  *      get:
  *          tags:
  *          - Users
- *          summary: Obtener los pasandole el rol en los parametros
+ *          summary: El admin obtiene los usuarios a travez del rol
  *          parameters:
  *          - $ref: '#components/parameters/token'
  *          - $ref: '#components/parameters/Role'
@@ -141,7 +141,7 @@ router.get(
  *      put:
  *          tags:
  *          - Users
- *          summary: Editar usuario a travez del ID
+ *          summary: El admin edita el usuario
  *          parameters:
  *          - $ref: '#components/parameters/UserId'
  *          - $ref: '#components/parameters/token'
@@ -196,7 +196,7 @@ router.put(
  *      delete:
  *          tags:
  *          - Users
- *          summary: Invalidar usuario a travez del id pasado por los parametros
+ *          summary: El admin invalida el usuario
  *          parameters:
  *          - $ref: '#components/parameters/UserId'
  *          - $ref: '#components/parameters/token'

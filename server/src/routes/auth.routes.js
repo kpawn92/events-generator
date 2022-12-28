@@ -80,6 +80,9 @@ const router = Router();
  *                      type: string
  *                  password:
  *                      type: string
+ *              example:
+ *                  email: admin@admin.com
+ *                  password: P@ssw0rd
  */
 
 /**

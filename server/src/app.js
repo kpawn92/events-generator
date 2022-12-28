@@ -7,7 +7,7 @@ import { join } from 'path';
 import swaggerUI from 'swagger-ui-express';
 import { options } from './libs/swaggerOptions';
 import swaggerJsdoc from 'swagger-jsdoc';
-
+// Routes
 import { createRoles, createAdmin } from './libs/initialSetup';
 import auth from './routes/auth.routes';
 import users from './routes/user.routes';
@@ -50,6 +50,8 @@ app.use('/api/digest-instance/', digestinstance);
 app.use('/api/payment-instance/', payment);
 app.use('/api/job/', job);
 //-----------------------------------------------#
+
+// Documentation Endpoints #---------------------------#
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(specs));
 
 export { app };

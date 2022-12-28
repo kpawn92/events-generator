@@ -32,6 +32,15 @@ const router = Router();
  *                  type: string
  *              description: id del registro ha obtener
  *      schemas:
+ *          BodyCostEvent:
+ *              type: object
+ *              properties:
+ *                  cost:
+ *                      description: Cantidad a pagar para participar en el evento
+ *                      type: number
+ *                  target:
+ *                      description: Numero de targeta para recibir el pago
+ *                      type: string
  *          BodyEventsPost:
  *              type: object
  *              properties:
@@ -66,7 +75,7 @@ const router = Router();
  *      get:
  *          tags:
  *          - Events
- *          summary: Obtener los eventos activos, solo el economist y el moderator obtienen todos los eventos activos e inactivos
+ *          summary: Los usuarios obtienen los eventos activos, solo el economist y el moderator obtienen todos los eventos activos e inactivos
  *          parameters:
  *          - $ref: '#/components/parameters/headUA'
  *          responses:
@@ -96,7 +105,7 @@ router.get(
  *      get:
  *          tags:
  *          - Events
- *          summary: Obtiene el evento a travez del ID pasado por parametro
+ *          summary: Todos los usuarios obtienen el evento
  *          parameters:
  *          - $ref: '#components/parameters/EventId'
  *          responses:
@@ -128,7 +137,7 @@ router.get('/:eventId', verifyEventByParams, eventCtrl.getEventById);
  *      post:
  *          tags:
  *          - Events
- *          summary: Crear eventos y guadarlos en la BD
+ *          summary: El modelator crea los eventos
  *          parameters:
  *          - $ref: '#/components/parameters/token'
  *          requestBody:
@@ -169,17 +178,136 @@ router.post(
     [verifyToken, isModelator, validateEventDTO],
     eventCtrl.createEvent
 );
+
+/**
+ * @swagger
+ *  /events/{eventId}:
+ *      put:
+ *          tags:
+ *          - Events
+ *          summary: El modelator actualiza el evento
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          - $ref: '#/components/parameters/EventId'
+ *          requestBody:
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/BodyEventsPost'
+ *          required: true
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: Error en el body
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: El evento ya existe
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description:
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
+
 router.put(
     '/:eventId',
     [verifyToken, isModelator, verifyEventByParams, validateEventDTO],
     eventCtrl.updateEventById
 );
 
+/**
+ * @swagger
+ *  /events/{eventId}:
+ *      patch:
+ *          tags:
+ *          - Events
+ *          summary: El economist actualiza el costo del evento
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          - $ref: '#/components/parameters/EventId'
+ *          requestBody:
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/BodyCostEvent'
+ *          required: true
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: Error en el body
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: El evento ya existe
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description:
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
+
+
 router.patch(
     '/:eventId',
     [verifyToken, isEconomist, verifyEventByParams, validateCostEventDTO],
     eventCtrl.setCostEvent
 );
+
+/**
+ * @swagger
+ *  /events/{eventId}:
+ *      delete:
+ *          tags:
+ *          - Events
+ *          summary: El moderator cancela el evento
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          - $ref: '#/componentes/parameters/EventId'
+ *          responses:
+ *              200:
+ *                  description: Peticion aceptada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: No existe el evento
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description: Err server
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
 
 router.delete(
     '/:eventId',
