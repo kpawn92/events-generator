@@ -37,6 +37,41 @@ Digest instance
 
 login user
 {
-  "email": "oscar@gmail.com",
-  "password": "test1234"
+  "email": "admin@admin.com",
+  "password": "P@ssw0rd"
 }
+
+
+
+
+*      responses:
+ *          200:
+ *              description: Peticion realizada satisfactoriamente
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *          404:
+ *              description: Not found
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *          403:
+ *              description: Bad request
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *          401:
+ *              description: Unauthorised
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *          500:
+ *              description: Error server
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
