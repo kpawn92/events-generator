@@ -86,14 +86,6 @@ export const invalidating = async (id, status) => {
     return result;
 };
 
-export const userByIdAccess = async (usuario, fk_user) => {
-    const [result] = await pool.query(
-        `SELECT ${usuario}.id FROM ${usuario} WHERE fk_user = ?`,
-        [fk_user]
-    );
-    return result;
-};
-
 // El admin obtiene los usuarios activos por rol tambien
 export const getUsersByRol = async (role_name, status) => {
     if (role_name !== 'user') {

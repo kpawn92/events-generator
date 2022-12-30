@@ -1,19 +1,31 @@
-import { Job } from '../models/entity';
-import { getUserById } from '../helpers';
+import { Job, Subscribers } from '../models/entity';
 
-export const createItem = async (req, res) => {
+export const uploadFile = async (req, res) => {
     try {
-        // const id = await getUserById(req, res);
-        const { id } = req.params;
-        const { name, link } = req.body;
-        const result = await Job.create(id, name, link);
+        const { filename } = req.file;
+        const { id } = await Subscribers.getIdByFkUser(req.userId);
+        const result = await Job.create(id, filename);
         res.status(200).json(result);
-    } catch (error) {
-        return res.status(500).json({ message: 'Error creating item' + error });
+    } catch (e) {
+        return res.status(500).json({ message: e });
     }
 };
 
-export const uploadFile = (req, res) => {
-    console.log(req.file);
-    res.send('Enviar archivo');
+export const getJobsBySubs = async (req, res) => {
+    try {
+        const { id } = await Subscribers.getIdByFkUser(req.userId);
+        const result = await Job.jobsBySubs(id);
+        res.status(200).json(result);
+    } catch (e) {
+        return res.status(500).json({ message: e });
+    }
+};
+
+export const getJobs = async (req, res) => {
+    try {
+        const result = await Job.jobs();
+        res.status(200).json(result);
+    } catch (e) {
+        return res.status(500).json({ message: e });
+    }
 };

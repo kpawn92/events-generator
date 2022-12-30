@@ -9,7 +9,12 @@ const multerUpload = multer({
         filename: (req, file, cb) => {
             const fileExtension = extname(file.originalname);
             const fileName = file.originalname.split(fileExtension)[0];
-            cb(null, `${fileName}-${Date.now()}${fileExtension}`);
+            cb(
+                null,
+                `${
+                    fileName.replace(/ /g, '') /** <=> quitar los espacios */
+                }-${Date.now()}${fileExtension}`
+            );
         },
     }),
     fileFilter: (req, file, cb) => {

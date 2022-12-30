@@ -1,9 +1,10 @@
-import { PaymentInstance } from '../models/entity';
-import { getUserById } from '../helpers';
+import { PaymentInstance, Subscribers } from '../models/entity';
 
 export const createPayment = async (req, res) => {
     try {
-        const payment = await PaymentInstance.create(req.body);
+        const { id } = await Subscribers.getIdByFkUser(req.userId);
+        const { transaction } = req.body;
+        const payment = await PaymentInstance.create(id, transaction);
         res.status(200).json(payment);
     } catch (error) {
         return res.status(500).json({ message: error });
@@ -34,7 +35,8 @@ export const updateState = async (req, res) => {
 
 export const getPaymentBySubscriber = async (req, res) => {
     try {
-        const id = await getUserById(req, res);
+        const { id } = await Subscribers.getIdByFkUser(req.userId);
+
         const result = await PaymentInstance.getStateBySubscriber(id);
         res.status(200).json(result);
     } catch (error) {

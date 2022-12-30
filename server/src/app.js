@@ -29,7 +29,7 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use('/public', express.static(join(__dirname, '../uploads')));
+app.use('/api/public', express.static(join(__dirname, '../uploads')));
 
 const specs = swaggerJsdoc(options);
 //-----------------------------------------------#

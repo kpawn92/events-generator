@@ -16,12 +16,13 @@ export const verifyManagerByBody = async (req, res, next) => {
     }
 };
 
-export const verifyPayment = async (req, res) => {
+export const verifyPayment = async (req, res, next) => {
     try {
         const { transaction } = req.body;
         const id = await PaymentInstance.getPaymentByTransaction(transaction);
         if (id.length > 0)
             return res.status(400).json({ message: 'Instance already exists' });
+        next();
     } catch (error) {
         return res.status(500).json({ message: 'Error' + error });
     }

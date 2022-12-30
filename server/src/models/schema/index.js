@@ -186,11 +186,6 @@ const LivingRoomSchema = Type.Object({
 });
 
 const DigesInstanceSchema = Type.Object({
-    fk_subscriber: Type.String({
-        errorMessage: {
-            type: 'type string',
-        },
-    }),
     abstract: Type.String({
         errorMessage: {
             type: 'type string',

@@ -62,16 +62,16 @@ export const usersByRole = async (req, res) => {
 
 export const getManagersActived = async (req, res) => {
     try {
-        const { role } = req.params
+        const { role } = req.params;
         if (role === 'manager') {
             const manager = await Manager.getManagers(1);
-            return res.status(200).json(manager)
+            return res.status(200).json(manager);
         }
         if (role === 'economist') {
             const economist = await Economist.getEconomists(1);
-            return res.status(200).json(economist)
+            return res.status(200).json(economist);
         }
-        res.status(404).json({ message: 'Rol invalid' })
+        res.status(404).json({ message: 'Rol invalid' });
     } catch (error) {
         return res.status(500).json({ message: 'Error server: ' + error });
     }

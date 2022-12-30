@@ -33,3 +33,11 @@ export const getSubscriberById = async (id) => {
     );
     return result;
 };
+
+export const getIdByFkUser = async (fk_user) => {
+    const [result] = await pool.query(
+        'SELECT id FROM subscriber WHERE fk_user = ?',
+        [fk_user]
+    );
+    return result[0];
+};

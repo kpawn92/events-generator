@@ -8,7 +8,7 @@ export const options = {
             title: 'API gestor de eventos de trabajos',
             version: '1.0.0',
             description:
-                'Mysql_DB, Express para el servidor y peticiones del cliente',
+                'Almacenamiento de datos, auth-code codigo de autenticacion y autorizacion, encriptacion de contraseñas, rapida gestion de datos, peticiones get en cache',
         },
         servers: [
             {

@@ -271,7 +271,6 @@ router.put(
  *                              type: array
  */
 
-
 router.patch(
     '/:eventId',
     [verifyToken, isEconomist, verifyEventByParams, validateCostEventDTO],

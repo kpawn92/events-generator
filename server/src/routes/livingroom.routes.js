@@ -14,7 +14,7 @@ const router = Router();
 /**
  * @swagger
  *  tags:
- *      name: Living room
+ *      name: LivingRoom
  *      description: Endpoint para manejar informacion relacionada con las salas donde se efectuaran los eventos
  */
 
@@ -22,6 +22,13 @@ const router = Router();
  * @swagger
  *  components:
  *      parameters:
+ *          LivingRoomId:
+ *              in: path
+ *              name: livingRoomId
+ *              descriiption: Id de la sala
+ *              required: true
+ *              schema:
+ *                  type: string
  *      schemas:
  *          BodyLivingPost:
  *              type: object
@@ -30,6 +37,52 @@ const router = Router();
  *                      type: string
  *                  description:
  *                      type: string
+ *                  fk_manager:
+ *                      description: id del manager
+ *                      type: string
+ */
+
+/**
+ * @swagger
+ *  /living-room/{eventId}:
+ *      post:
+ *          tags:
+ *          - LivingRoom
+ *          summary: El modelator crea las salas de cada evento
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          - $ref: '#/components/parameters/EventId'
+ *          requestBody:
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/BodyLivingPost'
+ *          required: true
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: Error en el body
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: El evento ya existe
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description:
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
  */
 
 router.post(
@@ -44,7 +97,80 @@ router.post(
     livingRoomCtrl.createLivingRoom
 );
 
+/**
+ * @swagger
+ *  /living-room/{eventId}:
+ *      get:
+ *          tags:
+ *          - LivingRoom
+ *          summary: Todos los usuarios obtienen las salas del evento pasado en el parametro
+ *          parameters:
+ *          - $ref: '#/components/parameters/EventId'
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: Error en el body
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: El evento ya existe
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description:
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
+
 router.get('/:eventId', verifyEventByParams, livingRoomCtrl.livingRoomsByEvent);
+
+/**
+ * @swagger
+ *  /living-room/{livingRoomId}:
+ *      delete:
+ *          tags:
+ *          - LivingRoom
+ *          summary: El modelator borra/elimina el registro de la sala
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          - $ref: '#/components/parameters/LivingRoomId'
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              403:
+ *                  description: Error en el body
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: El evento ya existe
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description:
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
 
 router.delete(
     '/:livingRoomId',

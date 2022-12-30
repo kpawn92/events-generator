@@ -172,7 +172,11 @@ router.get(
  *                              type: array
  */
 
-router.get('/mod/:role', [verifyToken, isModelator], userCtrl.getManagersActived)
+router.get(
+    '/mod/:role',
+    [verifyToken, isModelator],
+    userCtrl.getManagersActived
+);
 
 /**
  * @swagger
