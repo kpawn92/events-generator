@@ -28,6 +28,7 @@ API REST:
 ---
 
 Endpoint: "/docs": se describe detalladamente cada proceso que debe realizar el usuario para trabajar correctamente con la API REST
+![Image text](https://github.com/kpawn92/events-generator/blob/master/model/docs.png)
 
 ## Guía de instalación
 
