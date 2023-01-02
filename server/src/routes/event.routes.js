@@ -286,7 +286,7 @@ router.patch(
  *          summary: El moderator cancela el evento
  *          parameters:
  *          - $ref: '#/components/parameters/token'
- *          - $ref: '#/componentes/parameters/EventId'
+ *          - $ref: '#/components/parameters/EventId'
  *          responses:
  *              200:
  *                  description: Peticion aceptada

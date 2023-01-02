@@ -73,6 +73,15 @@ const router = Router();
  *                      type: string
  *                  password:
  *                      type: string
+ *              example:
+ *                  name: Jhon
+ *                  lastname: Dae
+ *                  nation: Cuba-cu
+ *                  dni: 92122047481
+ *                  institution: UDG
+ *                  category: 0
+ *                  email: jhon@gmail.com
+ *                  password: test1234
  *          LoginPost:
  *              type: object
  *              properties:

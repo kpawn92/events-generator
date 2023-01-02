@@ -1,115 +1,131 @@
-
-![analytics image (flat)](https://raw.githubusercontent.com/vitr/google-analytics-beacon/master/static/badge-flat.gif)
-![analytics](https://www.google-analytics.com/collect?v=1&cid=555&t=pageview&ec=repo&ea=open&dp=/Plantilla-de-repositorio/readme&dt=&tid=UA-4677001-16)
-
-## Plantilla de Documentación de Soporte y Uso de herramientas digitales - README.md
-Esta es una plantilla basada en los estándares de la Guía de publicacion de herramientas digitales del BID. Sabemos que no existe un solo estándar para la documentación de soporte y uso de herramientas digitales pero hemos recopilado estas características importantes que debe tener un readme.md para facilitar el uso y amplificar el potencial de impacto de las mismas. Cualquier comentario o recomendación les pedimos generar un issue de consulta o escribirnos directamente a code@iadb.org.
-
-## La plantilla empieza aquí 👇
-
-
-*Esta herramienta digital forma parte del catálogo de herramientas del **Banco Interamericano de Desarrollo**. Puedes conocer más sobre la iniciativa del BID en [code.iadb.org](https://code.iadb.org)*
-
-<h1 align="center"> Nombre de la herramienta</h1>
-<p align="center"> Logo e imagen o gif de la interfaz principal de la herramienta</p>
-<p align="center"><img src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png"/></p> 
+<h1 align="center"> API REST - Cronograma de eventos</h1>
 
 ## Tabla de contenidos:
+
 ---
 
-- [Badges o escudos](#badges-o-escudos)
-- [Descripción y contexto](#descripción-y-contexto)
-- [Guía de usuario](#guía-de-usuario)
-- [Guía de instalación](#guía-de-instalación)
-- [Cómo contribuir](#cómo-contribuir)
-- [Código de conducta](#código-de-conducta)
-- [Autor/es](#autores)
-- [Información adicional](#información-adicional)
-- [Licencia](#licencia)
-- [Limitación de responsabilidades - Solo BID](#limitación-de-responsabilidades)
-
-## Badges o escudos
----
-Es común en muchos repositorios open source el uso de badges o escudos para dar visbilidad el uso de microservicios, licencias, descargas, etc. Recomendamos revisar la iniciativa https://shields.io/ donde según consideres necesario podrás generar badges para tu repo. 
-
-### Ejemplos de badges
-
-- code coverage percentage: ![coverage](https://img.shields.io/badge/coverage-80%25-yellowgreen)
-- stable release version: ![version](https://img.shields.io/badge/version-1.2.3-blue)
-- package manager release: ![gem](https://img.shields.io/badge/gem-2.2.0-blue)
-- status of third-party dependencies: ![dependencies](https://img.shields.io/badge/dependencies-out%20of%20date-orange)
-- static code analysis grade: ![codacy](https://img.shields.io/badge/codacy-B-green)
-- [SemVer](https://semver.org/) version observance: ![semver](https://img.shields.io/badge/semver-2.0.0-blue)
-- amount of [Liberapay](https://liberapay.com/) donations per week: ![receives](https://img.shields.io/badge/receives-2.00%20USD%2Fweek-yellow)
-- Python package downloads: ![downloads](https://img.shields.io/badge/downloads-13k%2Fmonth-brightgreen)
-- Chrome Web Store extension rating: ![rating](https://img.shields.io/badge/rating-★★★★☆-brightgreen)
-- [Uptime Robot](https://uptimerobot.com) percentage: ![uptime](https://img.shields.io/badge/uptime-100%25-brightgreen)
-
-### Badges que solicitamos:
----
-En la iniciativa Código para el Desarrollo solicitamos a los equipos que suman sus herramientas al catálogo de sumar el badge generado por el uso del microservicio de evaluación estática de código SonarCloud.
-
-El badge se ve así y redirige al reporte de evaluación estática del último commit de la herramienta:
-
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=EL-BID_guia-de-publicacion&metric=alert_status)](https://sonarcloud.io/dashboard?id=EL-BID_guia-de-publicacion)
-
+-   [Descripción y contexto](#descripción-y-contexto)
+-   [Guía de usuario](#guía-de-usuario)
+-   [Guía de instalación](#guía-de-instalación)
+-   [Código de conducta](#código-de-conducta)
+-   [Autor/es](#autores)
+-   [Licencia](#licencia)
+-   [Limitación de responsabilidades - Solo BID](#limitación-de-responsabilidades)
 
 ## Descripción y contexto
----
-Esto es un archivo README. Debe contener la documentación de soporte uso de la herramienta digital. Las siguientes secciones son las secciones recomendadas que debes poner incluir en cualquier herramienta digital. Puedes descargar este archivo para que te sirva como plantilla.
 
-Asegúrate de empezar este archivo con una breve descripción sobre las funcionalidades y contexto de la herramienta digital. Sé conciso y al grano.
+---
+
+API: gestora de eventos, encargada de controlar los usuarios que interactuan con la aplicacion filtrando los privilegios de cada usuario, recibe los pedidos de los usuarios verificado los schemas mandados que cumpla con las normas asignadas en el servidor para persistir los datos
 
 ## Guía de usuario
+
 ---
-Explica los pasos básicos sobre cómo usar la herramienta digital. Es una buena sección para mostrar capturas de pantalla o gifs que ayuden a entender la herramienta digital.
- 	
+
+Endpoint: "/docs": se describe detalladamente cada proceso que debe realizar el usuario para trabajar correctamente con la API
+
 ## Guía de instalación
+
 ---
-Paso a paso de cómo instalar la herramienta digital. En esta sección es recomendable explicar la arquitectura de carpetas y módulos que componen el sistema.
 
-Según el tipo de herramienta digital, el nivel de complejidad puede variar. En algunas ocasiones puede ser necesario instalar componentes que tienen dependencia con la herramienta digital. Si este es el caso, añade también la siguiente sección.
+La API y el sistema servidor cumple con ciertos requisitos indispensables para su buen funcionamiento.
+Sistemas Operativos: Windows, Linux, Mac
+Gestor de base de datos: MySQL
+Aplicaciones: Nodejs (http://nodejs.org) entorno para la ejecucion de JavaScript
 
-La guía de instalación debe contener de manera específica:
-- Los requisitos del sistema operativo para la compilación (versiones específicas de librerías, software de gestión de paquetes y dependencias, SDKs y compiladores, etc.).
-- Las dependencias propias del proyecto, tanto externas como internas (orden de compilación de sub-módulos, configuración de ubicación de librerías dinámicas, etc.).
-- Pasos específicos para la compilación del código fuente y ejecución de tests unitarios en caso de que el proyecto disponga de ellos.
+Guía de instalación:
+
+-   Crear la base de datos con el nombre eventsdb
+-   Importar el modelo db 'build/models/database/eventsdb.sql'
 
 ### Dependencias
-Descripción de los recursos externos que generan una dependencia para la reutilización de la herramienta digital (librerías, frameworks, acceso a bases de datos y licencias de cada recurso). Es una buena práctica describir las últimas versiones en las que ha sido probada la herramienta digital. 
 
-    Puedes usar este estilo de letra diferenciar los comandos de instalación.
+@sinclair/typebox v0.25.13: biblioteca de creación de tipos que crea objetos de esquema JSON en memoria que se pueden inferir estáticamente como tipos de TypeScript. Los esquemas producidos por esta biblioteca están diseñados para coincidir con las reglas de verificación de tipos estáticos del compilador de TypeScript. TypeBox permite crear un tipo unificado que TypeScript puede verificar estáticamente y afirmar en tiempo de ejecución mediante la validación de esquema JSON estándar
+ajv v8.11.2,
+ajv-errors v3.0.0,
+ajv-formats v2.1.1: Ajv implementa los estándares JSON Schema draft-06/07/2019-09/2020-12 (el draft-04 es compatible con v6):
+todas las palabras clave de validación (consulte Palabras clave de validación del esquema JSON )
+Extensiones OpenAPI :
+NUEVO: discriminador de palabras clave .
+palabra clave anulable .
+soporte completo de referencias remotas (los esquemas remotos deben agregarse addSchemao compilarse para estar disponibles)
+soporte de referencias recursivas entre esquemas
+longitudes de cadena correctas para cadenas con pares Unicode
+Formatos JSON Schema (con el complemento ajv-formats ).
+valida esquemas contra meta-esquema
+NUEVO: admite la definición de tipo JSON :
+todas las palabras clave (consulte los formularios de esquema de definición de tipo JSON )
+meta-esquema para esquemas JTD
+palabra clave "unión" y palabras clave definidas por el usuario (se pueden usar dentro del miembro "metadatos" del esquema)
+admite navegadores y Node.js 10.x - actual
+carga asíncrona de esquemas referenciados durante la compilación
+Modo de validación "Todos los errores" con la opción allErrors
+mensajes de error con parámetros que describen las razones del error para permitir la generación de mensajes de error
+Soporte de mensajes de error i18n con el paquete ajv-i18n
+eliminar-propiedades-adicionales
+asignación de valores predeterminados a propiedades y elementos que faltan
+obligar a los datos a los tipos especificados en las typepalabras clave
+palabras clave definidas por el usuario
+palabras clave de extensión adicionales con el paquete ajv-keywords
+bcryptjs v2.4.3: optimizado en JavaScript con cero dependencias. Compatible con el enlace bcrypt de C++ en node.js y también funciona en el navegador,
+cors v2.8.5: Ciertas solicitudes de CORS se consideran "complejas" y requieren una OPTIONSsolicitud inicial (llamada "solicitud previa al vuelo"). Un ejemplo de una solicitud CORS 'compleja' es una que usa un verbo HTTP que no sea GET/HEAD/POST (como DELETE) o que usa encabezados personalizados,
+dotenv: v16.0.3: módulo de dependencia cero que carga variables de entorno desde un .envarchivo a process.env. El almacenamiento de la configuración en el entorno separado del código se basa en la metodología de la aplicación The Twelve-Factor,
+express-expeditious: v5.1.1,
+expeditious-engine-memory v0.2.1: Un motor en memoria para expeditious. Las entradas de caché están, lo adivinaste, almacenadas en la memoria de proceso de node.js. ¡Este motor de caché perderá todo lo almacenado si su proceso se reinicia, y podría provocar una sobrecarga de memoria y recolecciones de basura lentas si no tiene cuidado con el tamaño y el volumen de las entradas!,
+express v4.18.2:
+Enrutamiento robusto
+Centrarse en el alto rendimiento
+Cobertura de prueba súper alta
+Ayudantes HTTP (redireccionamiento, almacenamiento en caché, etc.)
+Sistema de visualización compatible con más de 14 motores de plantillas
+Negociación de contenido
+Ejecutable para generar aplicaciones rápidamente,
+helmet v6.0.1: Midleware de express para la seguridad de las cabeceras,
+jsonwebtoken v9.0.0: JSON Web Token es un estándar de Internet propuesto para crear datos con firma opcional y/o encriptación opcional cuya carga útil contiene JSON que afirma una cierta cantidad de reclamos. Los tokens se firman mediante un secreto privado o una clave pública/privada,
+multer v1.4.5-lts.1: Multer es un middleware para Express y Nodejs que hace que sea fácil manipular este multipart/form-data cuando tus usuarios suben archivos,
+mysql2 v2.3.3: es una continuación de MySQL-Native . El código del analizador de protocolo se reescribió desde cero y se cambió la API para que coincida con mysqljs/mysql popular . El equipo de MySQL2 está trabajando junto con el equipo de mysqljs/mysql para eliminar el código compartido y moverlo bajo la organización de mysqljs
+Más rápido / mejor rendimiento
+Declaraciones preparadas
+Protocolo de registro binario de MySQL
+Servidor MySQL
+Soporte extendido para Codificación y Cotejo
+Envoltorio de promesa
+Compresión
+SSL y conmutador de autenticación
+Flujos personalizados
+puesta en común,
+uuid v9.0.0: es un identificador único; personalmente lo uso para generar cadenas aleatorias y criptográficamente seguras,
+swagger-jsdoc v6.2.7,
+swagger-ui-express v4.6.0: Swagger es un conjunto de herramientas de software de código abierto para diseñar, construir, documentar, y utilizar servicios web RESTful. Fue desarrollado por SmartBear Software e incluye documentación automatizada, generación de código, y generación de casos de prueba,
 
-## Cómo contribuir
+## Código de conducta
+
 ---
-Esta sección explica a desarrolladores cuáles son las maneras habituales de enviar una solicitud de adhesión de nuevo código (“pull requests”), cómo declarar fallos en la herramienta y qué guías de estilo se deben usar al escribir más líneas de código. También puedes hacer un listado de puntos que se pueden mejorar de tu código para crear ideas de mejora.
 
-## Código de conducta 
----
-El código de conducta establece las normas sociales, reglas y responsabilidades que los individuos y organizaciones deben seguir al interactuar de alguna manera con la herramienta digital o su comunidad. Es una buena práctica para crear un ambiente de respeto e inclusión en las contribuciones al proyecto. 
+El código de conducta establece las normas sociales, reglas y responsabilidades que los individuos y organizaciones deben seguir al interactuar de alguna manera con la herramienta digital o su comunidad. Es una buena práctica para crear un ambiente de respeto e inclusión en las contribuciones al proyecto.
 
 La plataforma Github premia y ayuda a los repositorios dispongan de este archivo. Al crear CODE_OF_CONDUCT.md puedes empezar desde una plantilla sugerida por ellos. Puedes leer más sobre cómo crear un archivo de Código de Conducta (aquí)[https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/]
 
 ## Autor/es
----
-Nombra a el/los autor/es original/es. Consulta con ellos antes de publicar un email o un nombre personal. Una manera muy común es dirigirlos a sus cuentas de redes sociales.
 
-## Información adicional
 ---
-Esta es la sección que permite agregar más información de contexto al proyecto como alguna web de relevancia, proyectos similares o que hayan usado la misma tecnología.
 
-## Licencia 
+Ing. Heriberto Alejandro Pozo Castro (Desarrollador del proyecto)
+
+## Licencia
+
 ---
 
 La licencia especifica los permisos y las condiciones de uso que el desarrollador otorga a otros desarrolladores que usen y/o modifiquen la herramienta digital.
 
-Incluye en esta sección una nota con el tipo de licencia otorgado a esta herramienta digital. El texto de la licencia debe estar incluído en un archivo *LICENSE.md* o *LICENSE.txt* en la raíz del repositorio.
+Incluye en esta sección una nota con el tipo de licencia otorgado a esta herramienta digital. El texto de la licencia debe estar incluído en un archivo _LICENSE.md_ o _LICENSE.txt_ en la raíz del repositorio.
 
 Si desconoces qué tipos de licencias existen y cuál es la mejor para cada caso, te recomendamos visitar la página https://choosealicense.com/.
 
 Si la herramienta que estás publicando con la iniciativa Código para el Desarrollo ha sido financiada por el BID, te invitamos a revisar la [licencia oficial del banco para publicar software](https://github.com/EL-BID/Plantilla-de-repositorio/blob/master/LICENSE.md)
 
 ## Limitación de responsabilidades
+
 Disclaimer: Esta sección es solo para herramientas financiadas por el BID.
 
 El BID no será responsable, bajo circunstancia alguna, de daño ni indemnización, moral o patrimonial; directo o indirecto; accesorio o especial; o por vía de consecuencia, previsto o imprevisto, que pudiese surgir:
