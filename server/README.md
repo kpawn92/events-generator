@@ -38,6 +38,12 @@ Guía de instalación:
 -   Crear la base de datos con el nombre eventsdb
 -   Importar el modelo db 'build/models/database/eventsdb.sql'
 
+*   Inicializar el servidor
+
+```
+npm run start
+```
+
 ### Dependencias
 
 -   @sinclair/typebox v0.25.13: biblioteca de creación de tipos que crea objetos de esquema JSON en memoria que se pueden inferir estáticamente como tipos de TypeScript. Los esquemas producidos por esta biblioteca están diseñados para coincidir con las reglas de verificación de tipos estáticos del compilador de TypeScript. TypeBox permite crear un tipo unificado que TypeScript puede verificar estáticamente y afirmar en tiempo de ejecución mediante la validación de esquema JSON estándar
