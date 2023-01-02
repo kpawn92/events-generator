@@ -15,7 +15,13 @@
 
 ---
 
-API: gestora de eventos, encargada de controlar los usuarios que interactuan con la aplicacion filtrando los privilegios de cada usuario, recibe los pedidos de los usuarios verificado los schemas mandados que cumpla con las normas asignadas en el servidor para persistir los datos
+API REST:
+
+-   Interfaz que dos sistemas de computación utilizan para intercambiar información de manera segura a través de Internet. La mayoría de las aplicaciones para empresas deben comunicarse con otras aplicaciones internas o de terceros para llevar a cabo varias tareas.
+
+-   La arquitectura de la API REST incluye varias capas que operan juntas para construir una jerarquía que ayuda a generar una aplicación más escalable y flexible. Debido a su sistema de capas, una aplicación tiene mejor seguridad ya que los componentes de cada capa no pueden interactuar fuera de la capa siguiente.
+
+-   Gestora de eventos, encargada de controlar los usuarios que interactuan con la aplicacion filtrando los privilegios de cada usuario, recibe los pedidos de los usuarios verificado los schemas mandados que cumpla con las normas asignadas en el servidor para persistir los datos.
 
 ## Guía de usuario
 
