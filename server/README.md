@@ -22,15 +22,15 @@ API: gestora de eventos, encargada de controlar los usuarios que interactuan con
 
 ---
 
-Endpoint: "/docs": se describe detalladamente cada proceso que debe realizar el usuario para trabajar correctamente con la API
+Endpoint: "/docs": se describe detalladamente cada proceso que debe realizar el usuario para trabajar correctamente con la API REST
 
 ## Guía de instalación
 
 ---
 
-La API y el sistema servidor cumple con ciertos requisitos indispensables para su buen funcionamiento.
+La API REST y el sistema servidor cumple con ciertos requisitos indispensables para su buen funcionamiento.
 
--   Sistemas Operativos: Windows, Linux, Mac
+-   Sistemas Operativos: Windows, Linux, Mac requestMin(2GB RAM, 4GB HDD/SSD)
 -   Gestor de base de datos: MySQL
 -   Aplicaciones: Nodejs (http://nodejs.org) entorno para la ejecucion de JavaScript
 
@@ -117,13 +117,9 @@ Ing. Heriberto Alejandro Pozo Castro (Desarrollador del proyecto)
 
 ---
 
-La licencia especifica los permisos y las condiciones de uso que el desarrollador otorga a otros desarrolladores que usen y/o modifiquen la herramienta digital.
-
-Incluye en esta sección una nota con el tipo de licencia otorgado a esta herramienta digital. El texto de la licencia debe estar incluído en un archivo _LICENSE.md_ o _LICENSE.txt_ en la raíz del repositorio.
-
 Si desconoces qué tipos de licencias existen y cuál es la mejor para cada caso, te recomendamos visitar la página https://choosealicense.com/.
 
-Si la herramienta que estás publicando con la iniciativa Código para el Desarrollo ha sido financiada por el BID, te invitamos a revisar la [licencia oficial del banco para publicar software](https://github.com/EL-BID/Plantilla-de-repositorio/blob/master/LICENSE.md)
+Te invitamos a revisar la [licencia oficial del software](https://github.com/kpawn92/events-generator/blob/master/server/LICENSE.md)
 
 ## Limitación de responsabilidades
 
