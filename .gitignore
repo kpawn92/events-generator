@@ -1,3 +1,6 @@
+bibliography
+client
+model
 server/node_modules
 server/build
 server/uploads/**
