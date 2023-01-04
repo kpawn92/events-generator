@@ -9,5 +9,5 @@ export const InfoIco = () => {
 	return <img src={info} alt='info' />;
 };
 export const FormIco = () => {
-	return <img src={form} alt='form' />;
+	return <img src={form} alt='form' width='35' />;
 };
