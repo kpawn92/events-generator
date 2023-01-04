@@ -8,9 +8,9 @@ export default function App() {
 	return (
 		<>
 			<Layout>
-				{/* <BgAnimated /> */}
 				<Cards title='Eventos' />
-				{/* <Presentation contact={contact} /> */}
+				{/* <BgAnimated />
+				<Presentation contact={contact} /> */}
 			</Layout>
 		</>
 	);

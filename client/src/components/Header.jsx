@@ -1,8 +1,20 @@
+import { useState } from 'react';
 import { LogoPage } from './Img';
+import { Modal } from './Modal';
+import { FormLogin } from './Form';
 
 export const Header = () => {
+	const [modal, setModal] = useState(false);
+	const handleOpen = () => {
+		setModal(true);
+	};
 	return (
 		<header>
+			{modal === true && (
+				<Modal>
+					<FormLogin state={setModal} />
+				</Modal>
+			)}
 			{/* Nabvar desktop */}
 			<div className='hidden lg:block md:block'>
 				<div className='flex justify-between items-center py-3'>
@@ -37,6 +49,7 @@ export const Header = () => {
 					</nav>
 					<div className='flex gap-x-2'>
 						<a
+							onClick={handleOpen}
 							href='#'
 							className='border border-gray-400 focus:bg-gray-200 px-4 py-2 rounded-lg'
 						>
