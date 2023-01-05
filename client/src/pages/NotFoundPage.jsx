@@ -3,7 +3,7 @@ import { BsFillEmojiDizzyFill } from 'react-icons/bs';
 
 const NotFoundPage = () => {
 	return (
-		<section className='flex items-center h-full p-16'>
+		<section className='flex items-center h-full p-8'>
 			<div className='container flex flex-col items-center justify-center px-5 mx-auto my-8'>
 				<div className='max-w-md text-center'>
 					<BsFillEmojiDizzyFill className='m-auto text-7xl text-gray-600' />
@@ -18,7 +18,6 @@ const NotFoundPage = () => {
 						página de inicio.
 					</p>
 					<Link
-						rel='noopener noreferrer'
 						to='/'
 						className='px-8 py-3 font-semibold rounded text-white bg-gray-400 hover:bg-black'
 					>

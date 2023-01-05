@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import * as userCtrl from '../controllers/user.controller';
-import { isAdmin, isModelator, verifyToken } from '../middlewares/authJwt';
+import { isAdmin, isModelator, isUser, verifyToken } from '../middlewares/authJwt';
 import { validateEditUserDTO } from '../validators/userEdit.validate';
 import { verifyUserAndEmailById } from '../middlewares/verifyEmail';
 import {
@@ -176,6 +176,48 @@ router.get(
     '/mod/:role',
     [verifyToken, isModelator],
     userCtrl.getManagersActived
+);
+
+/**
+ * @swagger
+ *  /users/open/subs:
+ *      get:
+ *          tags:
+ *          - Users
+ *          summary: El usuario obtiene sus datos
+ *          parameters:
+ *          - $ref: '#/components/parameters/token'
+ *          responses:
+ *              200:
+ *                  description: Peticion realizada
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              401:
+ *                  description: No autorizado
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              404:
+ *                  description: No existe
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ *              500:
+ *                  description: Err server
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: array
+ */
+
+router.get(
+    '/open/subs',
+    [verifyToken, isUser],
+    userCtrl.getSubs
 );
 
 /**

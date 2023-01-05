@@ -34,6 +34,14 @@ export const getSubscriberById = async (id) => {
     return result;
 };
 
+export const getSubscriber = async (id) => {
+    const [result] = await pool.query(
+        'SELECT id, name, lastname, nation, dni, institution, category FROM subscriber WHERE id = ?',
+        [id]
+    );
+    return result;
+};
+
 export const getIdByFkUser = async (fk_user) => {
     const [result] = await pool.query(
         'SELECT id FROM subscriber WHERE fk_user = ?',

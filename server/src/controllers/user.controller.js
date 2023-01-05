@@ -1,4 +1,4 @@
-import { Economist, Manager, User } from '../models/entity';
+import { Economist, Manager, User, Subscribers } from '../models/entity';
 import { EMAIL_ADMIN } from '../config/env';
 import { passwordHelper } from '../helpers';
 
@@ -72,6 +72,15 @@ export const getManagersActived = async (req, res) => {
             return res.status(200).json(economist);
         }
         res.status(404).json({ message: 'Rol invalid' });
+    } catch (error) {
+        return res.status(500).json({ message: 'Error server: ' + error });
+    }
+};
+export const getSubs = async (req, res) => {
+    try {
+        const { id } = await Subscribers.getIdByFkUser(req.userId);
+        const result = await Subscribers.getSubscriber(id)
+        res.status(200).json(result);
     } catch (error) {
         return res.status(500).json({ message: 'Error server: ' + error });
     }
