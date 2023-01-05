@@ -9,7 +9,7 @@ export const Cards = ({ title }) => {
 	};
 	return (
 		<div>
-			{modal === true && (
+			{modal && (
 				<Modal>
 					<ContentEvent state={setModal} />
 				</Modal>

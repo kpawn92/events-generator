@@ -19,31 +19,32 @@ export const FormLogin = ({ state }) => {
 			*/}
 
 			<div className='modal-container inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full'>
-				<div className='modal-wrapper bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>
-					<div className='modal-wrapper-flex sm:flex sm:items-start'>
-						<div className='modal-icon mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 sm:mx-0 sm:h-10 sm:w-10'>
-							<FormIco />
-						</div>
-						<div className='modal-content text-center mt-3 sm:mt-0 sm:ml-4 sm:text-left'>
-							<h3 className='text-lg font-medium text-gray-900'>
-								Acceder al sistema
-							</h3>
-							<div className='content-form mt-8 w-80'>
-								<form>
+				<form>
+					<div className='modal-wrapper bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>
+						<div className='modal-wrapper-flex sm:flex sm:items-start'>
+							<div className='modal-icon mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 sm:mx-0 sm:h-10 sm:w-10'>
+								<FormIco />
+							</div>
+							<div className='modal-content text-center mt-3 sm:mt-0 sm:ml-4 sm:text-left'>
+								<h3 className='text-lg font-medium text-gray-900'>
+									Acceder al sistema
+								</h3>
+								<div className='content-form mt-8 w-80'>
 									<div className='mb-3'>
 										<label
-											className='block mb-2 text-sm font-medium text-gray-900'
+											className='block mb-2 text-sm font-semibold text-gray-600'
 											htmlFor='email'
 										>
 											Email
 										</label>
 										<div className='relative'>
 											<div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
-												<FaUser />
+												<FaUser className='fill-gray-500' />
 											</div>
 											<input
 												type='text'
 												id='email'
+												name='email'
 												className='shadow-sm bg-gray-50 border border-gray-200/70 text-gray-900 text-sm rounded-lg hover:bg-white focus:ring-blue-500 focus:border-blue-500 block w-full py-4 pl-10 p-2.5 focus:outline-none focus:shadow-outline focus:bg-blue-100/25'
 												placeholder='jhon@gmail.com'
 											/>
@@ -51,70 +52,39 @@ export const FormLogin = ({ state }) => {
 									</div>
 									<div className='mb-8'>
 										<label
-											className='block mb-2 text-sm font-medium text-gray-900'
+											className='block mb-2 text-sm font-semibold text-gray-600'
 											htmlFor='password'
 										>
 											Password
 										</label>
 										<div className='relative'>
 											<div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
-												<FaLock />
+												<FaLock className='fill-gray-500' />
 											</div>
 											<input
 												type='password'
 												id='password'
 												className='shadow-sm bg-gray-50 border border-gray-200/70 text-gray-900 text-sm rounded-lg hover:bg-white focus:ring-blue-500 focus:border-blue-500 block w-full py-4 pl-10 p-2.5 focus:outline-none focus:shadow-outline focus:bg-blue-100/25'
-												placeholder='jhon@gmail.com'
+												placeholder='********'
 											/>
 										</div>
 									</div>
-									{/*
-									<div className='mb-5'>
-										<label className='block text-gray-600 mb-2' htmlFor='email'>
-											Email:
-										</label>
-										<input
-											className='shadow-sm appearance-none border rounded border-gray-300/30 bg-gray-50 text-base w-full hover:border-blue-400 py-2 pl-3 focus:outline-none focus:shadow-outline focus:bg-blue-100/25'
-											placeholder='jhoe@gmail.com'
-											type='text'
-											id='email'
-											name='email'
-										/>
-									</div>
-									<div className='mb-8'>
-										<label
-											className='block text-gray-600 mb-2'
-											htmlFor='password'
-										>
-											Password:
-										</label>
-										<input
-											className='shadow-sm appearance-none border rounded border-gray-300/30 bg-gray-50 text-base font-extrabold w-full hover:border-blue-400 py-2 pl-3 focus:outline-none focus:shadow-outline focus:bg-blue-100/25'
-											placeholder='**********'
-											type='password'
-											id='password'
-											name='password'
-										/>
-									</div> */}
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div className='modal-actions bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse'>
-					<button
-						onClick={handleClose}
-						className='w-full inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-white font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
-					>
-						Cerrar
-					</button>
-					<button
-						onClick={handleClose}
-						className='w-full inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-blue-500 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
-					>
-						Ingresar
-					</button>
-				</div>
+					<div className='modal-actions bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse'>
+						<button
+							onClick={handleClose}
+							className='w-full inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-white font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
+						>
+							Cerrar
+						</button>
+						<button className='w-full inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-blue-500 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'>
+							Ingresar
+						</button>
+					</div>
+				</form>
 			</div>
 		</>
 	);

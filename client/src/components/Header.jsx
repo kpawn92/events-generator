@@ -10,7 +10,7 @@ export const Header = () => {
 	};
 	return (
 		<header>
-			{modal === true && (
+			{modal && (
 				<Modal>
 					<FormLogin state={setModal} />
 				</Modal>
