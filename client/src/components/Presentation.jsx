@@ -1,4 +1,4 @@
-export const Presentation = () => {
+const Presentation = () => {
 	return (
 		<>
 			<div>
@@ -18,3 +18,5 @@ export const Presentation = () => {
 		</>
 	);
 };
+
+export default Presentation;

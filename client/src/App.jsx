@@ -1,17 +1,21 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
-// import { Presentation } from './components/Presentation';
-// import { contact } from './config/contact';
-import { Cards } from './components/Cards';
-// import BgAnimated from './components/BgAnimated';
+import HomePage from './pages/HomePage';
+import EventPage from './pages/EventPage';
+import LivingPage from './pages/LivingPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
 	return (
-		<>
+		<BrowserRouter>
 			<Layout>
-				<Cards title='Eventos' />
-				{/* <BgAnimated />
-				<Presentation contact={contact} /> */}
+				<Routes>
+					<Route path='/' element={<HomePage />} />
+					<Route path='/event' element={<EventPage />} />
+					<Route path='/salas' element={<LivingPage />} />
+					<Route path='*' element={<NotFoundPage />} />
+				</Routes>
 			</Layout>
-		</>
+		</BrowserRouter>
 	);
 }

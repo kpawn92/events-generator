@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Modal } from './Modal';
 import { ContentEvent } from './ContentEvent';
 
-export const Cards = ({ title }) => {
+const Cards = ({ title }) => {
 	const [modal, setModal] = useState(false);
 	const handleOpen = () => {
 		setModal(true);
@@ -116,3 +116,5 @@ export const Cards = ({ title }) => {
 		</div>
 	);
 };
+
+export default Cards;

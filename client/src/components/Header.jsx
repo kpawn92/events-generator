@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { LogoPage } from './Img';
 import { Modal } from './Modal';
 import { FormLogin } from './Form';
@@ -18,22 +19,25 @@ export const Header = () => {
 			{/* Nabvar desktop */}
 			<div className='hidden lg:block md:block'>
 				<div className='flex justify-between items-center py-3'>
-					<picture className='w-44 rounded-lg shadow-2xl hover:shadow-md duration-300 hover:cursor-pointer'>
+					<NavLink
+						to='/'
+						className='w-44 rounded-lg shadow-2xl hover:shadow-md duration-300 hover:cursor-pointer'
+					>
 						<LogoPage />
-					</picture>
+					</NavLink>
 					<nav className='flex items-center gap-x-6'>
-						<a
-							href='#'
+						<NavLink
+							to='/event'
 							className='hover:scale-110 duration-300 py-1 hover:font-semibold hover:text-gray-700'
 						>
 							Eventos
-						</a>
-						<a
-							href='#'
+						</NavLink>
+						<NavLink
+							to='/salas'
 							className='hover:scale-110 duration-300 py-1 hover:font-semibold hover:text-gray-700'
 						>
 							Salas
-						</a>
+						</NavLink>
 						<a
 							href='#'
 							className='hover:scale-110 duration-300 py-1 hover:font-semibold hover:text-gray-700'

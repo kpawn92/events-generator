@@ -8,28 +8,8 @@ module.exports = {
 			},
 			animation: {
 				blob: 'blob 7s infinite',
-				fadeIn: 'fadeIn',
-				fadeOut: 'fadeOut',
-				scaleIn: 'scaleIn',
-				scaleOut: 'scaleOut',
 			},
 			keyframes: {
-				fadeIn: {
-					'0%': { opacity: 0 },
-					'100%': { opacity: 1 }
-				},
-				fadeOut: {
-					'0%': { opacity: 1 },
-					'100%': { opacity: 0 }
-				},
-				scaleIn: {
-					'0%': { transform: 'scale(0)' },
-					'100%': { transform: 'scale(1)' },
-				},
-				scaleOut: {
-					'0%': { transform: 'scale(1)' },
-					'100%': { transform: 'scale(0)' },
-				},
 				blob: {
 					'0%': {
 						transform: 'translate(0px, 0px) scale(1)',
@@ -43,6 +23,11 @@ module.exports = {
 					'100%': {
 						transform: 'translate(0px, 0px) scale(1)',
 					},
+				},
+				mymove: {
+					"33%": { top: '0px' },
+					"66%": { top: '20px' },
+					"100%": { top: '0px' },
 				}
 			}
 		},
