@@ -184,7 +184,7 @@ router.get(
  *      get:
  *          tags:
  *          - Users
- *          summary: El usuario obtiene sus datos
+ *          summary: El subscriber obtiene sus datos
  *          parameters:
  *          - $ref: '#/components/parameters/token'
  *          responses:
