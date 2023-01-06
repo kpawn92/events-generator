@@ -83,20 +83,24 @@ export const Header = () => {
 
 						<nav className='flex items-center gap-x-6'>
 							<div>
-								{ico ? (
-									<AiOutlineClose
-										className='text-4xl'
-										onClick={() => {
-											setIco(false);
-										}}
-									/>
-								) : (
-									<TbMenu2
-										className='text-4xl'
-										onClick={() => {
-											setIco(true);
-										}}
-									/>
+								<TbMenu2
+									className='text-4xl'
+									onClick={() => {
+										setIco(true);
+									}}
+								/>
+								{/* Generar un componente para la caja de los links */}
+								{ico && (
+									<div className='fixed inset-0 bg-white bg-opacity-75 '>
+										<div className='ml-4 mr-4'>
+											<AiOutlineClose
+												className='text-4xl'
+												onClick={() => {
+													setIco(false);
+												}}
+											/>
+										</div>
+									</div>
 								)}
 							</div>
 						</nav>
