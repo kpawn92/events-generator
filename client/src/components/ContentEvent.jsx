@@ -21,7 +21,11 @@ export const ContentEvent = ({ state }) => {
 									Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
 									asperiores quam temporibus porro esse numquam accusantium
 									odio. Nemo harum voluptas veniam facilis magnam a natus!
-									Debitis explicabo ab eaque excepturi!
+									Debitis explicabo ab eaque excepturi! Lorem ipsum dolor sit
+									amet, consectetur adipisicing elit. Voluptates debitis, nisi,
+									exercitationem veritatis, natus quasi expedita aperiam ipsam
+									deserunt quisquam consequuntur? Dolores, fugit quo dolorem
+									eius ratione eaque unde nisi!
 								</p>
 							</div>
 						</div>

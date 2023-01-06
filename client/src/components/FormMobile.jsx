@@ -14,12 +14,15 @@ export const FormLogin = () => {
 		<div className='lg:hidden md:hidden'>
 			<div className='modal-container inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full'>
 				<form onSubmit={handleSubmit(onSubmit)}>
-					<div className='modal-wrapper bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>
+					<div className='modal-wrapper bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 mt-8'>
 						<div className='modal-wrapper-flex sm:flex sm:items-start'>
 							<div className='modal-content text-center mt-3 sm:mt-0 sm:ml-4 sm:text-left'>
 								<div className='content-form mt-8'>
 									<div className='mb-3'>
-										<label className='block mb-2 text-gray-600' htmlFor='email'>
+										<label
+											className='block mb-2 text-xl text-gray-600'
+											htmlFor='email'
+										>
 											Email
 										</label>
 										<div className='relative'>
@@ -49,7 +52,7 @@ export const FormLogin = () => {
 									</div>
 									<div className='mb-8'>
 										<label
-											className='block mb-2 text-sm text-gray-600'
+											className='block mb-2 text-xl text-gray-600'
 											htmlFor='password'
 										>
 											Password
