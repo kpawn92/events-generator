@@ -13,12 +13,6 @@ const BgAnimated = ({ children }) => {
 					</div>
 				</div>
 			</div>
-			{/* Mobile */}
-			<div className='lg:hidden md:hidden ml-4 mr-4'>
-				<div className='min-h-screen flex justify-center items-center'>
-					<div className='w-full relative'>{children}</div>
-				</div>
-			</div>
 		</>
 	);
 };
