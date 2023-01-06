@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TbMenu2 } from 'react-icons/tb';
-import { AiOutlineClose } from 'react-icons/ai';
 import { LogoPage } from './Img';
 import { Modal } from './Modal';
 import { FormLogin } from './Form';
+import NavMobile from './NavMobile';
 
 export const Header = () => {
 	const [modal, setModal] = useState(false);
@@ -90,18 +90,7 @@ export const Header = () => {
 									}}
 								/>
 								{/* Generar un componente para la caja de los links */}
-								{ico && (
-									<div className='fixed inset-0 bg-white bg-opacity-75 '>
-										<div className='ml-4 mr-4'>
-											<AiOutlineClose
-												className='text-4xl'
-												onClick={() => {
-													setIco(false);
-												}}
-											/>
-										</div>
-									</div>
-								)}
+								{ico && <NavMobile stateIco={setIco} />}
 							</div>
 						</nav>
 					</div>

@@ -6,7 +6,7 @@ export const Footer = () => {
 					©Copyrigth - {new Date().getFullYear()}
 				</small>
 				<p className='font-semibold text-gray-500 text-xs'>
-					Universidad de Granma
+					Company: Name-company
 				</p>
 			</div>
 
@@ -16,7 +16,7 @@ export const Footer = () => {
 					©Copyrigth - {new Date().getFullYear()}
 				</small>
 				<p className='font-semibold text-gray-500 text-xs'>
-					Universidad de Granma
+					Company: Name-company
 				</p>
 			</div>
 		</footer>
