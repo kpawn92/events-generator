@@ -33,15 +33,16 @@ const NavbarMovile = ({ stateIco }) => {
 					Salas
 				</NavLink>
 				<NavLink
-					to='/salas'
+					to='#'
 					className='shadow-lg mb-4 px-4 py-2 rounded-lg text-2xl bg-gray-50 text-center'
 					onClick={handleClose}
 				>
 					Trabajo
 				</NavLink>
 				<NavLink
-					to='#'
+					to='/signin'
 					className='border mt-10 mb-4 px-4 py-2 rounded-lg text-2xl text-center'
+					onClick={handleClose}
 				>
 					Acceder
 				</NavLink>
