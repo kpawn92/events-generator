@@ -1,15 +1,16 @@
 import { FaUser, FaLock } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { FormIco } from './Img';
 import { sigIn } from '../api/auth.api';
 
 // Context
-import { useUserContext, useGetTokenContext } from '../context/UserProvider';
+import { useGetTokenContext } from '../context/UserProvider';
 
 export const FormLogin = ({ state }) => {
-	const token = useUserContext();
 	const setToken = useGetTokenContext();
+	const [http, setHttp] = useState(null);
 
 	const navigate = useNavigate();
 
@@ -26,13 +27,15 @@ export const FormLogin = ({ state }) => {
 
 			setToken(data);
 			navigate('/trabajo');
+			state(false);
 		} catch (error) {
-			console.log(error);
+			setToken(null);
+			setHttp(error.response.status);
 		}
 	};
 
 	const handleClose = () => {
-		console.log(token);
+		state(false);
 	};
 	return (
 		<>
@@ -47,6 +50,16 @@ export const FormLogin = ({ state }) => {
 								<h3 className='text-lg font-medium text-gray-900'>
 									Acceder al sistema
 								</h3>
+								{http === 403 && (
+									<p className='bg-red-500 text-white text-xl'>
+										El usuario no es valido para acceder
+									</p>
+								)}
+								{http === 401 && (
+									<p className='bg-red-500 text-white text-xl'>
+										Credenciales incorrectas para acceder
+									</p>
+								)}
 								<div className='content-form mt-8 w-80'>
 									<div className='mb-3'>
 										<label

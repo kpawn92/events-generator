@@ -5,8 +5,10 @@ import { LogoPage } from '../Img';
 import { Modal } from '../Modal';
 import { FormLogin } from '../Form';
 import NavMobile from './NavMobile';
+import { useUserContext } from '../../context/UserProvider';
 
 export const Header = () => {
+	const { token } = useUserContext();
 	const [modal, setModal] = useState(false);
 	const [ico, setIco] = useState(false);
 	const handleOpen = () => {
@@ -54,22 +56,24 @@ export const Header = () => {
 							Quienes somos
 						</NavLink>
 					</nav>
-					<div className='flex gap-x-2'>
-						<NavLink
-							onClick={handleOpen}
-							to='#'
-							className='border border-gray-400 focus:bg-gray-200 px-4 py-2 rounded-lg'
-						>
-							Acceder
-						</NavLink>
-						{/* Register tendra su propia pagina */}
-						<NavLink
-							to='#'
-							className='px-4 py-2 rounded-lg bg-yellow-400 hover:bg-yellow-500 active:bg-black font-bold active:text-yellow-400  text-white hover:shadow-lg transition-shadow'
-						>
-							Registrar
-						</NavLink>
-					</div>
+					{!token && (
+						<div className='flex gap-x-2'>
+							<NavLink
+								onClick={handleOpen}
+								to='#'
+								className='border border-gray-400 focus:bg-gray-200 px-4 py-2 rounded-lg'
+							>
+								Acceder
+							</NavLink>
+							{/* Register tendra su propia pagina */}
+							<NavLink
+								to='#'
+								className='px-4 py-2 rounded-lg bg-yellow-400 hover:bg-yellow-500 active:bg-black font-bold active:text-yellow-400  text-white hover:shadow-lg transition-shadow'
+							>
+								Registrar
+							</NavLink>
+						</div>
+					)}
 				</div>
 			</div>
 
