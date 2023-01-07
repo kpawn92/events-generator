@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TbMenu2 } from 'react-icons/tb';
-import { LogoPage } from './Img';
-import { Modal } from './Modal';
-import { FormLogin } from './Form';
+import { LogoPage } from '../Img';
+import { Modal } from '../Modal';
+import { FormLogin } from '../Form';
 import NavMobile from './NavMobile';
 
 export const Header = () => {
@@ -42,7 +42,7 @@ export const Header = () => {
 							Salas
 						</NavLink>
 						<NavLink
-							to='#'
+							to='/trabajo'
 							className='hover:scale-110 duration-300 py-1 hover:font-semibold hover:text-gray-700'
 						>
 							Trabajo

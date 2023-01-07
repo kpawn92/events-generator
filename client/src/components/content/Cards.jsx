@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Modal } from './Modal';
-import { ContentEvent } from './ContentEvent';
+import { Modal } from '../Modal';
+import { ContentEvent } from '../ContentEvent';
 
 const Cards = ({ title }) => {
 	const [modal, setModal] = useState(false);

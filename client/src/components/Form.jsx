@@ -1,18 +1,38 @@
 import { FaUser, FaLock } from 'react-icons/fa';
-import { FormIco } from './Img';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { FormIco } from './Img';
+import { sigIn } from '../api/auth.api';
+
+// Context
+import { useUserContext, useGetTokenContext } from '../context/UserProvider';
 
 export const FormLogin = ({ state }) => {
+	const token = useUserContext();
+	const setToken = useGetTokenContext();
+
+	const navigate = useNavigate();
+
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
-	const onSubmit = data => {
-		console.log(data);
+
+	const onSubmit = async body => {
+		try {
+			const response = await sigIn(body);
+			const { data } = response;
+
+			setToken(data);
+			navigate('/trabajo');
+		} catch (error) {
+			console.log(error);
+		}
 	};
+
 	const handleClose = () => {
-		state(false);
+		console.log(token);
 	};
 	return (
 		<>
@@ -92,6 +112,7 @@ export const FormLogin = ({ state }) => {
 					</div>
 					<div className='modal-actions bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse'>
 						<button
+							type='button'
 							onClick={handleClose}
 							className='w-full inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-white font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
 						>
