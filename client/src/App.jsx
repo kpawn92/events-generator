@@ -5,8 +5,10 @@ import HomePage from './pages/HomePage';
 import EventPage from './pages/EventPage';
 import LivingPage from './pages/LivingPage';
 import LoginMobile from './pages/LoginMobile';
+import Registerpage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
 import JobPage from './pages/JobPage';
+import NormPage from './pages/NormPage';
 
 export default function App() {
 	return (
@@ -19,6 +21,8 @@ export default function App() {
 						<Route path='/salas' element={<LivingPage />} />
 						<Route path='/trabajo' element={<JobPage />} />
 						<Route path='/signin' element={<LoginMobile />} />
+						<Route path='/signup' element={<Registerpage />} />
+						<Route path='/rules' element={<NormPage />} />
 						<Route path='*' element={<NotFoundPage />} />
 					</Routes>
 				</Layout>

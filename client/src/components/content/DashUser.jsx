@@ -5,6 +5,7 @@ import {
 } from '../../context/UserProvider';
 import { getSubscriber } from '../../api/user.api';
 import { useEffect } from 'react';
+import { Alert } from './Alert';
 
 export const DashUser = () => {
 	const {
@@ -39,11 +40,17 @@ export const DashUser = () => {
 					</div>
 				))}
 			{!dataUser && (
-				<div>
-					<p>Se requiere que el usuario sea suscriptor valido</p>
+				<div className='my-4'>
+					<Alert
+						title='Alert'
+						msg='Se requiere que el usuario sea suscriptor valido'
+					/>
 				</div>
 			)}
-			<button className='bg-blue-600 px-4 py-4' onClick={handleSessionClose}>
+			<button
+				className='bg-blue-600 px-4 py-4 text-white'
+				onClick={handleSessionClose}
+			>
 				Salir
 			</button>
 		</>

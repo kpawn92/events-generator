@@ -6,6 +6,10 @@ import { verifyToken, isUser, isManager } from '../middlewares/authJwt';
 const router = Router();
 
 // TODO: Gestionar los trabajos aceptado a los eventos
+// TODO: El subscriber guarde el id de la instancia de resumen aceptada
+// TODO: Que los usuarios guarden el link de presentacion
+
+
 /**
  * @swagger
  *  tags:

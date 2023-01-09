@@ -5,6 +5,8 @@ import * as digestInstanceCtrl from '../controllers/digestinstance.controller';
 const router = Router();
 
 // TODO: Gestionar las instancias de los resumenes de trabajos mandados
+// TODO: El subscriber guarda el id de la sala seleccionada
+
 /**
  * @swagger
  *  tags:

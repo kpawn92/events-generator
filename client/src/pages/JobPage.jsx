@@ -4,7 +4,7 @@ const JobPage = () => {
 	const { token } = useUserContext();
 	return (
 		<>
-			<div>Dashborad para subscriber</div>
+			<div className='text-center py-10'>Dashborad para subscriber</div>
 			{token && <DashUser />}
 		</>
 	);

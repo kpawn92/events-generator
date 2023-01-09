@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { FormIco } from './Img';
 import { sigIn } from '../api/auth.api';
+import { Alert } from '../components/content/Alert';
 
 // Context
 import { useGetTokenContext } from '../context/UserProvider';
@@ -51,16 +52,18 @@ export const FormLogin = ({ state }) => {
 									Acceder al sistema
 								</h3>
 								{http === 403 && (
-									<p className='bg-red-500 text-white text-xl'>
-										El usuario no es valido para acceder
-									</p>
+									<Alert
+										title='Alert'
+										msg='El usuario no es valido para acceder'
+									></Alert>
 								)}
 								{http === 401 && (
-									<p className='bg-red-500 text-white text-xl'>
-										Credenciales incorrectas para acceder
-									</p>
+									<Alert
+										title='Alert'
+										msg='Credenciales incorrectas para acceder'
+									></Alert>
 								)}
-								<div className='content-form mt-8 w-80'>
+								<div className='content-form mt-8 w-full mr-32'>
 									<div className='mb-3'>
 										<label
 											className='block mb-2 text-sm font-semibold text-gray-600'
