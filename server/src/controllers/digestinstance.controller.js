@@ -11,10 +11,10 @@ export const getDigestInstances = async (req, res) => {
 export const setDigestInstance = async (req, res) => {
     try {
         const { id } = await Subscribers.getIdByFkUser(req.userId);
-        const { abstract } = req.body;
+        const { fk_living, abstract } = req.body;
         if (abstract.length === 0)
             return res.status(403).json({ message: 'Bad request' });
-        const result = await DigestInstance.create(id, abstract);
+        const result = await DigestInstance.create(id, abstract, fk_living);
         res.status(200).json(result);
     } catch (error) {
         return res.status(500).json({ message: error });

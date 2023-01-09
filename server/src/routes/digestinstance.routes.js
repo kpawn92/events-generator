@@ -29,6 +29,8 @@ const router = Router();
  *              properties:
  *                  abstract:
  *                      type: string
+ *                  fk_living:
+ *                      type: string
  */
 
 /**
