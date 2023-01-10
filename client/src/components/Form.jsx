@@ -21,13 +21,15 @@ export const FormLogin = ({ state }) => {
 		handleSubmit,
 	} = useForm();
 
+	const to = async url => navigate(url);
+
 	const onSubmit = async body => {
 		try {
 			const response = await sigIn(body);
 			const { data } = response;
 
 			setToken(data);
-			navigate('/trabajo');
+			await to('/trabajo');
 			state(false);
 		} catch (error) {
 			setToken(null);
