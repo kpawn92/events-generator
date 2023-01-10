@@ -98,7 +98,7 @@ export const DashUser = () => {
 								placeholder='El trabajo trata...'
 								onKeyDown={handleKey}
 							></textarea>
-							<button className='mt-2 text-white bg-blue-500 rounded-lg'>
+							<button className='mt-2 text-white font-semibold bg-blue-500 rounded-lg'>
 								Enviar
 							</button>
 						</div>

@@ -13,7 +13,7 @@ export const Alert = ({ title, msg }) => {
 export const Warning = ({ title, msg }) => {
 	return (
 		<div
-			className='bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 mt-5'
+			className='bg-yellow-100 border-l-4 border-yellow-500 text-orange-700 p-4 mt-5'
 			role='alert'
 		>
 			<p className='font-bold'>{title}</p>
