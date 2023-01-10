@@ -47,7 +47,7 @@ export const Header = () => {
 							to='/trabajo'
 							className='hover:scale-110 duration-300 py-1 hover:font-semibold hover:text-gray-700'
 						>
-							Trabajo
+							Participaci&oacute;n
 						</NavLink>
 						<NavLink
 							to='#'

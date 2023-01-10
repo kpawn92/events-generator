@@ -28,7 +28,7 @@ const Presentation = () => {
 					molestiae!
 				</p>
 				<button className='font-semibold mt-5 px-5 py-1  bg-yellow-400 text-white rounded-3xl hover:bg-yellow-500 hover:shadow-lg transition-shadow'>
-					Empezar...
+					Participa ya!
 				</button>
 			</div>
 		</>
