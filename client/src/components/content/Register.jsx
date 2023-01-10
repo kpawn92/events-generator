@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { codePais } from '../../api/code.pais';
 import { sigUp } from '../../api/auth.api';
-import { Alert } from '../../components/content/Alert';
+import { Alert, Success } from './Alert';
 
 export const Register = () => {
 	const [http, setHttp] = useState(null);
@@ -17,15 +17,12 @@ export const Register = () => {
 
 	const onSubmit = async body => {
 		try {
-			async function creteaUser(data) {
-				await sigUp(data);
-			}
 			body.category = parseFloat(body.category);
-			console.log(body);
-			creteaUser(body);
+			const response = await sigUp(body);
+			setHttp(response.status);
 		} catch (error) {
 			setHttp(error.response.status);
-			console.log(error.response.status);
+			console.log(error);
 		}
 	};
 	const [check, setCheck] = useState(false);
@@ -296,9 +293,24 @@ export const Register = () => {
 							</button>
 						</div>
 					)}
-					<div>
-						<Alert title='Alert' msg='El correo ya existe' />
-					</div>
+					{http === 404 && (
+						<div>
+							<Alert title='Alert' msg='El correo ya existe' />
+						</div>
+					)}
+					{http === 400 && (
+						<div>
+							<Alert title='Alert' msg='El suscriptor ya existe' />
+						</div>
+					)}
+					{http === 200 && (
+						<div>
+							<Success
+								title='Aceptado'
+								msg='el suscriptor ha sido creado satisfactoriamente'
+							/>
+						</div>
+					)}
 				</form>
 			</div>
 		</>

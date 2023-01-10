@@ -54,7 +54,7 @@ export const signUp = async (req, res) => {
         );
 
         if (!subscriber)
-            res.status(404).json({ message: 'Subscriber already exists' });
+            res.status(400).json({ message: 'Subscriber already exists' });
         res.status(200).json(subscriber);
     } catch (error) {
         return res.status(500).json({ message: 'Error controller: ' + error });
