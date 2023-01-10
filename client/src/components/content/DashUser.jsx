@@ -62,6 +62,7 @@ export const DashUser = () => {
 						</div>
 					))}
 			</div>
+			{/* REVISAR EL ALERT QUE NO DE EL PESTAÑAZO */}
 			{!dataUser && (
 				<div className='my-4'>
 					<Alert
