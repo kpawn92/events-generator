@@ -31,6 +31,8 @@ const router = Router();
  *                      type: string
  *                  fk_living:
  *                      type: string
+ *                  link_presentation:
+ *                      type: string
  */
 
 /**

@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : FarmaRAM
+ Source Server         : Farmram
  Source Server Type    : MySQL
- Source Server Version : 100419
+ Source Server Version : 100421
  Source Host           : localhost:3306
  Source Schema         : eventsdb
 
  Target Server Type    : MySQL
- Target Server Version : 100419
+ Target Server Version : 100421
  File Encoding         : 65001
 
- Date: 10/01/2023 08:16:42
+ Date: 10/01/2023 12:40:39
 */
 
 SET NAMES utf8mb4;
@@ -26,6 +26,7 @@ CREATE TABLE `digest_instance`  (
   `fk_subscriber` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from subscriber',
   `fk_living` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `abstract` varchar(400) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `link_presentation` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`) USING BTREE,
@@ -38,7 +39,8 @@ CREATE TABLE `digest_instance`  (
 -- ----------------------------
 -- Records of digest_instance
 -- ----------------------------
-INSERT INTO `digest_instance` VALUES ('a9581ea0-fcbe-4cdb-b385-354285b95142', 'b9bec396-8fea-42b2-a603-ca7507046935', 'ad2f4c51-7a9b-493b-8528-ca88f84e7650', 'lorem inpusy dasdasdgtg dsadsdg hmgmghf', 0, '2023-01-09 11:59:30.001812');
+INSERT INTO `digest_instance` VALUES ('2b9ab32e-441e-48a6-9ee3-9ab6d6b86cd4', '1ed17415-9425-4ec7-8c49-1d0d43fa78aa', 'ad2f4c51-7a9b-493b-8528-ca88f84e7650', 'string', '0', 0, '2023-01-10 12:31:01.590125');
+INSERT INTO `digest_instance` VALUES ('5cb6f655-ce0e-4a96-b03e-07173801a1a1', '1ed17415-9425-4ec7-8c49-1d0d43fa78aa', 'ad2f4c51-7a9b-493b-8528-ca88f84e7650', 'string', 'https://www.youtube.com/watch?v=_EtHyY2VTGA', 0, '2023-01-10 12:31:24.506032');
 
 -- ----------------------------
 -- Table structure for economist
@@ -92,18 +94,19 @@ DROP TABLE IF EXISTS `job`;
 CREATE TABLE `job`  (
   `id` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid',
   `fk_subscriber` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL COMMENT 'uuid from users',
+  `fk_digest_instance` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `link_presentation` varchar(400) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL COMMENT 'link de redes sociales',
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_subscriber`(`fk_subscriber`) USING BTREE,
-  CONSTRAINT `job_ibfk_1` FOREIGN KEY (`fk_subscriber`) REFERENCES `subscriber` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `fk_digest_instance`(`fk_digest_instance`) USING BTREE,
+  CONSTRAINT `job_ibfk_1` FOREIGN KEY (`fk_subscriber`) REFERENCES `subscriber` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `job_ibfk_2` FOREIGN KEY (`fk_digest_instance`) REFERENCES `digest_instance` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of job
 -- ----------------------------
-INSERT INTO `job` VALUES ('46b72c41-b9e5-4c47-9cd8-4330fc3bbd2b', '3077e79f-009e-4700-8dcd-7e61039ed73e', 'Manualdeusuario-1672633720423.pdf', NULL, '2023-01-01 23:28:40.541032');
 
 -- ----------------------------
 -- Table structure for living_room

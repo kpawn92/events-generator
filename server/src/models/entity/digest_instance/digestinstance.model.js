@@ -1,13 +1,15 @@
 import { v4 } from 'uuid';
 import { pool } from '../../../config/db';
 
-export const create = async (fk_subscriber, abstract, fk_living) => {
+export const create = async (fk_subscriber, body) => {
+    const { fk_living, abstract, link_presentation = 0 } = body
     const id = v4();
     const [result] = await pool.query('INSERT INTO digest_instance SET ?', {
         id,
         fk_subscriber,
         fk_living,
         abstract,
+        link_presentation,
     });
     return result;
 };
