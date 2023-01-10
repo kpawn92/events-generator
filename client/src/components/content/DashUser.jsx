@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { Alert } from './Alert';
 
 export const DashUser = () => {
-	const [count, setCount] = useState(400);
+	const [count, setCount] = useState(0);
 	const {
 		token: { token },
 	} = useUserContext();
@@ -29,10 +29,6 @@ export const DashUser = () => {
 	const handleSessionClose = () => {
 		setDataUser(null);
 		setToken(null);
-	};
-	/* ESTUDIAR INCLUDE EN LOS ARRAY */
-	const handleKey = e => {
-		e.key === 'Backspace' ? setCount(count + 1) : setCount(count - 1);
 	};
 
 	return (
@@ -78,26 +74,36 @@ export const DashUser = () => {
 						</li>
 					</ul>
 				</div>
-				<div className='ml-5 mr-5 bg-gray-50 rounded-lg shadow-lg px-2 py-2 mb-5'>
+				<div className='ml-5 mr-5 bg-gray-100 rounded-lg shadow-lg px-2 py-2 mb-5'>
 					<form className='text-lg'>
 						<div className='text-left flex flex-col'>
 							<div className='grid grid-cols-3'>
 								<label htmlFor='abstract'>Resumen:</label>
 								<div></div>
 								<div className='text-right'>
-									<span className='text-xs text-right text-green-700 font-extrabold mb-0'>
-										{count}
-									</span>
+									{count >= 0 && count <= 400 ? (
+										<span className='text-xs text-right text-green-700 font-extrabold mb-0'>
+											{count}
+										</span>
+									) : (
+										<span className='rounded-full px-2 bg-red-100 text-red-500 text-xs text-right font-extrabold mb-0'>
+											{count}
+										</span>
+									)}
 								</div>
 							</div>
 							<textarea
 								name='abstract'
 								id='abstract'
 								rows='6'
-								className='border rounded-lg px-3 py-3 bg-gray-100  focus:ring-blue-500 focus:border-blue-500 block w-full focus:outline-none focus:shadow-outline focus:bg-blue-100/25'
+								className='border rounded-lg px-3 py-3 bg-gray-50  focus:ring-blue-500 focus:border-blue-500 block w-full focus:outline-none focus:shadow-outline focus:bg-blue-100/25'
 								placeholder='El trabajo trata...'
-								onKeyDown={handleKey}
+								onChange={e => {
+									setCount(e.target.value.length);
+								}}
 							></textarea>
+							<label htmlFor='li'></label>
+							<input type='text' />
 							<button className='mt-2 text-white font-semibold bg-blue-500 rounded-lg'>
 								Enviar
 							</button>
@@ -106,7 +112,7 @@ export const DashUser = () => {
 				</div>
 			</div>
 			<button
-				className='bg-blue-600 px-4 py-4 text-white'
+				className='hidden bg-blue-600 px-4 py-4 text-white'
 				onClick={handleSessionClose}
 			>
 				Salir
