@@ -1,7 +1,4 @@
-bibliography
-model
 server/node_modules
-client/node_modules
 server/build
 server/uploads/**
 !.gitkeep
