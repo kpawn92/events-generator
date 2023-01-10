@@ -15,6 +15,7 @@ export const DashUser = () => {
 		payeer: false,
 		jobUp: false,
 	});
+
 	const {
 		token: { token },
 	} = useUserContext();
