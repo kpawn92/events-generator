@@ -35,7 +35,7 @@ export const Admin = () => {
 							</ul>
 						</div>
 						<div className='w-full px-2 rounded-lg'>
-							<div className='py-3 flex'>
+							<div className='py-3 flex cursor-pointer'>
 								<FaUserPlus className='text-lg mr-2' />
 								<FaUserEdit className='text-lg mr-2' />
 								<FaUserSlash className='text-lg mr-2' />
