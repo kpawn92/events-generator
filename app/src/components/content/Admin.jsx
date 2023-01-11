@@ -1,11 +1,11 @@
-const links = [
-	{ label: 'Crear usuario' },
-	{ label: 'Editar usuario' },
-	{ label: 'Invalidar usuario' },
-	{ label: 'listar usuario' },
-];
+import { useState } from 'react';
+import { FormUser } from './FormUser';
+const links = [{ label: 'Crear usuario', name: 'created' }];
 
 export const Admin = () => {
+	const [divs, setDivs] = useState({
+		createdUser: true,
+	});
 	return (
 		<div className='grid grid-cols-1 h-screen w-full'>
 			<div className='bg-gray-800 flex flex-col justify-center'>
@@ -18,14 +18,16 @@ export const Admin = () => {
 					<div className='flex text-lg dark:text-white'>
 						<div className='w-1/3 px-2'>
 							<ul>
-								{links.map(({ label }, i) => (
+								{links.map(({ label, name }, i) => (
 									<li key={i} className='hover:border rounded-md pl-2'>
 										<a href='#'>{label}</a>
 									</li>
 								))}
 							</ul>
 						</div>
-						<div className='border w-full px-2 rounded-lg'>Content</div>
+						<div className='border w-full px-2 rounded-lg'>
+							{divs.createdUser && <FormUser />}
+						</div>
 					</div>
 				</div>
 			</div>
