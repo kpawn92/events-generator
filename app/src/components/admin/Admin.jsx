@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import Example from './Table';
 import { FaUserPlus, FaUserSlash, FaUserEdit } from 'react-icons/fa';
+import { Edit } from './interface/Edit';
+import { Invalid } from './interface/Invalid';
+import { Add } from './interface/Add';
+
 const links = [
 	{ label: 'Suscriptores', rol: 'user' },
 	{ label: 'Moderadores', rol: 'moderator' },
@@ -63,9 +67,9 @@ export const Admin = () => {
 							{divs.moderator && <p>Moderadores</p>}
 							{divs.manager && <p>Managers</p>}
 							{divs.economist && <p>Economists</p>}
-							{divs.plus && <p>Add userAdvanced</p>}
-							{divs.edit && <p>Editar user</p>}
-							{divs.borrar && <p>Invalid user</p>}
+							{divs.plus && <Add />}
+							{divs.edit && <Edit />}
+							{divs.borrar && <Invalid />}
 						</div>
 					</div>
 				</div>
