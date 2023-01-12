@@ -1,9 +1,0 @@
-Estados globales: user_login
-pagina-inicio:
-    Mostrar:
-        Mensaje de bienvenida
-        Boton para ir a los eventos disponibles
-pagina-eventos:
-        Mostrar:
-            Eventos disponible en tarjeta
-               Boton para ver la descripcion
