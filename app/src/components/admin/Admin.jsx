@@ -1,0 +1,75 @@
+import { useState } from 'react';
+import Example from './Table';
+import { FaUserPlus, FaUserSlash, FaUserEdit } from 'react-icons/fa';
+const links = [
+	{ label: 'Suscriptores', rol: 'user' },
+	{ label: 'Moderadores', rol: 'moderator' },
+	{ label: 'Managers', rol: 'manager' },
+	{ label: 'Economistas', rol: 'economist' },
+];
+
+export const Admin = () => {
+	const [divs, setDivs] = useState({
+		user: true,
+	});
+	const handleToggleDiv = e => {
+		setDivs({ [e.target.id]: true });
+	};
+	return (
+		<div className='grid grid-cols-1 h-screen w-full'>
+			<div className='bg-gray-800 flex flex-col justify-center'>
+				<div className='max-w-[1200px] w-full mt-4 mx-auto bg-gray-900 p-8 px-8 rounded-lg'>
+					<div className='text-base'>
+						<button className='border-none dark:text-white border ml-3 px-3 py-2 rounded-md bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold'>
+							Cerrar cuenta
+						</button>
+					</div>
+				</div>
+				<div className='rounded-xl max-w-[1200px] w-full mt-4 mx-auto bg-gray-900 p-8 px-8'>
+					<div className='flex text-lg dark:text-white'>
+						<div className='w-1/3 px-2'>
+							<ul>
+								{links.map(({ label, rol }, i) => (
+									<li key={i} className='hover:border rounded-md pl-2'>
+										<a href='#' id={rol} onClick={handleToggleDiv}>
+											{label}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+						<div className='w-full px-2 rounded-lg'>
+							<div className='py-3 flex' onClick={() => console.log(divs)}>
+								<button className='flex border mr-4 px-5 py-2 rounded-md cursor-pointer'>
+									<FaUserPlus className='text-2xl mr-2' />
+									<small onClick={handleToggleDiv} id='plus' className='mr-2'>
+										Add
+									</small>{' '}
+								</button>
+								<button className='flex border mr-4 px-5 py-2 rounded-md cursor-pointer'>
+									<FaUserEdit className='text-2xl mr-2' />
+									<small onClick={handleToggleDiv} id='edit' className='mr-2'>
+										Editar
+									</small>{' '}
+								</button>
+								<button className='flex border mr-4 px-5 py-2 rounded-md cursor-pointer'>
+									<FaUserSlash className='text-2xl mr-2' />
+									<small onClick={handleToggleDiv} id='borrar' className='mr-2'>
+										Invalidar
+									</small>{' '}
+								</button>
+							</div>
+							{divs.user && <Example />}
+							{divs.moderator && <p>Moderadores</p>}
+							{divs.manager && <p>Managers</p>}
+							{divs.economist && <p>Economists</p>}
+							{divs.plus && <p>Add userAdvanced</p>}
+							{divs.edit && <p>Editar user</p>}
+							{divs.borrar && <p>Invalid user</p>}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
