@@ -84,13 +84,12 @@ const router = Router();
 router.get('/', [verifyToken, isAdmin, cacheInit], userCtrl.users);
 /**
  * @swagger
- *  /users/{userId}:
+ *  /users/user:
  *      get:
  *          tags:
  *          - Users
- *          summary: El admin obtiene el usuario
+ *          summary: El usuario avanzado obtiene su rol
  *          parameters:
- *          - $ref: '#components/parameters/UserId'
  *          - $ref: '#components/parameters/token'
  *          responses:
  *              200:
@@ -102,7 +101,7 @@ router.get('/', [verifyToken, isAdmin, cacheInit], userCtrl.users);
  */
 // TODO: __verificar el id que se esta pasando por params y crear el error 500
 
-router.get('/:userId', [verifyToken, isAdmin], userCtrl.user);
+router.get('/user', [verifyToken], userCtrl.user);
 
 /**
  * @swagger

@@ -15,8 +15,7 @@ export const users = async (req, res) => {
 
 export const user = async (req, res) => {
     try {
-        const { userId } = req.params;
-        const user = await User.getUserById(userId);
+        const user = await User.getUserById(req.userId);
 
         res.status(200).json(user);
     } catch (error) {
