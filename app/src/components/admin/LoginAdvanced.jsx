@@ -70,6 +70,11 @@ export const Login = () => {
 						<h2 className='uppercase text-4xl dark:text-white font-bold text-center'>
 							login
 						</h2>
+						{http === 403 && (
+							<div className='py-1'>
+								<Alert title='Alert' msg='Credenciales Incorrectas' />
+							</div>
+						)}
 						{http === 401 && (
 							<div className='py-1'>
 								<Alert title='Alert' msg='Usuario no autorizado' />
