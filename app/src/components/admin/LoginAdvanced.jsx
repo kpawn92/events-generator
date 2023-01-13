@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { sigIn } from '../../api/auth.api';
+import { getUser } from '../../api/user.api';
 import { Alert } from '../content/Alert';
 
 // Context
-import { useGetTokenContext } from '../../context/UserProvider';
+import {
+	useGetTokenContext,
+	useDataUserContext,
+} from '../../context/UserProvider';
 
 export const Login = () => {
 	const setToken = useGetTokenContext();
+	const setDataUser = useDataUserContext();
 	const [http, setHttp] = useState(null);
+	const navigate = useNavigate();
 
 	const {
 		register,
@@ -16,13 +23,35 @@ export const Login = () => {
 		handleSubmit,
 	} = useForm();
 
+	const toNav = rol => {
+		switch (rol) {
+			case 'admin':
+				navigate('/admin');
+				break;
+			case 'moderator':
+				navigate('/moderator');
+				break;
+			case 'economist':
+				navigate('/economist');
+				break;
+			case 'manager':
+				navigate('/manager');
+				break;
+			default:
+				navigate('/');
+				break;
+		}
+	};
+
 	const onSubmit = async body => {
 		try {
 			const response = await sigIn(body);
+			const data = await getUser(response.data.token);
 			setToken(response.data.token);
+			setDataUser(data.data[0]);
 			setHttp(null);
+			toNav(data.data[0].rol_name);
 		} catch (error) {
-			console.log(error);
 			setHttp(error.response.status);
 			setTimeout(() => {
 				setHttp(null);

@@ -11,14 +11,9 @@ export default function App() {
 			<UserProvider>
 				<Routes>
 					<Route path='/' element={<LoginPage />} />
-					<Route
-						path='/admin'
-						element={
-							<ProtectedRoute>
-								<AdminPage />
-							</ProtectedRoute>
-						}
-					/>
+					<Route element={<ProtectedRoute />}>
+						<Route path='/admin' element={<AdminPage />} />
+					</Route>
 					<Route path='*' element={<NotFoundPage />} />
 				</Routes>
 			</UserProvider>

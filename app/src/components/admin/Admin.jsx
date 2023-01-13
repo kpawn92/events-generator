@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Example from './Table';
 import { FaUserPlus, FaUserSlash, FaUserEdit } from 'react-icons/fa';
+import Example from './Table';
 import { Edit } from './interface/Edit';
 import { Invalid } from './interface/Invalid';
 import { Add } from './interface/Add';
