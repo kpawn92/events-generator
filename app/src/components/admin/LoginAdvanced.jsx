@@ -38,7 +38,7 @@ export const Login = () => {
 				navigate('/manager');
 				break;
 			default:
-				navigate('/');
+				setHttp(401);
 				break;
 		}
 	};
@@ -47,9 +47,11 @@ export const Login = () => {
 		try {
 			const response = await sigIn(body);
 			const data = await getUser(response.data.token);
+
 			setToken(response.data.token);
 			setDataUser(data.data[0]);
 			setHttp(null);
+
 			toNav(data.data[0].rol_name);
 		} catch (error) {
 			setHttp(error.response.status);
