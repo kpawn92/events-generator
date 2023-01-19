@@ -86,9 +86,9 @@ export const Admin = () => {
 								</button>
 							</div>
 							{divs.user && <Table role={'user'} />}
-							{divs.moderator && <p>Moderadores</p>}
-							{divs.manager && <p>Managers</p>}
-							{divs.economist && <p>Economists</p>}
+							{divs.moderator && <Table role={'moderator'} />}
+							{divs.manager && <Table role={'manager'} />}
+							{divs.economist && <Table role={'economist'} />}
 							{divs.plus && <Add />}
 							{divs.edit && <Edit />}
 							{divs.borrar && <Invalid />}
