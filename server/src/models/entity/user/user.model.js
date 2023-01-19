@@ -90,12 +90,12 @@ export const invalidating = async (id, status) => {
 export const getUsersByRol = async (role_name) => {
     if (role_name !== 'user') {
         const [result] = await pool.query(
-            `SELECT users.id, ${role_name}.name, ${role_name}.lastname, ${role_name}.dni, email, status, ${role_name}.createdAt FROM ${role_name} JOIN users ON users.id = ${role_name}.fk_user`,
+            `SELECT users.id, CONCAT(${role_name}.name, " ", ${role_name}.lastname) as name, ${role_name}.dni, email, status, ${role_name}.createdAt FROM ${role_name} JOIN users ON users.id = ${role_name}.fk_user`,
         );
         return result;
     }
     const [result] = await pool.query(
-        'SELECT users.id, subscriber.name, subscriber.lastname, subscriber.dni, institution, nation, category, email, users.status FROM subscriber JOIN users ON users.id = subscriber.fk_user JOIN roles ON roles.id = users.rol WHERE rol_name = ?',
+        'SELECT users.id, CONCAT(subscriber.name, " ", subscriber.lastname) as name, subscriber.dni, institution, nation, category, email, users.status FROM subscriber JOIN users ON users.id = subscriber.fk_user JOIN roles ON roles.id = users.rol WHERE rol_name = ?',
         [role_name]
     );
     return result;
