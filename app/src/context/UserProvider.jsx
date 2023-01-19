@@ -17,12 +17,13 @@ export const useDataUserContext = () => {
 export const UserProvider = ({ children }) => {
 	const [token, setToken] = useState(null);
 	const [dataUser, setDataUser] = useState(null);
+	const [data, setData] = useState(null);
 
 	const toggleToken = state => setToken(state);
 	const toggleDataUser = state => setDataUser(state);
 
 	return (
-		<userContext.Provider value={{ token, dataUser }}>
+		<userContext.Provider value={{ token, dataUser, data, setData }}>
 			<getTokenContext.Provider value={toggleToken}>
 				<dataUserContext.Provider value={toggleDataUser}>
 					{children}

@@ -1,12 +1,10 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useEffect } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { getUserByRole } from '../../api/user.api';
 import { useUserContext } from '../../context/UserProvider';
 
 const Table = ({ role }) => {
-	const { token } = useUserContext();
-
-	const [data, setData] = useState(null);
+	const { token, data, setData } = useUserContext();
 
 	useEffect(() => {
 		const Users = async role => {
