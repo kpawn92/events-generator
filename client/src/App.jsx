@@ -9,7 +9,7 @@ import Registerpage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
 import JobPage from './pages/JobPage';
 import NormPage from './pages/NormPage';
-import AdminPage from './pages/Admin/AdminPage';
+
 export default function App() {
 	return (
 		<BrowserRouter>
@@ -24,7 +24,6 @@ export default function App() {
 						<Route path='/signup' element={<Registerpage />} />
 						<Route path='/rules' element={<NormPage />} />
 						<Route path='*' element={<NotFoundPage />} />
-						<Route path='/admin' element={<AdminPage />} />
 					</Routes>
 				</Layout>
 			</UserProvider>

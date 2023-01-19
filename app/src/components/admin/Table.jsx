@@ -40,7 +40,7 @@ const Table = ({ role }) => {
 	);
 
 	return !data ? (
-		<p>Loading</p>
+		<p>Loading...</p>
 	) : (
 		<MaterialReactTable columns={columns} data={data} />
 	);
