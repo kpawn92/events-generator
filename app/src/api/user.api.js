@@ -15,4 +15,10 @@ export const getUserByRole = async (token, role) => {
     })
 }
 
+export const setUserById = async (token, id, data) => {
+    return await axios.put(`${VITE_BACKEND_URL}/users/${id}`, data, {
+        headers:
+            { "x-access-token": token }
+    })
+}
 

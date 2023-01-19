@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useUserContext } from '../../../context/UserProvider';
+import { setUserById } from '../../../api/user.api';
+import { Success, Warning } from '../../content/Alert';
 
 export const Edit = () => {
+	const [http, setHttp] = useState(null);
 	const { token, data } = useUserContext();
 	const {
 		register,
@@ -9,10 +13,18 @@ export const Edit = () => {
 		handleSubmit,
 	} = useForm();
 
-	const onSubmit = async body => {
+	const temp = () => setTimeout(() => setHttp(null), 4000);
+
+	const onSubmit = async ({ id, email, password }) => {
 		try {
-			console.log(body, token);
-		} catch (error) {}
+			const data = { email, password };
+			const response = await setUserById(token, id, data);
+			setHttp(response.status);
+			temp();
+		} catch (error) {
+			setHttp(error.response.status);
+			temp();
+		}
 	};
 
 	return (
@@ -21,6 +33,10 @@ export const Edit = () => {
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<h2 className='text-4xl dark:text-white font-bold text-center'>EDIT</h2>
+			{http === 403 && <Warning title={'Warning'} msg='Correo incorrecto' />}
+			{http === 200 && (
+				<Success title={'Success'} msg='Usuario editado satisfactoriamente' />
+			)}
 			<div className='flex flex-col text-gray-400 py-2'>
 				<label htmlFor='id'>Codigo</label>
 				<input
