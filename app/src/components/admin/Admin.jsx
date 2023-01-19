@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaUserPlus, FaUserSlash, FaUserEdit } from 'react-icons/fa';
-import Example from './Table';
+import Table from './Table';
 import { Edit } from './interface/Edit';
 import { Invalid } from './interface/Invalid';
 import { Add } from './interface/Add';
@@ -53,7 +53,7 @@ export const Admin = () => {
 							</ul>
 						</div>
 						<div className='w-full px-2 rounded-lg'>
-							<div className='py-3 flex' onClick={() => console.log(divs)}>
+							<div className='py-3 flex'>
 								<button className='flex border mr-4 px-5 py-2 rounded-md cursor-default'>
 									<FaUserPlus className='text-2xl mr-2' />
 									<small
@@ -85,7 +85,7 @@ export const Admin = () => {
 									</small>{' '}
 								</button>
 							</div>
-							{divs.user && <Example />}
+							{divs.user && <Table role={'user'} />}
 							{divs.moderator && <p>Moderadores</p>}
 							{divs.manager && <p>Managers</p>}
 							{divs.economist && <p>Economists</p>}

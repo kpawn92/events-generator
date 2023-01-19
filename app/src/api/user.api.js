@@ -8,4 +8,11 @@ export const getUser = async (token) => {
     })
 }
 
+export const getUserByRole = async (token, role) => {
+    return await axios.get(`${VITE_BACKEND_URL}/users/get/${role}`, {
+        headers:
+            { "x-access-token": token }
+    })
+}
+
 
