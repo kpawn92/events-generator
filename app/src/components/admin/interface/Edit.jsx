@@ -17,8 +17,8 @@ export const Edit = () => {
 
 	const onSubmit = async ({ id, email, password }) => {
 		try {
-			const data = { email, password };
-			const response = await setUserById(token, id, data);
+			const body = { email, password };
+			const response = await setUserById(token, id, body);
 			setHttp(response.status);
 			temp();
 		} catch (error) {

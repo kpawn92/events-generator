@@ -5,6 +5,12 @@ export const sigIn = async (data) => {
     return await axios.post(`${VITE_BACKEND_URL}/auth/signin`, data)
 }
 
-export const sigUp = async (data) => {
-    return await axios.post(`${VITE_BACKEND_URL}/auth/signup`, data)
+export const sigUp = async (token, data) => {
+    return await axios.post(`${VITE_BACKEND_URL}/auth/signup`, data, {
+        headers:
+        {
+            "x-access-token": token,
+            "super-usuario": "administrador"
+        }
+    })
 }
