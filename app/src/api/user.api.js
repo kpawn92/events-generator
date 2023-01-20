@@ -22,3 +22,9 @@ export const setUserById = async (token, id, data) => {
     })
 }
 
+export const invalidUserById = async (token, id) => {
+    return await axios.delete(`${VITE_BACKEND_URL}/users/${id}`, {
+        headers:
+            { "x-access-token": token }
+    })
+}
