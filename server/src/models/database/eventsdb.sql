@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Farmram
+ Source Server         : FarmaRAM
  Source Server Type    : MySQL
- Source Server Version : 100421
+ Source Server Version : 100419
  Source Host           : localhost:3306
  Source Schema         : eventsdb
 
  Target Server Type    : MySQL
- Target Server Version : 100421
+ Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 19/01/2023 16:01:02
+ Date: 25/01/2023 08:54:20
 */
 
 SET NAMES utf8mb4;
@@ -172,7 +172,9 @@ CREATE TABLE `moderator`  (
 -- Records of moderator
 -- ----------------------------
 INSERT INTO `moderator` VALUES ('38167dcf-5462-41b6-b37e-0f845cc59203', 'Jhon', 'Wick', '456546545456', 'ec7f0332-402c-418e-aefe-2cca0e392b3a', '2023-01-09 11:46:17.553279');
+INSERT INTO `moderator` VALUES ('44a373a4-d8eb-4e97-9533-180bf8a49a13', 'Roberto', 'Castillo Juarez', '92102047492', 'acc79c99-a3e2-4f16-a6da-7a63e6081546', '2023-01-19 19:55:09.215563');
 INSERT INTO `moderator` VALUES ('a3b54a1b-caa2-4ec8-aa6d-60093f431a40', 'Joe', 'Wick', '90102047481', 'c2d6bece-fa10-4e86-b94a-fd761f50ae16', '2023-01-05 12:59:32.958430');
+INSERT INTO `moderator` VALUES ('fc5416d1-d014-4c8f-8e2d-702721d430a0', 'Alejandro', 'Suarez Cespedez', '23423423425', '58290638-08c6-4cf6-a58b-a3313be05b4e', '2023-01-24 14:44:00.733873');
 
 -- ----------------------------
 -- Table structure for payment_instance
@@ -260,12 +262,14 @@ CREATE TABLE `users`  (
 -- ----------------------------
 INSERT INTO `users` VALUES ('06fe3665-321a-48c4-873a-76f109714f94', 'jhon@gmail.com', '$2a$10$zz9PmUmnHnMCeLsh.xJl1eEALOuhEZrkgMnraSM9JgXG6evhY/fgG', 136, 1);
 INSERT INTO `users` VALUES ('22ba0137-f30c-432a-b101-eb60c856d566', 'ale45@gmail.com', '$2a$10$AzpxGb4VyQMPB9y91hYNj.lTmBTVt7ZAzWSVyLCHh8dDj2xk1xky.', 136, 1);
-INSERT INTO `users` VALUES ('5558ef20-6742-412a-a36a-a8f5f91f9c75', 'ale@gmail.com', '$2a$10$zKstyUJEhb1qbisq/Y2mNOs64CmczAnXuSN/Nr2OQYpyMPWOv2slq', 136, 1);
+INSERT INTO `users` VALUES ('5558ef20-6742-412a-a36a-a8f5f91f9c75', 'ale@gmail.com', '$2a$10$yvZBHKzUJYqddmm2HxkEYOhE8t4FIHOVNOPdoy//sa.UwcSYpozo6', 136, 1);
+INSERT INTO `users` VALUES ('58290638-08c6-4cf6-a58b-a3313be05b4e', 'juanfd@gmail.com', '$2a$10$zX4FpMxOo/iTH/vZRXoZnOOISvEfVNFus.tjIz8lxXsOt9VLoEtPe', 137, 1);
 INSERT INTO `users` VALUES ('63fe7bd3-3e88-4647-a9e9-9b82b08650bf', 'admin@admin.com', '$2a$10$yGxHug98ZDTtq8mrVRagCOMQ3a6m4SZeNHFq3MMjd5gacbWT79z4S', 135, 1);
 INSERT INTO `users` VALUES ('799db7eb-b5dd-4f49-9e38-271fdb6e6959', 'manager@gmail.com', '$2a$10$aO3EEXvGFuDwHEpvSPc0H..mOtWw2zKTAe.DPX657QyEXUPZI.c1u', 138, 1);
-INSERT INTO `users` VALUES ('ba5651f9-b0f3-4faa-ae91-99a39c0b96ca', 'economist@gamil.com', '$2a$10$xZGRx/u0L3pNDuGRw9BcyuqToor47mBqaomGoid9187mLARZkRkxi', 139, 1);
+INSERT INTO `users` VALUES ('acc79c99-a3e2-4f16-a6da-7a63e6081546', 'rober@gmail.com', '$2a$10$kryCSdY1in/G8o9fbNOER.U50ZL6e8neGn1ffC4SwL.ADH6pms/Ce', 137, 1);
+INSERT INTO `users` VALUES ('ba5651f9-b0f3-4faa-ae91-99a39c0b96ca', 'economist@gamil.com', '$2a$10$g.AEPCvUEUUvjZgw9obm/.vwf7BWMY8zxBUmENrhbr0.bcwv0K5Am', 139, 1);
 INSERT INTO `users` VALUES ('c2d6bece-fa10-4e86-b94a-fd761f50ae16', 'john@gamil.com', '$2a$10$z1wH7yfH/kqoi8NQkV6TOeHWO.p53Fg9VdHv5VJYfrM8.nA3G4XgK', 137, 1);
-INSERT INTO `users` VALUES ('e8d54dfa-f6e7-44e9-a0ce-86b7521629ee', 'juan@gmail.com', '$2a$10$wIHvbUlmU9AUM961qB6dLOS9FwfcjkojOF3fBCPmTaRfRQya81.Qi', 136, 1);
+INSERT INTO `users` VALUES ('e8d54dfa-f6e7-44e9-a0ce-86b7521629ee', 'juan@gmail.com', '$2a$10$x1n82Fi9hIBOrEw9ba5apubx181z7jdCGW1UhhBikA9DLSQb0zSHC', 136, 1);
 INSERT INTO `users` VALUES ('ea05d24b-919d-4a5c-a593-987e34580202', 'ale92@gmail.com', '$2a$10$Bjla4/wM9uqxzNgxt/HdLe1Pr3/ZgbQALZtZuT7SR.ZN0mGJP7Kj6', 136, 1);
 INSERT INTO `users` VALUES ('ec7f0332-402c-418e-aefe-2cca0e392b3a', 'moderator@gmail.com', '$2a$10$OOcdKftx.vA8hsnN9YJTjuITnsgDIlu7YAzWyOp658zHbihV8t1ou', 137, 1);
 

@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import Table from './Table';
 import { useGetTokenContext, useUserContext } from '../../context/UserProvider';
+import Table from './Table';
+import AddEvent from './interface/AddEvent';
+import Event from './interface/Events';
+import AddMgr from './interface/AddMgr';
 
 const links = [
 	{ label: 'Crear evento', route: 'addEvents' },
@@ -12,6 +15,8 @@ const links = [
 export const Moderator = () => {
 	const { dataUser, setDataUser, setData } = useUserContext();
 	const setToken = useGetTokenContext();
+
+	console.log(Date.now());
 
 	const [divs, setDivs] = useState({
 		events: true,
@@ -61,9 +66,9 @@ export const Moderator = () => {
 							{divs.manager && (
 								<Table role={'manager'} permission={'moderator'} />
 							)}
-							{divs.events && <div>Listado de eventos</div>}
-							{divs.addEvents && <div>Crear eventos</div>}
-							{divs.addManager && <div>Crear manager</div>}
+							{divs.events && <Event />}
+							{divs.addEvents && <AddEvent />}
+							{divs.addManager && <AddMgr />}
 						</div>
 					</div>
 				</div>
