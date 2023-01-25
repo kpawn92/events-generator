@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useUserContext } from '../../../context/UserProvider';
-import { addMgr } from '../../../api/auth.api';
+// import { useUserContext } from '../../../context/UserProvider';
+// import { addMgr } from '../../../api/auth.api';
 import { Success, Warning } from '../../content/Alert';
 
 const AddMgr = () => {
 	const [http, setHttp] = useState(null);
 
-	const { token } = useUserContext();
+	// const { token } = useUserContext();
 
 	const {
 		register,
