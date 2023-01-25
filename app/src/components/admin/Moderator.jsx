@@ -20,6 +20,9 @@ export const Moderator = () => {
 
 	const [divs, setDivs] = useState({
 		events: true,
+		addEvents: false,
+		manager: false,
+		addManager: false,
 	});
 	const handleToggleDiv = e => {
 		setDivs({ [e.target.id]: true });
