@@ -6,8 +6,8 @@ import Event from './interface/Events';
 import AddMgr from './interface/AddMgr';
 
 const links = [
-	{ label: 'Crear evento', route: 'addEvents' },
 	{ label: 'Crear manager', route: 'addManager' },
+	{ label: 'Crear evento', route: 'addEvents' },
 	{ label: 'Eventos', route: 'events' },
 	{ label: 'Managers', route: 'manager' },
 ];
