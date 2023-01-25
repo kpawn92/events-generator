@@ -28,3 +28,10 @@ export const invalidUserById = async (token, id) => {
             { "x-access-token": token }
     })
 }
+
+export const userByRole = async (token, role) => {
+    return await axios.get(`${VITE_BACKEND_URL}/users/mod/${role}`, {
+        headers:
+            { "x-access-token": token }
+    })
+}

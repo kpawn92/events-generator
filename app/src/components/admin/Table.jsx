@@ -1,14 +1,16 @@
 import { useMemo, useEffect } from 'react';
 import MaterialReactTable from 'material-react-table';
-import { getUserByRole } from '../../api/user.api';
+import { getUserByRole, userByRole } from '../../api/user.api';
 import { useUserContext } from '../../context/UserProvider';
 
-const Table = ({ role }) => {
+const Table = ({ role, permission = 'admin' }) => {
 	const { token, data, setData } = useUserContext();
 
 	useEffect(() => {
 		const Users = async role => {
-			const response = await getUserByRole(token, role);
+			let response = null;
+			if (permission === 'admin') response = await getUserByRole(token, role);
+			if (permission === 'moderator') response = await userByRole(token, role);
 			setData(response.data);
 		};
 

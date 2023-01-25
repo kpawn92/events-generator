@@ -4,7 +4,7 @@ import Table from './Table';
 import { Edit } from './interface/Edit';
 import { Invalid } from './interface/Invalid';
 import { Add } from './interface/Add';
-import { useGetTokenContext } from '../../context/UserProvider';
+import { useGetTokenContext, useUserContext } from '../../context/UserProvider';
 
 const links = [
 	{ label: 'Suscriptores', rol: 'user' },
@@ -14,6 +14,7 @@ const links = [
 ];
 
 export const Admin = () => {
+	const { setData, setDataUser } = useUserContext();
 	const setToken = useGetTokenContext();
 
 	const [divs, setDivs] = useState({
@@ -28,7 +29,11 @@ export const Admin = () => {
 				<div className='flex max-w-[1200px] w-full mt-4 mx-auto bg-gray-900 p-8 px-8 rounded-lg justify-between'>
 					<div className='text-base'>
 						<button
-							onClick={() => setToken(null)}
+							onClick={() => {
+								setToken(null);
+								setData(null);
+								setDataUser(null);
+							}}
 							className='border-none dark:text-white border ml-3 px-3 py-2 rounded-md bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold'
 						>
 							Cerrar cuenta

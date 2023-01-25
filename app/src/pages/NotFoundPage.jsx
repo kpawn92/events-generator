@@ -10,12 +10,8 @@ const NotFoundPage = () => {
 					<h2 className='mb-8 font-extrabold text-9xl justify-items-center text-gray-600'>
 						<span className='sr-only'>Error</span>404
 					</h2>
-					<p className='text-2xl font-semibold md:text-3xl'>
-						Lo sentimos, no pudimos encontrar esta página.
-					</p>
-					<p className='mt-4 mb-8 dark:text-gray-400'>
-						Pero no te preocupes, puedes encontrar muchas otras cosas en nuestra
-						página de inicio.
+					<p className='text-2xl mb-8 font-semibold md:text-3xl'>
+						Error, pagina no encontrada
 					</p>
 					<Link
 						to='/'

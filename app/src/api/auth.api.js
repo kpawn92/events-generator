@@ -14,3 +14,14 @@ export const sigUp = async (token, data) => {
         }
     })
 }
+
+
+export const addMgr = async (token, data) => {
+    return await axios.post(`${VITE_BACKEND_URL}/auth/signup`, data, {
+        headers:
+        {
+            "x-access-token": token,
+            "usuario-advanced": "moderator"
+        }
+    })
+}

@@ -23,7 +23,9 @@ export const UserProvider = ({ children }) => {
 	const toggleDataUser = state => setDataUser(state);
 
 	return (
-		<userContext.Provider value={{ token, dataUser, data, setData }}>
+		<userContext.Provider
+			value={{ token, dataUser, data, setData, setDataUser }}
+		>
 			<getTokenContext.Provider value={toggleToken}>
 				<dataUserContext.Provider value={toggleDataUser}>
 					{children}
