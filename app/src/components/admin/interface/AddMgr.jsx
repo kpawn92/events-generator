@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import { useUserContext } from '../../../context/UserProvider';
-// import { addMgr } from '../../../api/auth.api';
+import { useUserContext } from '../../../context/UserProvider';
+import { addMgr } from '../../../api/auth.api';
 import { Success, Warning } from '../../content/Alert';
 
 const AddMgr = () => {
 	const [http, setHttp] = useState(null);
 
-	// const { token } = useUserContext();
+	const { token } = useUserContext();
 
 	const {
 		register,
@@ -22,10 +22,10 @@ const AddMgr = () => {
 
 	const onSubmit = async body => {
 		try {
-			console.log({ ...body, role: 'manager' });
-			// const response = await addMgr(token, body);
-			// setHttp(response.status);
-			// temp();
+			const newBody = { ...body, role: 'manager' };
+			const response = await addMgr(token, newBody);
+			setHttp(response.status);
+			temp();
 		} catch (error) {
 			console.log(error);
 			setHttp(error.response.status);
@@ -41,7 +41,7 @@ const AddMgr = () => {
 				Add manager
 			</h2>
 			{http === 200 && (
-				<Success title={'Success'} msg='Usuario editado satisfactoriamente' />
+				<Success title={'Success'} msg='Usuario creado satisfactoriamente' />
 			)}
 			{http === 404 && <Warning title={'Adevertencia'} msg='Correo ya usado' />}
 			{http === 400 && (

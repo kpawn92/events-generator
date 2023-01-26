@@ -45,7 +45,7 @@ export const Add = () => {
 				Add user advanced
 			</h2>
 			{http === 200 && (
-				<Success title={'Success'} msg='Usuario editado satisfactoriamente' />
+				<Success title={'Success'} msg='Usuario creado satisfactoriamente' />
 			)}
 			{http === 404 && <Warning title={'Adevertencia'} msg='Correo ya usado' />}
 			{http === 400 && (
