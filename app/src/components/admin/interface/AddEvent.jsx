@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 const AddEvent = () => {
 	const {
@@ -7,9 +8,27 @@ const AddEvent = () => {
 		handleSubmit,
 	} = useForm();
 
+	const [datetime, setDatetime] = useState({
+		h_inscription: () => {
+			return 'gol';
+		},
+		e_inscription: () => {},
+		h_event: () => {},
+		e_event: () => {},
+	});
+	// const [event, setEvent] = useState({});
+
 	const onSubmit = async body => {
 		try {
-			console.log(body);
+			console.log(datetime.h_inscription());
+			setDatetime({
+				...datetime,
+				h_inscription: () => {
+					return 'fecha';
+				},
+			});
+
+			console.log(datetime.h_inscription());
 			// const newBody = { ...body, role: 'manager' };
 			// const response = await addMgr(token, newBody);
 			// setHttp(response.status);
@@ -90,7 +109,7 @@ const AddEvent = () => {
 										pattern:
 											/^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
 									})}
-									type='text'
+									type='datetime'
 									placeholder='DD/MM/YYYY'
 									name='date_init_inscription'
 									id='date_init_inscription'
