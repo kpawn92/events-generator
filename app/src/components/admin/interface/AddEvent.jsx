@@ -11,38 +11,69 @@ const AddEvent = () => {
 				<h2 className='uppercase text-4xl dark:text-white font-bold text-center'>
 					Add Evento
 				</h2>
+				<div className='mx-2'>
+					<div className='flex flex-col text-gray-400 py-2'>
+						<label htmlFor='name'>Nombre</label>
+						<input
+							type='text'
+							name='name'
+							id='name'
+							className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
+						/>
+					</div>
+					<div className='flex flex-col text-gray-400 py-2'>
+						<label htmlFor='description'>Descripcion</label>
+						<input
+							type='text'
+							name='description'
+							id='description'
+							className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
+						/>
+					</div>
+				</div>
 				<div className='flex'>
-					<div className='mx-1'>
-						<div className='flex flex-col text-gray-400 py-2'>
-							<label htmlFor='name'>Nombre</label>
-							<input
-								type='text'
-								name='name'
-								id='name'
-								className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
-							/>
-						</div>
+					<div className='mx-2'>
 						<div className='flex flex-col text-gray-400 py-2'>
 							<label htmlFor='date_beginning_inscription'>
 								Fecha inicio de inscripci&oacute;n
 							</label>
-							<input
-								type='text'
-								name='date_beginning_inscription'
-								id='date_beginning_inscription'
-								className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
-							/>
+							<div className='flex'>
+								<input
+									type='text'
+									placeholder='DD/MM/YYYY'
+									name='end_date_inscription'
+									id='end_date_inscription'
+									className='mx-1 w-2/3 rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
+								/>
+								<input
+									type='text'
+									placeholder='HH:MM'
+									name='end_date_inscription'
+									id='end_date_inscription'
+									className='mx-1 w-1/3 rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
+								/>
+							</div>
 						</div>
 						<div className='flex flex-col text-gray-400 py-2'>
 							<label htmlFor='end_date_inscription'>
 								Fecha fin de inscripci&oacute;n
 							</label>
-							<input
-								type='text'
-								name='end_date_inscription'
-								id='end_date_inscription'
-								className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
-							/>
+							<div className='flex'>
+								<input
+									type='text'
+									placeholder='DD/MM/YYYY'
+									name='end_date_inscription'
+									id='end_date_inscription'
+									className='mx-1 w-2/3 rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
+								/>
+								<input
+									type='text'
+									placeholder='HH:MM'
+									name='end_date_inscription'
+									id='end_date_inscription'
+									className='mx-1 w-1/3 rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
+								/>
+							</div>
 						</div>
 					</div>
 					<div className='mx-2'>
@@ -50,6 +81,7 @@ const AddEvent = () => {
 							<label htmlFor='date_beginning'>Fecha inicio del evento</label>
 							<input
 								type='text'
+								placeholder='DD/MM/YYYY'
 								name='date_beginning'
 								id='date_beginning'
 								className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
@@ -59,17 +91,9 @@ const AddEvent = () => {
 							<label htmlFor='end_date'>Fecha fin del evento</label>
 							<input
 								type='text'
+								placeholder='DD/MM/YYYY'
 								name='end_date'
 								id='end_date'
-								className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
-							/>
-						</div>
-						<div className='flex flex-col text-gray-400 py-2'>
-							<label htmlFor='description'>Descripcion</label>
-							<input
-								type='text'
-								name='description'
-								id='description'
 								className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
 							/>
 						</div>
