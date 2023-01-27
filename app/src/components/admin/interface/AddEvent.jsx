@@ -30,6 +30,7 @@ const AddEvent = () => {
 				name: '',
 			});
 			setHttp(null);
+			setErrorDate(null);
 		}, 4000);
 	};
 
@@ -78,26 +79,30 @@ const AddEvent = () => {
 				body.hors_min_end_inscription
 			);
 
-			if (dateBeginningInscription < endDateInscription)
-				return setErrorDate(true);
-
 			const dateBeginning = dateTime(body.date_init_event);
-			const endBeginning = dateTime(body.date_end_event);
+			const endDate = dateTime(body.date_end_event);
 
-			if (dateBeginning < endBeginning) return setErrorDate(true);
+			if (
+				dateBeginning > endDate ||
+				dateBeginningInscription > endDateInscription
+			) {
+				setErrorDate(true);
+				temp();
+				return;
+			}
 
-			const data = {
+			const event = {
 				name: body.name,
 				description: body.description,
 				date_beginning_inscription: dateBeginningInscription,
 				end_date_inscription: endDateInscription,
 				date_beginning: dateBeginning,
-				end_date: endBeginning,
+				end_date: endDate,
 			};
 
-			console.log(data);
+			console.log(event);
 
-			const response = await insertEvent(token, data);
+			const response = await insertEvent(token, event);
 			setHttp(response.status);
 			temp();
 		} catch (error) {

@@ -2,21 +2,23 @@ import { useState } from 'react';
 import { useGetTokenContext, useUserContext } from '../../context/UserProvider';
 import Table from './Table';
 import AddEvent from './interface/AddEvent';
-import Event from './interface/Events';
+import Cards from '../content/Cards';
 import AddMgr from './interface/AddMgr';
+import AddLiving from './interface/AddLiving';
+import Abstract from './interface/Abstract';
 
 const links = [
 	{ label: 'Crear manager', route: 'addManager' },
 	{ label: 'Crear evento', route: 'addEvents' },
+	{ label: 'Crear sala', route: 'addliving' },
 	{ label: 'Eventos', route: 'events' },
 	{ label: 'Managers', route: 'manager' },
+	{ label: 'Resumenes', route: 'abstract' },
 ];
 
 export const Moderator = () => {
 	const { dataUser, setDataUser, setData } = useUserContext();
 	const setToken = useGetTokenContext();
-
-	console.log(Date.now());
 
 	const [divs, setDivs] = useState({
 		events: true,
@@ -69,9 +71,11 @@ export const Moderator = () => {
 							{divs.manager && (
 								<Table role={'manager'} permission={'moderator'} />
 							)}
-							{divs.events && <Event />}
+							{divs.events && <Cards title={'Eventos'} />}
 							{divs.addEvents && <AddEvent />}
+							{divs.addliving && <AddLiving />}
 							{divs.addManager && <AddMgr />}
+							{divs.abstract && <Abstract />}
 						</div>
 					</div>
 				</div>

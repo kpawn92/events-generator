@@ -1,4 +1,4 @@
-export const Modal = ({ children }) => {
+const Modal = ({ children }) => {
 	return (
 		<>
 			<div className='fixed inset-0 z-50'>
@@ -12,3 +12,5 @@ export const Modal = ({ children }) => {
 		</>
 	);
 };
+
+export default Modal;
