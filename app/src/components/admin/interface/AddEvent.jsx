@@ -1,5 +1,9 @@
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { dateTime, valiDate } from '../../../api/dateTime';
+import { Alert, Success } from '../../content/Alert';
+import { useUserContext } from '../../../context/UserProvider';
+import { insertEvent } from '../../../api/event.api';
 
 const AddEvent = () => {
 	const {
@@ -8,43 +12,100 @@ const AddEvent = () => {
 		handleSubmit,
 	} = useForm();
 
-	const [datetime, setDatetime] = useState({
-		h_inscription: () => {
-			return 'gol';
-		},
-		e_inscription: () => {},
-		h_event: () => {},
-		e_event: () => {},
+	const { token } = useUserContext();
+
+	const [http, setHttp] = useState(null);
+
+	const [errorDate, setErrorDate] = useState(null);
+
+	const [year, setYear] = useState({
+		state: null,
+		name: '',
 	});
-	// const [event, setEvent] = useState({});
+
+	const temp = () => {
+		setTimeout(() => {
+			setYear({
+				state: null,
+				name: '',
+			});
+			setHttp(null);
+		}, 4000);
+	};
 
 	const onSubmit = async body => {
 		try {
-			console.log(datetime.h_inscription());
-			setDatetime({
-				...datetime,
-				h_inscription: () => {
-					return 'fecha';
-				},
-			});
+			/* Validations year */
+			if (valiDate(body.date_init_inscription) === -1) {
+				setYear({
+					state: true,
+					name: 'Año de inicio de inscripcion debe ser actual',
+				});
+				return temp();
+			}
+			if (valiDate(body.date_end_inscription) === -1) {
+				setYear({
+					state: true,
+					name: 'Año final de inscripcion debe ser actual',
+				});
+				return temp();
+			}
 
-			console.log(datetime.h_inscription());
-			// const newBody = { ...body, role: 'manager' };
-			// const response = await addMgr(token, newBody);
-			// setHttp(response.status);
-			// temp();
+			if (valiDate(body.date_init_event) === -1) {
+				setYear({
+					state: true,
+					name: 'Año inicio del evento debe ser actual',
+				});
+				return temp();
+			}
+
+			if (valiDate(body.date_end_event) === -1) {
+				setYear({
+					state: true,
+					name: 'Año final del evento debe ser actual',
+				});
+				return temp();
+			}
+			/* //...// */
+
+			const dateBeginningInscription = dateTime(
+				body.date_init_inscription,
+				body.hors_min_init_inscription
+			);
+
+			const endDateInscription = dateTime(
+				body.date_end_inscription,
+				body.hors_min_end_inscription
+			);
+
+			if (dateBeginningInscription < endDateInscription)
+				return setErrorDate(true);
+
+			const dateBeginning = dateTime(body.date_init_event);
+			const endBeginning = dateTime(body.date_end_event);
+
+			if (dateBeginning < endBeginning) return setErrorDate(true);
+
+			const data = {
+				name: body.name,
+				description: body.description,
+				date_beginning_inscription: dateBeginningInscription,
+				end_date_inscription: endDateInscription,
+				date_beginning: dateBeginning,
+				end_date: endBeginning,
+			};
+
+			console.log(data);
+
+			const response = await insertEvent(token, data);
+			setHttp(response.status);
+			temp();
 		} catch (error) {
 			console.log(error);
-			// setHttp(error.response.status);
-			// temp();
+			setHttp(error.response.status);
+			temp();
 		}
 	};
-	// const date = new Date('2022-01-25 14:50:02');
-	// console.log(date.getTime());
-	// console.log(Date.parse('2021-11-25'));
-	// const date = new Date(1637798400000);
-	// console.log(date);
-	// console.log(Date.now('2018/10/30'));
 	return (
 		<div>
 			<form
@@ -54,6 +115,12 @@ const AddEvent = () => {
 				<h2 className='uppercase text-4xl dark:text-white font-bold text-center'>
 					Add Evento
 				</h2>
+				{year.state && <Alert title={'Alert'} msg={year.name} />}
+				{http === 404 && <Alert title={'Alert'} msg={'El evento ya existe'} />}
+				{errorDate && <Alert title={'Alert'} msg={'Error en las fechas'} />}
+				{http === 200 && (
+					<Success title={'Aceptado'} msg={'El evento ha sido creado'} />
+				)}
 				<div className='mx-2'>
 					<div className='flex flex-col text-gray-400 py-2'>
 						<label htmlFor='name'>Nombre</label>
@@ -106,11 +173,10 @@ const AddEvent = () => {
 								<input
 									{...register('date_init_inscription', {
 										required: true,
-										pattern:
-											/^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+										pattern: /^\d{4}-\d{2}-\d{2}$/i,
 									})}
 									type='datetime'
-									placeholder='DD/MM/YYYY'
+									placeholder='YYYY-MM-DD'
 									name='date_init_inscription'
 									id='date_init_inscription'
 									className='mx-1 w-2/3 rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
@@ -160,11 +226,10 @@ const AddEvent = () => {
 								<input
 									{...register('date_end_inscription', {
 										required: true,
-										pattern:
-											/^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+										pattern: /^\d{4}-\d{2}-\d{2}$/i,
 									})}
 									type='text'
-									placeholder='DD/MM/YYYY'
+									placeholder='YYYY-MM-DD'
 									name='date_end_inscription'
 									id='date_end_inscription'
 									className='mx-1 w-2/3 rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
@@ -213,11 +278,10 @@ const AddEvent = () => {
 							<input
 								{...register('date_init_event', {
 									required: true,
-									pattern:
-										/^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+									pattern: /^\d{4}-\d{2}-\d{2}$/i,
 								})}
 								type='text'
-								placeholder='DD/MM/YYYY'
+								placeholder='YYYY-MM-DD'
 								name='date_init_event'
 								id='date_init_event'
 								className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
@@ -238,11 +302,10 @@ const AddEvent = () => {
 							<input
 								{...register('date_end_event', {
 									required: true,
-									pattern:
-										/^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/i,
+									pattern: /^\d{4}-\d{2}-\d{2}$/i,
 								})}
 								type='text'
-								placeholder='DD/MM/YYYY'
+								placeholder='YYYY-MM-DD'
 								name='date_end_event'
 								id='date_end_event'
 								className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
