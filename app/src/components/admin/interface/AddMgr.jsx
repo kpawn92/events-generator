@@ -37,7 +37,7 @@ const AddMgr = () => {
 			className='max-w-[600px] w-full mx-auto bg-gray-900 p-8 px-8 rounded-lg'
 			onSubmit={handleSubmit(onSubmit)}
 		>
-			<h2 className='text-4xl dark:text-white font-bold text-center'>
+			<h2 className='text-3xl dark:text-white font-bold text-center uppercase'>
 				Add manager
 			</h2>
 			{http === 200 && (

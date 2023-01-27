@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useGetTokenContext, useUserContext } from '../../context/UserProvider';
 import Table from './Table';
 import AddEvent from './interface/AddEvent';
@@ -26,9 +26,11 @@ export const Moderator = () => {
 		manager: false,
 		addManager: false,
 	});
+
 	const handleToggleDiv = e => {
 		setDivs({ [e.target.id]: true });
 	};
+
 	return (
 		<div className='grid grid-cols-1 h-screen w-full'>
 			<div className='bg-gray-800 flex flex-col justify-center'>

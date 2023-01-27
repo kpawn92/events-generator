@@ -1,6 +1,5 @@
 import { DateTime } from 'luxon';
 
-// console.log(DateTime.fromISO('2017-05-15T17:36').toUnixInteger());
 
 export const dateTime = (date, hour = '08:00') => {
     const stringDate = `${date}T${hour}`;

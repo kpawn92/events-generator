@@ -36,6 +36,7 @@ export const verifyHeaderModeratorOrEconomist = async (req, res, next) => {
     try {
         const header = req.headers[KEY_HEADER_MODERATOR];
         if (header !== VOID_KEY_HEADER_MODERATOR) return next();
+
         const events = await Event.events();
         return res.status(200).json(events);
     } catch (error) {

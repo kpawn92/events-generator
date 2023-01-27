@@ -117,7 +117,7 @@ const AddEvent = () => {
 				className='w-full mx-auto bg-gray-900 p-8 px-8 rounded-lg'
 				onSubmit={handleSubmit(onSubmit)}
 			>
-				<h2 className='uppercase text-4xl dark:text-white font-bold text-center'>
+				<h2 className='uppercase text-3xl dark:text-white font-bold text-center'>
 					Add Evento
 				</h2>
 				{year.state && <Alert title={'Alert'} msg={year.name} />}

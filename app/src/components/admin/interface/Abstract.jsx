@@ -1,5 +1,5 @@
 const Abstract = () => {
-	return <div>Abstract</div>;
+	return <>Abstract</>;
 };
 
 export default Abstract;

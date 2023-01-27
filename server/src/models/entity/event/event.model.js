@@ -29,15 +29,18 @@ export const getEventByName = async (name) => {
     return result;
 };
 
-export const getEvents = async (status) => {
-    const [result] = await pool.query('SELECT * FROM event WHERE status = ?', [
+export const getEvents = async (status, currYear) => {
+    const [result] = await pool.query('SELECT * FROM event WHERE status = ? AND YEAR(createdAt) = ?', [
         status,
+        currYear
     ]);
     return result;
 };
 
 export const events = async () => {
-    const [result] = await pool.query('SELECT * FROM event');
+    const date = new Date();
+    const currYear = date.getFullYear()
+    const [result] = await pool.query('SELECT * FROM event WHERE YEAR(createdAt) = ?', [currYear]);
     return result;
 };
 
