@@ -1,18 +1,34 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useUserContext } from '../../../context/UserProvider';
+import { insertLiving } from '../../../api/livingRoom.api';
+import { Alert, Success } from '../../content/Alert';
+
 const AddLiving = ({ events, managers }) => {
+	const { token } = useUserContext();
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
+	const [http, setHttp] = useState(null);
+
+	const temp = () => {
+		setTimeout(() => {
+			setHttp(null);
+		}, 4000);
+	};
 
 	const onSubmit = async body => {
 		try {
 			const eventId = body.fk_event;
 			delete body.fk_event;
-			console.log(eventId, body);
+			const response = await insertLiving(token, eventId, body);
+			setHttp(response.status);
+			temp();
 		} catch (error) {
-			console.log(error);
+			setHttp(error.response.status);
+			temp();
 		}
 	};
 
@@ -24,6 +40,11 @@ const AddLiving = ({ events, managers }) => {
 			<h2 className='text-3xl dark:text-white font-bold text-center uppercase'>
 				Add sala
 			</h2>
+			{http === 404 && <Alert title={'Alert'} msg={'La sala ya existe'} />}
+			{http === 200 && (
+				<Success title={'Aceptado'} msg={'El evento ha sido creado'} />
+			)}
+
 			<div className='flex'>
 				<div className='mr-4 w-full'>
 					<div className='flex flex-col text-gray-400 py-2'>
