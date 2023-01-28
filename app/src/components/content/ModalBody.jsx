@@ -1,6 +1,8 @@
 import { TbInfoCircle } from 'react-icons/tb';
 
-const ModalBody = ({ state }) => {
+const ModalBody = ({ state, livings, description }) => {
+	console.log(livings);
+	console.log(description);
 	const handleClose = () => {
 		state(false);
 	};

@@ -92,7 +92,7 @@ export const Moderator = () => {
 							{divs.manager && (
 								<Table role={'manager'} permission={'moderator'} />
 							)}
-							{divs.events && <Cards title={'Eventos'} />}
+							{divs.events && <Cards title={'Eventos'} events={events} />}
 							{divs.addEvents && <AddEvent />}
 							{divs.addliving && (
 								<AddLiving events={events} managers={managers} />

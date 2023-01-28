@@ -9,3 +9,7 @@ export const insertLiving = async (token, eventId, data) => {
         }
     })
 }
+
+export const getLivings = async eventId => {
+    return await axios.get(`${VITE_BACKEND_URL}/living-room/${eventId}`)
+}
