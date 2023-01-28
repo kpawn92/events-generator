@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useGetTokenContext, useUserContext } from '../../context/UserProvider';
+import { getEvents } from '../../api/event.api';
 import Table from './Table';
 import AddEvent from './interface/AddEvent';
 import Cards from '../content/Cards';
 import AddMgr from './interface/AddMgr';
 import AddLiving from './interface/AddLiving';
 import Abstract from './interface/Abstract';
+import { userByRole } from '../../api/user.api';
 
 const links = [
 	{ label: 'Crear manager', route: 'addManager' },
@@ -17,8 +19,11 @@ const links = [
 ];
 
 export const Moderator = () => {
-	const { dataUser, setDataUser, setData } = useUserContext();
+	const { token, dataUser, setDataUser, setData } = useUserContext();
 	const setToken = useGetTokenContext();
+
+	const [events, setEvents] = useState([]);
+	const [managers, setManagers] = useState([]);
 
 	const [divs, setDivs] = useState({
 		events: true,
@@ -26,6 +31,20 @@ export const Moderator = () => {
 		manager: false,
 		addManager: false,
 	});
+
+	useEffect(() => {
+		try {
+			async function events() {
+				const response = await getEvents();
+				setEvents(response.data);
+				const res = await userByRole(token, 'manager');
+				setManagers(res.data);
+			}
+			events();
+		} catch (e) {
+			console.log(e);
+		}
+	}, []);
 
 	const handleToggleDiv = e => {
 		setDivs({ [e.target.id]: true });
@@ -75,7 +94,9 @@ export const Moderator = () => {
 							)}
 							{divs.events && <Cards title={'Eventos'} />}
 							{divs.addEvents && <AddEvent />}
-							{divs.addliving && <AddLiving />}
+							{divs.addliving && (
+								<AddLiving events={events} managers={managers} />
+							)}
 							{divs.addManager && <AddMgr />}
 							{divs.abstract && <Abstract />}
 						</div>

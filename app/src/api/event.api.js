@@ -9,3 +9,12 @@ export const insertEvent = async (token, data) => {
         }
     })
 }
+
+export const getEvents = async () => {
+    return await axios.get(`${VITE_BACKEND_URL}/events`, {
+        headers:
+        {
+            'usuario-advanced': 'moderator',
+        }
+    })
+}
