@@ -16,19 +16,21 @@ const ModalBody = ({ state, livings, description }) => {
 						</div>
 						<div className='modal-content text-center mt-3 sm:mt-0 sm:ml-4 sm:text-left'>
 							<h3 className='text-lg font-medium text-gray-900'>
-								Nombre del evento
+								{description.name}
 							</h3>
 							<div className='modal-text mt-2'>
 								<p className='text-gray-500 text-sm'>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-									asperiores quam temporibus porro esse numquam accusantium
-									odio. Nemo harum voluptas veniam facilis magnam a natus!
-									Debitis explicabo ab eaque excepturi! Lorem ipsum dolor sit
-									amet, consectetur adipisicing elit. Voluptates debitis, nisi,
-									exercitationem veritatis, natus quasi expedita aperiam ipsam
-									deserunt quisquam consequuntur? Dolores, fugit quo dolorem
-									eius ratione eaque unde nisi!
+									Fecha inicio de inscripcion
 								</p>
+								<p className='text-gray-500 text-sm'>
+									Fecha final de inscripcion
+								</p>
+								<p className='text-gray-500 text-sm'>Fecha inicio del evento</p>
+								<p className='text-gray-500 text-sm'>Fecha final del evento</p>
+								<p className='text-gray-500 text-sm'>Costo</p>
+								<p className='text-gray-500 text-sm'>Numero de tarjeta</p>
+								<p className='text-gray-500 text-sm'>Estado</p>
+								<p className='text-gray-500 text-sm'>Salas:</p>
 							</div>
 						</div>
 					</div>

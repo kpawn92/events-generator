@@ -10,6 +10,7 @@ const Cards = ({ title, events }) => {
 	const [modal, setModal] = useState(false);
 	const handleOpen = async e => {
 		setEventSelected(events.find(event => event.id === e.target.id));
+
 		async function livings(eventId) {
 			return await getLivings(eventId);
 		}
