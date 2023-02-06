@@ -1,0 +1,1 @@
+revisar en la entrada de las salas que donde solo se admite un manager para cada sala

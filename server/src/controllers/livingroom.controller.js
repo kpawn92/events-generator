@@ -3,6 +3,7 @@ import { LivingRoom } from '../models/entity';
 export const createLivingRoom = async (req, res) => {
     try {
         const { eventId } = req.params;
+        //TODO: Verificar que el manager que se esta pasando en el body no este usado en otra sala.
         const livingRoom = await LivingRoom.create(req.body, eventId);
         res.status(200).json(livingRoom);
     } catch (error) {
