@@ -5,6 +5,7 @@ import LoginPage from './pages/Admin/Login';
 import { ProtectedRoute } from './components/admin/ProtectedRoute';
 import AdminPage from './pages/Admin/AdminPage';
 import ModeratorPage from './pages/Admin/ModeratorPage';
+import EconomistPage from './pages/Admin/EconomistPage';
 
 export default function App() {
 	return (
@@ -15,6 +16,7 @@ export default function App() {
 					<Route element={<ProtectedRoute />}>
 						<Route path='/admin' element={<AdminPage />} />
 						<Route path='/moderator' element={<ModeratorPage />} />
+						<Route path='/economist' element={<EconomistPage />} />
 					</Route>
 					<Route path='*' element={<NotFoundPage />} />
 				</Routes>
