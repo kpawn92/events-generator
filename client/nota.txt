@@ -1,0 +1,4 @@
+- Conformar las salas como parte de los eventos
+- El usuario debe seleccionar la sala a la que desea participar
+- Conformar las cards de los eventos
+    - Seleccionar el evento y la sala (mejorar la idea)
