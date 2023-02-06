@@ -18,7 +18,7 @@ export const getRoleByName = async (name) => {
     const [rol] = await pool.query('SELECT id FROM roles WHERE rol_name = ?', [
         name,
     ]);
-    const id = rol[0]['id'];
+    const id = rol[0].id;
     return id;
 };
 
