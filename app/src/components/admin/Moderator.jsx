@@ -25,6 +25,8 @@ export const Moderator = () => {
 	const [events, setEvents] = useState([]);
 	const [managers, setManagers] = useState([]);
 
+	const [activeEvent, setActiveEvent] = useState(false);
+
 	const [divs, setDivs] = useState({
 		events: true,
 		addEvents: false,
@@ -34,6 +36,7 @@ export const Moderator = () => {
 
 	useEffect(() => {
 		try {
+			console.log('render moderator');
 			async function events() {
 				const response = await getEvents();
 				setEvents(response.data);
@@ -44,7 +47,7 @@ export const Moderator = () => {
 		} catch (e) {
 			console.log(e);
 		}
-	}, []);
+	}, [activeEvent]);
 
 	const handleToggleDiv = e => {
 		setDivs({ [e.target.id]: true });
@@ -93,11 +96,15 @@ export const Moderator = () => {
 								<Table role={'manager'} permission={'moderator'} />
 							)}
 							{divs.events && <Cards title={'Eventos'} events={events} />}
-							{divs.addEvents && <AddEvent />}
+							{divs.addEvents && (
+								<AddEvent active={activeEvent} setActive={setActiveEvent} />
+							)}
 							{divs.addliving && (
 								<AddLiving events={events} managers={managers} />
 							)}
-							{divs.addManager && <AddMgr />}
+							{divs.addManager && (
+								<AddMgr active={activeEvent} setActive={setActiveEvent} />
+							)}
 							{divs.abstract && <Abstract />}
 						</div>
 					</div>

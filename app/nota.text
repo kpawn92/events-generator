@@ -1,0 +1,6 @@
+Crear un estado global event
+
+const [event, setEvent] = useState({
+    items: [],
+    livings: [],
+})

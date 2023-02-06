@@ -5,7 +5,7 @@ import { Alert, Success } from '../../content/Alert';
 import { useUserContext } from '../../../context/UserProvider';
 import { insertEvent } from '../../../api/event.api';
 
-const AddEvent = () => {
+const AddEvent = ({ active, setActive }) => {
 	const {
 		register,
 		formState: { errors },
@@ -100,11 +100,10 @@ const AddEvent = () => {
 				end_date: endDate,
 			};
 
-			console.log(event);
-
 			const response = await insertEvent(token, event);
 			setHttp(response.status);
 			temp();
+			setActive(!active);
 		} catch (error) {
 			console.log(error);
 			setHttp(error.response.status);

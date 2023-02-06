@@ -4,7 +4,7 @@ import { useUserContext } from '../../../context/UserProvider';
 import { addMgr } from '../../../api/auth.api';
 import { Success, Warning } from '../../content/Alert';
 
-const AddMgr = () => {
+const AddMgr = ({ active, setActive }) => {
 	const [http, setHttp] = useState(null);
 
 	const { token } = useUserContext();
@@ -26,6 +26,7 @@ const AddMgr = () => {
 			const response = await addMgr(token, newBody);
 			setHttp(response.status);
 			temp();
+			setActive(!active);
 		} catch (error) {
 			console.log(error);
 			setHttp(error.response.status);

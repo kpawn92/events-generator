@@ -42,7 +42,7 @@ const AddLiving = ({ events, managers }) => {
 			</h2>
 			{http === 404 && <Alert title={'Alert'} msg={'La sala ya existe'} />}
 			{http === 200 && (
-				<Success title={'Aceptado'} msg={'El evento ha sido creado'} />
+				<Success title={'Aceptado'} msg={'La sala ha sido creado'} />
 			)}
 
 			<div className='flex'>
