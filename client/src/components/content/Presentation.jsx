@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 const Presentation = () => {
 	return (
 		<>
@@ -12,9 +13,14 @@ const Presentation = () => {
 					quaerat, dignissimos ipsam dolores fugit at culpt natus. Explicabo, ea
 					molestiae!
 				</p>
-				<button className='font-semibold mt-5 px-5 py-1  bg-yellow-400 text-white rounded-3xl hover:bg-yellow-500 hover:shadow-lg transition-shadow'>
-					Empezar...
-				</button>
+				<div className='mt-5'>
+					<Link
+						to={'/event'}
+						className='font-semibold mt-5 px-5 py-1  bg-yellow-400 text-white rounded-3xl hover:bg-yellow-500 hover:shadow-lg transition-shadow'
+					>
+						Participar...
+					</Link>
+				</div>
 			</div>
 			{/* Movile */}
 			<div className='ml-4 mr-4 mt-20 lg:hidden md:hidden'>
@@ -27,9 +33,12 @@ const Presentation = () => {
 					quaerat, dignissimos ipsam dolores fugit at culpt natus. Explicabo, ea
 					molestiae!
 				</p>
-				<button className='font-semibold mt-5 px-5 py-1  bg-yellow-400 text-white rounded-3xl hover:bg-yellow-500 hover:shadow-lg transition-shadow'>
+				<Link
+					to={'/event'}
+					className='font-semibold mt-5 px-5 py-1  bg-yellow-400 text-white rounded-3xl hover:bg-yellow-500 hover:shadow-lg transition-shadow'
+				>
 					Participa ya!
-				</button>
+				</Link>
 			</div>
 		</>
 	);

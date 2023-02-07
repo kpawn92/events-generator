@@ -38,12 +38,6 @@ export const Header = () => {
 							Eventos
 						</NavLink>
 						<NavLink
-							to='/salas'
-							className='hover:scale-110 duration-300 py-1 hover:font-semibold hover:text-gray-700'
-						>
-							Salas
-						</NavLink>
-						<NavLink
 							to='/trabajo'
 							className='hover:scale-110 duration-300 py-1 hover:font-semibold hover:text-gray-700'
 						>

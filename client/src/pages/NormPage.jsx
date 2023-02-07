@@ -1,10 +1,6 @@
 import { Norms } from '../components/content/Norms';
 const NormPage = () => {
-	return (
-		<>
-			<Norms />
-		</>
-	);
+	return <Norms />;
 };
 
 export default NormPage;

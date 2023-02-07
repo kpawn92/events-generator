@@ -1,8 +1,26 @@
 import { InfoIco } from './Img';
+import { useUserContext } from '../context/UserProvider';
 
-export const ContentEvent = ({ state }) => {
-	const handleClose = () => {
+export const ContentEvent = ({ state, event }) => {
+	const datetime = time => {
+		const date = new Date(time * 1000);
+		return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+	};
+
+	const { token } = useUserContext();
+
+	const date = {
+		eventHomeSubs: datetime(event.date_beginning_inscription),
+		eventEndSubs: datetime(event.end_date_inscription),
+		eventHome: datetime(event.date_beginning),
+		eventEnd: datetime(event.end_date_inscription),
+	};
+	const handleClose = e => {
+		console.log(e.target.id);
 		state(false);
+	};
+	const handleLiving = e => {
+		console.log(e.target.id);
 	};
 	return (
 		<>
@@ -12,20 +30,31 @@ export const ContentEvent = ({ state }) => {
 						<div className='modal-icon mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10'>
 							<InfoIco />
 						</div>
-						<div className='modal-content text-center mt-3 sm:mt-0 sm:ml-4 sm:text-left'>
-							<h3 className='text-lg font-medium text-gray-900'>
-								Nombre del evento
+						<div className='modal-content text-center mt-3 sm:mt-0 sm:ml-4 sm:text-left w-full'>
+							<h3 className='text-2xl font-medium text-gray-900'>
+								{event.name}
 							</h3>
-							<div className='modal-text mt-2'>
-								<p className='text-gray-500 text-sm'>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-									asperiores quam temporibus porro esse numquam accusantium
-									odio. Nemo harum voluptas veniam facilis magnam a natus!
-									Debitis explicabo ab eaque excepturi! Lorem ipsum dolor sit
-									amet, consectetur adipisicing elit. Voluptates debitis, nisi,
-									exercitationem veritatis, natus quasi expedita aperiam ipsam
-									deserunt quisquam consequuntur? Dolores, fugit quo dolorem
-									eius ratione eaque unde nisi!
+							<div className='modal-text px-3 py-3 rounded-xl mt-3'>
+								<p className='py-1 flex justify-between text-base'>
+									Inicio de inscripcion:
+									<small className='text-base'>{date.eventHomeSubs}</small>
+								</p>
+								<p className='text-base py-1  flex justify-between'>
+									Final de inscripcion:
+									<small className='text-base'>{date.eventEndSubs}</small>
+								</p>
+								{/* 
+								<p className='text-base py-1  flex justify-between'>
+									Fecha inicio del evento:
+									<small className='text-base'>{date.eventHome}</small>
+								</p>
+								<p className='text-base py-1  flex justify-between'>
+									Fecha final del evento:
+									<small className='text-base'>{date.eventEnd}</small>
+								</p> */}
+								<p className='text-base py-1'>Costo: {event.cost}</p>
+								<p className='text-base py-1 '>
+									Numero de tarjeta: {event.target}
 								</p>
 							</div>
 						</div>
@@ -38,6 +67,22 @@ export const ContentEvent = ({ state }) => {
 					>
 						Cerrar
 					</button>
+					{token ? (
+						<button
+							id={event.id}
+							onClick={handleLiving}
+							className='w-full inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-blue-500 text-white font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
+						>
+							Salas
+						</button>
+					) : (
+						<button
+							type='button'
+							className='bg-blue-500 text-white py-2 px-3 rounded-md hover:shadow-lg opacity-50 cursor-not-allowed'
+						>
+							Salas
+						</button>
+					)}
 				</div>
 			</div>
 		</>
