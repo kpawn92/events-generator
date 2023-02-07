@@ -18,3 +18,15 @@ export const getEvents = async () => {
         }
     })
 }
+
+export const editCostEvent = async (token, data) => {
+    const id = data.id
+    delete data.id
+    data.cost = parseFloat(data.cost)
+    return await axios.patch(`${VITE_BACKEND_URL}/events/${id}`, data, {
+        headers:
+        {
+            "x-access-token": token,
+        }
+    })
+}

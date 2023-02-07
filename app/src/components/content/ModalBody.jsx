@@ -55,8 +55,10 @@ const ModalBody = ({ state, livings, description }) => {
 											<small className='text-sm'>{date.eventEnd}</small>
 										</p>
 									</details>
-									<p className='text-sm py-1'>Costo:</p>
-									<p className='text-sm py-1 border-t-2'>Numero de tarjeta:</p>
+									<p className='text-sm py-1'>Costo: {description.cost}</p>
+									<p className='text-sm py-1 border-t-2'>
+										Numero de tarjeta: {description.target}
+									</p>
 									<p className='text-sm py-1 border-t-2'>
 										Estado:{' '}
 										<small className='text-sm'>
