@@ -1,1 +1,0 @@
-export const { VITE_BACKEND_URL, VITE_KEY_TOKEN } = import.meta.env
