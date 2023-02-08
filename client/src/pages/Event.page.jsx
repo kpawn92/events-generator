@@ -11,7 +11,7 @@ const EventPage = () => {
 	useEffect(() => {
 		async function events() {
 			const response = await getEvent();
-			setEvent(response);
+			setEvent(response.data);
 		}
 		events();
 	}, []);
