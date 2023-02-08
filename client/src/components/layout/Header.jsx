@@ -11,7 +11,7 @@ const Header = () => {
 						<img src={imagen} alt='Logotipo del sistema' />
 					</Nav>
 					<nav className='flex items-center gap-x-6'>
-						<Nav link={'/'}>Eventos</Nav>
+						<Nav link={'/event'}>Eventos</Nav>
 						<Nav link={'/'}>Salas</Nav>
 						<Nav link={'/'}>Panel de usuario</Nav>
 					</nav>
