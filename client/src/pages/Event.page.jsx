@@ -19,7 +19,7 @@ const EventPage = () => {
 	return (
 		<Main>
 			<Title>Eventos</Title>
-			{event && <Cards items={event} />}
+			{event && <Cards items={event}></Cards>}
 		</Main>
 	);
 };

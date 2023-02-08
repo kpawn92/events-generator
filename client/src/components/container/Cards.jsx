@@ -6,9 +6,14 @@ const Cards = ({ items }) => {
 	const handleOpen = e => {
 		setModal(true);
 	};
+
 	return (
 		<>
-			{modal && <Modal></Modal>}
+			{modal && (
+				<div>
+					<Modal setModal={setModal}></Modal>
+				</div>
+			)}
 			<div className='grid grid-cols-1 lg:grid-cols-3 max-w-5xl mx-auto gap-8 group'>
 				{items.map(({ id, name, description }) => (
 					<div
