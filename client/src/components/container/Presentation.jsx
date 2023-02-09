@@ -7,7 +7,7 @@ const Presentation = () => {
 		<>
 			<BgAnimated />
 			{/* Desktop */}
-			<div className='hidden lg:block md:block my-20'>
+			<div className='hidden lg:block md:block mb-20'>
 				<h2 className='text-4xl lg:text-6xl font-semibold lg:font-bold  text-gray-500 tracking-tighter'>
 					Inscripci&oacute;n {new Date().getFullYear()}
 				</h2>

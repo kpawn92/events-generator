@@ -1,18 +1,28 @@
 import { useState } from 'react';
-import Modal from '../container/Modal';
+import ModalBody from '../contents/ModalBody';
 
 const Cards = ({ items }) => {
 	const [modal, setModal] = useState(false);
+
+	const [itemSelect, setItemSelect] = useState([]);
+
 	const handleOpen = e => {
+		setItemSelect(items.find(item => item.id === e.target.id));
 		setModal(true);
 	};
 
 	return (
 		<>
 			{modal && (
-				<div>
-					<Modal setModal={setModal}></Modal>
-				</div>
+				<ModalBody setModal={setModal}>
+					<h3 className='text-2xl font-medium text-gray-900 mt-2'>
+						{itemSelect.name}
+					</h3>
+					<div className='w-full my-4'>
+						<div className='text-md'>Costo: {itemSelect.cost}</div>
+						<div className='text-md'>Numero de cuenta: {itemSelect.target}</div>
+					</div>
+				</ModalBody>
 			)}
 			<div className='grid grid-cols-1 lg:grid-cols-3 max-w-5xl mx-auto gap-8 group'>
 				{items.map(({ id, name, description }) => (
