@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { TbArrowBackUp } from 'react-icons/tb';
 import Main from '../components/container/Main';
 import Title from '../components/contents/Title';
-import { codePais } from '../../../last/api/code.pais';
+import { codePais } from '../api/code.pais';
 import BtnDisabled from '../components/contents/BtnDisabled';
 import { rules } from '../config/rules';
 
@@ -18,6 +18,7 @@ const Register = () => {
 	} = useForm();
 
 	const onSubmit = async body => {
+		body.category = parseInt(body.category);
 		console.log(body);
 	};
 
