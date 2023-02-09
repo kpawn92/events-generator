@@ -8,6 +8,11 @@ import { useEventContext } from '../context/UserProvider';
 const EventPage = () => {
 	const { event, setEvent } = useEventContext();
 
+	const type = {
+		event: 0,
+		living: 1,
+	};
+
 	useEffect(() => {
 		async function events() {
 			const response = await getEvent();
@@ -19,7 +24,7 @@ const EventPage = () => {
 	return (
 		<Main>
 			<Title>Eventos</Title>
-			{event && <Cards items={event}></Cards>}
+			{event && <Cards items={event} type={type.event} />}
 		</Main>
 	);
 };

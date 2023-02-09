@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalBody from '../contents/ModalBody';
+import { datetime } from '../../api/time.api';
+import DateEvent from './DateEvent';
 
-const Cards = ({ items }) => {
+const Cards = ({ items, type }) => {
 	const [modal, setModal] = useState(false);
+
+	const [date, setDate] = useState({});
 
 	const [itemSelect, setItemSelect] = useState([]);
 
@@ -11,6 +15,15 @@ const Cards = ({ items }) => {
 		setModal(true);
 	};
 
+	useEffect(() => {
+		setDate({
+			eventHomeSubs: datetime(itemSelect.date_beginning_inscription),
+			eventEndSubs: datetime(itemSelect.end_date_inscription),
+			eventHome: datetime(itemSelect.date_beginning),
+			eventEnd: datetime(itemSelect.end_date_inscription),
+		});
+	}, [itemSelect]);
+
 	return (
 		<>
 			{modal && (
@@ -18,10 +31,15 @@ const Cards = ({ items }) => {
 					<h3 className='text-2xl font-medium text-gray-900 mt-2'>
 						{itemSelect.name}
 					</h3>
-					<div className='w-full my-4'>
-						<div className='text-md'>Costo: {itemSelect.cost}</div>
-						<div className='text-md'>Numero de cuenta: {itemSelect.target}</div>
-					</div>
+					{type === 0 && (
+						<div className='w-full my-4'>
+							<DateEvent date={date} />
+							<div className='text-md'>Costo: {itemSelect.cost}</div>
+							<div className='text-md'>
+								Numero de cuenta: {itemSelect.target}
+							</div>
+						</div>
+					)}
 				</ModalBody>
 			)}
 			<div className='grid grid-cols-1 lg:grid-cols-3 max-w-5xl mx-auto gap-8 group'>
