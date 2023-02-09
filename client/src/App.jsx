@@ -3,6 +3,9 @@ import { UserProvider } from './context/UserProvider';
 import Layout from './components/layout/Body';
 import EventPage from './pages/Event.page';
 import HomePage from './pages/Home.page';
+import Register from './pages/Register.page';
+import Login from './pages/Login';
+import Dash from './pages/Dash';
 
 export default function App() {
 	return (
@@ -12,6 +15,9 @@ export default function App() {
 					<Routes>
 						<Route path='/' element={<HomePage />} />
 						<Route path='/event' element={<EventPage />} />
+						<Route path='/signup' element={<Register />} />
+						<Route path='/signin' element={<Login />} />
+						<Route path='/dash' element={<Dash />} />
 					</Routes>
 				</Layout>
 			</UserProvider>
