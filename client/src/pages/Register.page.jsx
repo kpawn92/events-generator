@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TbArrowBackUp } from 'react-icons/tb';
+import { useNavigate } from 'react-router-dom';
 import Main from '../components/container/Main';
 import Title from '../components/contents/Title';
 import { codePais } from '../api/code.pais';
 import BtnDisabled from '../components/contents/BtnDisabled';
 import { rules } from '../config/rules';
+import { signUp } from '../api/auth.api';
+import { Alert, Success } from '../components/contents/Messages';
 
 const Register = () => {
 	const [check, setCheck] = useState(false);
 	const [listRules, setListRules] = useState(false);
+	const [http, setHttp] = useState(null);
+
+	const navigate = useNavigate();
 
 	const {
 		register,
@@ -18,8 +24,17 @@ const Register = () => {
 	} = useForm();
 
 	const onSubmit = async body => {
-		body.category = parseInt(body.category);
-		console.log(body);
+		try {
+			body.category = parseInt(body.category);
+			const response = await signUp(body);
+			setHttp(response.status);
+			setTimeout(() => {
+				navigate('/signin');
+			}, 4000);
+		} catch (e) {
+			setHttp(e.response.status);
+			console.log(e);
+		}
 	};
 
 	const displayOn = { display: 'block' };
@@ -276,6 +291,11 @@ const Register = () => {
 							<BtnDisabled>Guardar registro</BtnDisabled>
 						)}
 					</div>
+					{http === 404 && <Alert msg='El correo ya existe' />}
+					{http === 400 && <Alert msg='El suscriptor ya existe' />}
+					{http === 200 && (
+						<Success msg='el suscriptor ha sido creado satisfactoriamente' />
+					)}
 				</div>
 			</form>
 		</Main>
