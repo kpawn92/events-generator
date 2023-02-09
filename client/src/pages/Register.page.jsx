@@ -30,7 +30,7 @@ const Register = () => {
 			setHttp(response.status);
 			setTimeout(() => {
 				navigate('/signin');
-			}, 4000);
+			}, 3000);
 		} catch (e) {
 			setHttp(e.response.status);
 			console.log(e);
