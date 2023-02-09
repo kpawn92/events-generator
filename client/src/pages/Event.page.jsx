@@ -23,6 +23,7 @@ const EventPage = () => {
 
 	return (
 		<Main>
+			<h5>Listado disponible</h5>
 			<Title>Eventos</Title>
 			{event && <Cards items={event} type={type.event} />}
 		</Main>
