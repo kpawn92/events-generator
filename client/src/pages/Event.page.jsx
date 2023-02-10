@@ -4,14 +4,10 @@ import Cards from '../components/container/Cards';
 import Main from '../components/container/Main';
 import Title from '../components/contents/Title';
 import { useEventContext } from '../context/UserProvider';
+import { type } from '../types';
 
 const EventPage = () => {
 	const { event, setEvent } = useEventContext();
-
-	const type = {
-		event: 0,
-		living: 1,
-	};
 
 	useEffect(() => {
 		async function events() {

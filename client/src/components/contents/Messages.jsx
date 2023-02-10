@@ -9,6 +9,17 @@ export const Alert = ({ msg }) => {
 		</div>
 	);
 };
+export const Info = ({ msg }) => {
+	return (
+		<div
+			className='bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mt-5'
+			role='alert'
+		>
+			<p className='font-bold'>Informaci&oacute;n</p>
+			<p>{msg}</p>
+		</div>
+	);
+};
 
 export const Warning = ({ msg }) => {
 	return (

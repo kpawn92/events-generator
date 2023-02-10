@@ -6,6 +6,7 @@ import HomePage from './pages/Home.page';
 import Register from './pages/Register.page';
 import Login from './pages/Login';
 import Dash from './pages/Dash';
+import Living from './pages/Living.page';
 
 export default function App() {
 	return (
@@ -18,6 +19,7 @@ export default function App() {
 						<Route path='/signup' element={<Register />} />
 						<Route path='/signin' element={<Login />} />
 						<Route path='/dash' element={<Dash />} />
+						<Route path='/living' element={<Living />} />
 					</Routes>
 				</Layout>
 			</UserProvider>

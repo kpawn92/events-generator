@@ -15,11 +15,15 @@ const Header = () => {
 					</Nav>
 					<nav className='flex items-center gap-x-6'>
 						<Nav link={'/event'}>Eventos</Nav>
-						{token && <Nav link={'/'}>Salas</Nav>}
-						<Nav link={'/dash'}>Panel de usuario</Nav>
+						{token && (
+							<>
+								<Nav link={'/living'}>Salas</Nav>
+								<Nav link={'/dash'}>Panel de usuario</Nav>
+							</>
+						)}
 						<Nav link={'/'}>Contact</Nav>
 					</nav>
-					<Auth />
+					{!token && <Auth />}
 				</Navbar>
 			</div>
 		</header>

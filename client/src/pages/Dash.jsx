@@ -4,6 +4,7 @@ import { useUserContext } from '../context/UserProvider';
 import { Warning } from '../components/contents/Messages';
 import { useEffect, useState } from 'react';
 import { getSubscriber } from '../api/user.api';
+import User from '../components/contents/User';
 
 const Dash = () => {
 	const { token, setDataUser } = useUserContext();
@@ -30,14 +31,15 @@ const Dash = () => {
 			)}
 			{vhttp === 200 && (
 				<>
-					<h5>Vistar de operaciones</h5>
+					<h5>Vista de operaciones</h5>
 					<Title>Panel de control</Title>
+					<User status={setVHttp} />
 				</>
 			)}
 			{vhttp !== 200 && (
 				<Warning
 					msg={
-						'Solo se admiten suscriptores \n Para acceder debe crearse una cuenta'
+						'Solo se admiten suscriptores, para acceder debe crearse una cuenta'
 					}
 				/>
 			)}

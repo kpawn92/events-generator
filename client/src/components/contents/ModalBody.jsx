@@ -1,9 +1,14 @@
 import { TbInfoCircle } from 'react-icons/tb';
+import { getLivings } from '../../api/living.api';
 import { useUserContext } from '../../context/UserProvider';
 import BtnDisabled from './BtnDisabled';
 
-const ModalBody = ({ children, setModal }) => {
+const ModalBody = ({ children, setModal, type, itemSelect }) => {
 	const { token } = useUserContext();
+	const handleGetLivings = async e => {
+		const response = await getLivings(e.target.id);
+		console.log(response.data);
+	};
 	return (
 		<div className='fixed inset-0 z-50'>
 			<div className='modal-flex-container flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
@@ -22,19 +27,27 @@ const ModalBody = ({ children, setModal }) => {
 						</div>
 					</div>
 					<div className='modal-actions bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse'>
-						{token ? (
-							<button className='w-full mr-2 inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-blue-600 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'>
-								Salas
-							</button>
-						) : (
-							<BtnDisabled>Salas</BtnDisabled>
+						{type === 0 && (
+							<>
+								{token ? (
+									<button
+										id={itemSelect.id}
+										onClick={handleGetLivings}
+										className='text-white font-semibold w-full mr-2 inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-blue-600 hover:bg-blue-300 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
+									>
+										Salas
+									</button>
+								) : (
+									<BtnDisabled>Salas</BtnDisabled>
+								)}
+								<button
+									onClick={() => setModal(false)}
+									className='w-full mr-2 inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-white font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
+								>
+									Cerrar
+								</button>
+							</>
 						)}
-						<button
-							onClick={() => setModal(false)}
-							className='w-full mr-2 inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-white font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
-						>
-							Cerrar
-						</button>
 					</div>
 				</div>
 			</div>

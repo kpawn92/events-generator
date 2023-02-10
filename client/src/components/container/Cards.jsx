@@ -16,18 +16,20 @@ const Cards = ({ items, type }) => {
 	};
 
 	useEffect(() => {
-		setDate({
-			eventHomeSubs: datetime(itemSelect.date_beginning_inscription),
-			eventEndSubs: datetime(itemSelect.end_date_inscription),
-			eventHome: datetime(itemSelect.date_beginning),
-			eventEnd: datetime(itemSelect.end_date_inscription),
-		});
+		if (type === 0) {
+			setDate({
+				eventHomeSubs: datetime(itemSelect.date_beginning_inscription),
+				eventEndSubs: datetime(itemSelect.end_date_inscription),
+				eventHome: datetime(itemSelect.date_beginning),
+				eventEnd: datetime(itemSelect.end_date_inscription),
+			});
+		}
 	}, [itemSelect]);
 
 	return (
 		<>
 			{modal && (
-				<ModalBody setModal={setModal}>
+				<ModalBody setModal={setModal} type={type} itemSelect={itemSelect}>
 					<h3 className='text-2xl font-medium text-gray-900 mt-2'>
 						{itemSelect.name}
 					</h3>
