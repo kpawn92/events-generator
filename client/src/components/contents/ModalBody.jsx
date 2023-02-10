@@ -7,12 +7,13 @@ import BtnDisabled from './BtnDisabled';
 const ModalBody = ({ children, setModal, type, itemSelect }) => {
 	const navigate = useNavigate();
 	const { token } = useUserContext();
-	const { setLivings, setSelectLiving } = useEventContext();
+	const { setEvent, setLivings, setSelectLiving } = useEventContext();
 
 	const handleGetLivings = async e => {
 		if (type === 0) {
 			const response = await getLivings(e.target.id);
 			setLivings(response.data);
+			setEvent(itemSelect);
 			navigate('/living');
 		}
 		if (type === 1) {

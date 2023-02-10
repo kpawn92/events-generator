@@ -1,27 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getEvent } from '../api/event.api';
 import Cards from '../components/container/Cards';
 import Main from '../components/container/Main';
 import Title from '../components/contents/Title';
-import { useEventContext } from '../context/UserProvider';
 import { type } from '../types';
 
 const EventPage = () => {
-	const { event, setEvent } = useEventContext();
-
+	const [events, setEvents] = useState(null);
 	useEffect(() => {
-		async function events() {
+		async function eventos() {
 			const response = await getEvent();
-			setEvent(response.data);
+			setEvents(response.data);
 		}
-		events();
+		eventos();
 	}, []);
 
 	return (
 		<Main>
 			<h5>Listado disponible</h5>
 			<Title>Eventos</Title>
-			{event && <Cards items={event} type={type.event} />}
+			{events && <Cards items={events} type={type.event} />}
 		</Main>
 	);
 };
