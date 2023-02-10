@@ -9,3 +9,12 @@ export const getDigestInstances = async (token) => {
         }
     })
 }
+
+export const updateStatusDigestInstances = async (token, digestId) => {
+    return await axios.put(`${VITE_BACKEND_URL}/digest-instance/${digestId}`, {}, {
+        headers:
+        {
+            "x-access-token": token,
+        }
+    })
+}

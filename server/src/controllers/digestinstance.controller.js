@@ -2,7 +2,7 @@ import { DigestInstance, Subscribers } from '../models/entity';
 
 export const getDigestInstances = async (req, res) => {
     try {
-        const result = await DigestInstance.getInstances();
+        const result = await DigestInstance.getInstances(0);
         res.status(200).json(result);
     } catch (error) {
         return res.status(500).json({ message: error });

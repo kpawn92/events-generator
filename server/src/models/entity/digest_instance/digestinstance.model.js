@@ -13,9 +13,9 @@ export const create = async (fk_subscriber, body) => {
     });
     return result;
 };
-export const getInstances = async () => {
+export const getInstances = async (status) => {
     const [result] = await pool.query(
-        'SELECT digest_instance.id, subscriber.id as subsId, subscriber.name, subscriber.lastname, subscriber.dni, abstract, status FROM digest_instance JOIN subscriber ON subscriber.id = digest_instance.fk_subscriber'
+        'SELECT digest_instance.id, subscriber.id as subsId, subscriber.name, subscriber.lastname, subscriber.dni, subscriber.category, institution, abstract, living_room.name as nameliving, status FROM digest_instance JOIN subscriber ON subscriber.id = digest_instance.fk_subscriber JOIN living_room ON living_room.id = fk_living WHERE status = ?', [status]
     );
     return result;
 };
