@@ -1,13 +1,24 @@
 import { TbInfoCircle } from 'react-icons/tb';
+import { useNavigate } from 'react-router-dom';
 import { getLivings } from '../../api/living.api';
-import { useUserContext } from '../../context/UserProvider';
+import { useEventContext, useUserContext } from '../../context/UserProvider';
 import BtnDisabled from './BtnDisabled';
 
 const ModalBody = ({ children, setModal, type, itemSelect }) => {
+	const navigate = useNavigate();
 	const { token } = useUserContext();
+	const { setLivings, setSelectLiving } = useEventContext();
+
 	const handleGetLivings = async e => {
-		const response = await getLivings(e.target.id);
-		console.log(response.data);
+		if (type === 0) {
+			const response = await getLivings(e.target.id);
+			setLivings(response.data);
+			navigate('/living');
+		}
+		if (type === 1) {
+			setSelectLiving(itemSelect);
+			navigate('/dash');
+		}
 	};
 	return (
 		<div className='fixed inset-0 z-50'>
@@ -40,6 +51,23 @@ const ModalBody = ({ children, setModal, type, itemSelect }) => {
 								) : (
 									<BtnDisabled>Salas</BtnDisabled>
 								)}
+								<button
+									onClick={() => setModal(false)}
+									className='w-full mr-2 inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-white font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
+								>
+									Cerrar
+								</button>
+							</>
+						)}
+						{type === 1 && (
+							<>
+								<button
+									onClick={handleGetLivings}
+									className='text-white font-semibold w-full mr-2 inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-blue-600 hover:bg-blue-300 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
+								>
+									Seleccionar
+								</button>
+
 								<button
 									onClick={() => setModal(false)}
 									className='w-full mr-2 inline-flex justify-center rounded-md border border-transparent shadow-md px-4 py-2 bg-white font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'

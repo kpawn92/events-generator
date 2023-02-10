@@ -1,12 +1,14 @@
 import Main from '../components/container/Main';
 import Title from '../components/contents/Title';
-import { useUserContext } from '../context/UserProvider';
+import { useEventContext, useUserContext } from '../context/UserProvider';
 import { Warning } from '../components/contents/Messages';
 import { useEffect, useState } from 'react';
 import { getSubscriber } from '../api/user.api';
 import User from '../components/contents/User';
+import UserAbstract from '../components/contents/UserAbstract';
 
 const Dash = () => {
+	const { selectLiving } = useEventContext();
 	const { token, setDataUser } = useUserContext();
 	const [vhttp, setVHttp] = useState(null);
 
@@ -34,6 +36,7 @@ const Dash = () => {
 					<h5>Vista de operaciones</h5>
 					<Title>Panel de control</Title>
 					<User status={setVHttp} />
+					{selectLiving && <UserAbstract />}
 				</>
 			)}
 			{vhttp !== 200 && (

@@ -42,6 +42,19 @@ const Cards = ({ items, type }) => {
 							</div>
 						</div>
 					)}
+					{type === 1 && (
+						<div className='w-full my-4'>
+							<div className='text-md'>
+								Jefe de sala: {itemSelect.name_manager} {itemSelect.lastname}
+							</div>
+							<div className='text-md'>
+								Descripci&oacute;n: {itemSelect.description}
+							</div>
+							<div className='text-md'>
+								Correo electr&oacute;nico: {itemSelect.email}
+							</div>
+						</div>
+					)}
 				</ModalBody>
 			)}
 			<div className='grid grid-cols-1 lg:grid-cols-3 max-w-5xl mx-auto gap-8 group'>
