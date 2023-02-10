@@ -15,7 +15,6 @@ const Abstract = () => {
 			async function resumenes(key) {
 				const response = await getDigestInstances(key);
 				setAbstracts(response.data);
-				console.log(response.data);
 			}
 			resumenes(token);
 		}
@@ -32,7 +31,7 @@ const Abstract = () => {
 	return (
 		<>
 			{abstracts && (
-				<div className='border w-full mx-1 px-2'>
+				<div className='w-full mx-1 px-3 rounded-md py-2'>
 					{abstracts.map(
 						({
 							id,
@@ -43,8 +42,12 @@ const Abstract = () => {
 							category,
 							abstract,
 							nameliving,
+							link,
 						}) => (
-							<div key={id} className='flex flex-col'>
+							<div
+								key={id}
+								className='border rounded-lg px-2 py-1 flex flex-col mt-4'
+							>
 								<div className='flex justify-between'>
 									<div>
 										{category === 0 ? 'Trabajador' : 'Estudiante'}: {name}{' '}
@@ -57,6 +60,19 @@ const Abstract = () => {
 									<summary className='cursor-pointer'>
 										Resumen del trabajo
 									</summary>
+									{link !== '0' && (
+										<div>
+											URL:{' '}
+											<a
+												className='hover:underline'
+												href={link}
+												target='_blank'
+												rel='noopener noreferrer'
+											>
+												{link}
+											</a>
+										</div>
+									)}
 									<div>Sala: {nameliving}</div>
 									<div>{abstract}</div>
 									<button
