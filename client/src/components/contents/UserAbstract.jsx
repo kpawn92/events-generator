@@ -12,7 +12,6 @@ const UserAbstract = () => {
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
-
 	const [divs, setDivs] = useState({
 		home: true,
 	});
@@ -26,6 +25,10 @@ const UserAbstract = () => {
 			body.fk_living = selectLiving.id;
 			const response = await setDigestInstance(token, body);
 			setVhttp(response.status);
+			setTimeout(() => {
+				setDivs({ home: true });
+				setVhttp(null);
+			}, 2000);
 		} catch (e) {
 			console.log(e);
 			setVhttp(e.response.status);
@@ -35,18 +38,20 @@ const UserAbstract = () => {
 	return (
 		<div className='rounded-md'>
 			{divs.home && (
-				<>
-					<div className='px-2 font-semibold'>
-						Evento: {event.name}
-						<div className='px-2'>Sala: {selectLiving.name}</div>
+				<div className='static flex justify-center border rounded-md mx-56 py-10 border-blue-400'>
+					<div className='flex justify-center'>
+						<div className='relative px-2 font-semibold'>
+							Evento: {event.name}
+							<div className='px-2'>Sala: {selectLiving.name}</div>
+						</div>
 					</div>
 					<div
-						className='flex justify-center items-center'
+						className='absolute px-2 mt-16 bg-white'
 						onClick={() => setDivs({ abstract: true })}
 					>
-						<AiOutlinePlusCircle className='text-5xl hover:text-blue-600 cursor-pointer' />
+						<AiOutlinePlusCircle className='text-5xl text-blue-400 hover:text-blue-500 cursor-pointer' />
 					</div>
-				</>
+				</div>
 			)}
 			{divs.abstract && (
 				<div className='mt-4'>

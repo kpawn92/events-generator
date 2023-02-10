@@ -14,12 +14,14 @@ const Dash = () => {
 
 	useEffect(() => {
 		try {
-			async function getDataSubs(key) {
-				const response = await getSubscriber(key);
-				setVHttp(response.status);
-				setDataUser(response.data);
+			if (token) {
+				async function getDataSubs(key) {
+					const response = await getSubscriber(key);
+					setVHttp(response.status);
+					setDataUser(response.data);
+				}
+				getDataSubs(token);
 			}
-			getDataSubs(token);
 		} catch (e) {
 			setVHttp(e.response.status);
 		}
