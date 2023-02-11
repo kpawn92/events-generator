@@ -27,6 +27,8 @@ const router = Router();
  *              properties:
  *                  transaction:
  *                      type: string
+ *                  fk_digestInstance:
+ *                      type: string
  */
 
 /**

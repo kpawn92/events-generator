@@ -3,8 +3,8 @@ import { PaymentInstance, Subscribers } from '../models/entity';
 export const createPayment = async (req, res) => {
     try {
         const { id } = await Subscribers.getIdByFkUser(req.userId);
-        const { transaction } = req.body;
-        const payment = await PaymentInstance.create(id, transaction);
+        const { transaction, fk_digestInstance } = req.body;
+        const payment = await PaymentInstance.create(id, transaction, fk_digestInstance);
         res.status(200).json(payment);
     } catch (error) {
         return res.status(500).json({ message: error });

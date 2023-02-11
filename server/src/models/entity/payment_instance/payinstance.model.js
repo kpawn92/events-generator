@@ -1,11 +1,12 @@
 import { v4 } from 'uuid';
 import { pool } from '../../../config/db';
 
-export const create = async (fk_subscriber, transaction) => {
+export const create = async (fk_subscriber, transaction, fk_digestInstance) => {
     const id = v4();
     const [result] = await pool.query('INSERT INTO payment_instance SET ?', {
         id,
         fk_subscriber,
+        fk_digestInstance,
         transaction,
     });
     return result;

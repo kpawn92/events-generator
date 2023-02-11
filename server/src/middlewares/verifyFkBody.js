@@ -18,7 +18,10 @@ export const verifyManagerByBody = async (req, res, next) => {
 
 export const verifyPayment = async (req, res, next) => {
     try {
-        const { transaction } = req.body;
+        const { transaction, fk_digestInstance } = req.body;
+        if (transaction.length === 0) return res.status(401).json({ message: 'Invalid transaction' })
+        if (fk_digestInstance.length === 0) return res.status(401).json({ message: 'Invalid id the entity digest-instance' })
+
         const id = await PaymentInstance.getPaymentByTransaction(transaction);
         if (id.length > 0)
             return res.status(400).json({ message: 'Instance already exists' });

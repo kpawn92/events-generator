@@ -11,7 +11,7 @@
  Target Server Version : 100419
  File Encoding         : 65001
 
- Date: 25/01/2023 08:54:20
+ Date: 11/02/2023 11:13:53
 */
 
 SET NAMES utf8mb4;
@@ -39,8 +39,9 @@ CREATE TABLE `digest_instance`  (
 -- ----------------------------
 -- Records of digest_instance
 -- ----------------------------
-INSERT INTO `digest_instance` VALUES ('2b9ab32e-441e-48a6-9ee3-9ab6d6b86cd4', '1ed17415-9425-4ec7-8c49-1d0d43fa78aa', 'ad2f4c51-7a9b-493b-8528-ca88f84e7650', 'string', '0', 0, '2023-01-10 12:31:01.590125');
-INSERT INTO `digest_instance` VALUES ('5cb6f655-ce0e-4a96-b03e-07173801a1a1', '1ed17415-9425-4ec7-8c49-1d0d43fa78aa', 'ad2f4c51-7a9b-493b-8528-ca88f84e7650', 'string', 'https://www.youtube.com/watch?v=_EtHyY2VTGA', 0, '2023-01-10 12:31:24.506032');
+INSERT INTO `digest_instance` VALUES ('3f873836-09a3-4a45-a668-135850c4a6e1', '76a7b956-ebca-44dd-adaa-2deaa58f55a4', '4ae3ba04-aa1d-4e86-b90a-e90f46cbafd7', 'To send an Axios POST request with headers you need to use the headers option. With axiospost the first parameter is the URL the nd parameter is the request body and the rd parameter is the options. For example below is how you set the ContentType header on an HTTP POST request', 'https://masteringjs.io/tutorials/axios/post-headers', 0, '2023-02-10 17:39:01.904038');
+INSERT INTO `digest_instance` VALUES ('758456b6-ad51-431e-a541-b70b2ada692e', 'ec33acc4-fcaf-4720-8b1a-5b104a60d6fe', 'd020e402-491e-4051-ad7e-da17d6514e15', 's de tipografíasdasdasd sdassdasd sdass dasdsad asdsdsaffggdsgs gfs sdfdf dfsdwdgwffsfgfg sfsfgs fg as de tipografíasdasdasd sdassdasd sdass dasdsad asdsdsaffggdsgs gfs sdfdf dfsdwdgwffsfgfg sfsfgs fg as de tipografíasdasdasd sdassdasd sdass dasdsad asdsdsaffggdsgs gfs sdfdf dfsdwdgwffsfgfg sfsfgs fg as de tipografíasdasdasd sdassdasd sdass dasdsad asdsdsaffggdsgs gfs sdfdf dfsdwdgwffsfgfg sfsf', '0', 1, '2023-02-11 10:01:24.379990');
+INSERT INTO `digest_instance` VALUES ('98da8abd-83c9-4279-a844-74cfeb59186a', 'ec33acc4-fcaf-4720-8b1a-5b104a60d6fe', '4ae3ba04-aa1d-4e86-b90a-e90f46cbafd7', 'Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final', '0', 0, '2023-02-11 09:23:30.521313');
 
 -- ----------------------------
 -- Table structure for economist
@@ -61,7 +62,7 @@ CREATE TABLE `economist`  (
 -- ----------------------------
 -- Records of economist
 -- ----------------------------
-INSERT INTO `economist` VALUES ('9e1f65d1-8cb4-4e3d-859f-ed6dafcc79fd', 'Economist', 'Yes', '4546545121545', 'ba5651f9-b0f3-4faa-ae91-99a39c0b96ca', '2023-01-09 11:50:23.152375');
+INSERT INTO `economist` VALUES ('f3e1145e-b035-4305-ade8-5e93c5d6851f', 'Economist', 'Joe Last', '92102548471', '99a096cb-5429-407c-9b1e-f1fcc1fcab65', '2023-02-06 16:10:33.603391');
 
 -- ----------------------------
 -- Table structure for event
@@ -85,7 +86,8 @@ CREATE TABLE `event`  (
 -- ----------------------------
 -- Records of event
 -- ----------------------------
-INSERT INTO `event` VALUES ('5caea558-68fd-4a72-8968-b65bc703d3de', 'Ciencia y tecnica', 'A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 1671577145, 1671577145, 1671577145, 1671577145, 13.58, '7874-5454-4564-4545', '2023-01-09 11:46:56.882905', 1);
+INSERT INTO `event` VALUES ('5caea558-68fd-4a72-8968-b65bc703d3de', 'Ciencia y tecnica', 'A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opp', 1671577145, 1671577145, 1671577145, 1671577145, 12.00, '1299-1255-5666-5455', '2023-01-09 11:46:56.882905', 1);
+INSERT INTO `event` VALUES ('e71d42f8-8a6d-4a77-be58-3eda3d78709c', 'Forum', 'Ciencia y Tecnica', 1676206800, 1676491200, 1677675600, 1677934800, 45.00, '1222122156545646', '2023-02-06 16:14:59.838635', 1);
 
 -- ----------------------------
 -- Table structure for job
@@ -129,7 +131,8 @@ CREATE TABLE `living_room`  (
 -- ----------------------------
 -- Records of living_room
 -- ----------------------------
-INSERT INTO `living_room` VALUES ('ad2f4c51-7a9b-493b-8528-ca88f84e7650', '5caea558-68fd-4a72-8968-b65bc703d3de', 'Dpto Literatura', 'Lorem Ipsum es la denominación que recibe el texto en latín que habitualmente se utiliza de prueba en los proyectos de diseño gráfico y borradores par', 'a71b198a-29b0-4bb8-af83-c5b147033ec2', '2023-01-09 11:57:47.306549');
+INSERT INTO `living_room` VALUES ('4ae3ba04-aa1d-4e86-b90a-e90f46cbafd7', 'e71d42f8-8a6d-4a77-be58-3eda3d78709c', 'Departamento Fisica', '3do piso ala izq', 'b4660615-2fee-4130-a5b8-3e5c8dd36860', '2023-02-06 16:18:07.690865');
+INSERT INTO `living_room` VALUES ('d020e402-491e-4051-ad7e-da17d6514e15', '5caea558-68fd-4a72-8968-b65bc703d3de', 'Laboratorio', '2do piso ala derecha', 'b4660615-2fee-4130-a5b8-3e5c8dd36860', '2023-02-06 16:17:02.162491');
 
 -- ----------------------------
 -- Table structure for manager
@@ -150,7 +153,7 @@ CREATE TABLE `manager`  (
 -- ----------------------------
 -- Records of manager
 -- ----------------------------
-INSERT INTO `manager` VALUES ('a71b198a-29b0-4bb8-af83-c5b147033ec2', 'Manager', 'Wick', '454654047481', '799db7eb-b5dd-4f49-9e38-271fdb6e6959', '2023-01-09 11:56:43.582857');
+INSERT INTO `manager` VALUES ('b4660615-2fee-4130-a5b8-3e5c8dd36860', 'Manager', 'Oz Dert', '95102048471', '9d26d980-25a5-47ff-9938-5d1c5885c70a', '2023-02-06 16:13:11.629762');
 
 -- ----------------------------
 -- Table structure for moderator
@@ -171,10 +174,7 @@ CREATE TABLE `moderator`  (
 -- ----------------------------
 -- Records of moderator
 -- ----------------------------
-INSERT INTO `moderator` VALUES ('38167dcf-5462-41b6-b37e-0f845cc59203', 'Jhon', 'Wick', '456546545456', 'ec7f0332-402c-418e-aefe-2cca0e392b3a', '2023-01-09 11:46:17.553279');
-INSERT INTO `moderator` VALUES ('44a373a4-d8eb-4e97-9533-180bf8a49a13', 'Roberto', 'Castillo Juarez', '92102047492', 'acc79c99-a3e2-4f16-a6da-7a63e6081546', '2023-01-19 19:55:09.215563');
-INSERT INTO `moderator` VALUES ('a3b54a1b-caa2-4ec8-aa6d-60093f431a40', 'Joe', 'Wick', '90102047481', 'c2d6bece-fa10-4e86-b94a-fd761f50ae16', '2023-01-05 12:59:32.958430');
-INSERT INTO `moderator` VALUES ('fc5416d1-d014-4c8f-8e2d-702721d430a0', 'Alejandro', 'Suarez Cespedez', '23423423425', '58290638-08c6-4cf6-a58b-a3313be05b4e', '2023-01-24 14:44:00.733873');
+INSERT INTO `moderator` VALUES ('2696d3df-bbea-4b12-9ad8-36034d84eeda', 'Moderator', 'Joe Last', '92102548471', 'da13957f-f891-417b-aa93-ff2fa09e9819', '2023-02-06 16:10:00.352446');
 
 -- ----------------------------
 -- Table structure for payment_instance
@@ -183,6 +183,7 @@ DROP TABLE IF EXISTS `payment_instance`;
 CREATE TABLE `payment_instance`  (
   `id` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fk_subscriber` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `fk_digestInstance` varchar(36) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `transaction` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `createdAt` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE CURRENT_TIMESTAMP(6),
@@ -203,16 +204,16 @@ CREATE TABLE `roles`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rol_name` varchar(11) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 145 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of roles
 -- ----------------------------
-INSERT INTO `roles` VALUES (135, 'admin');
-INSERT INTO `roles` VALUES (136, 'user');
-INSERT INTO `roles` VALUES (137, 'moderator');
-INSERT INTO `roles` VALUES (138, 'manager');
-INSERT INTO `roles` VALUES (139, 'economist');
+INSERT INTO `roles` VALUES (140, 'admin');
+INSERT INTO `roles` VALUES (141, 'moderator');
+INSERT INTO `roles` VALUES (142, 'user');
+INSERT INTO `roles` VALUES (143, 'manager');
+INSERT INTO `roles` VALUES (144, 'economist');
 
 -- ----------------------------
 -- Table structure for subscriber
@@ -236,11 +237,10 @@ CREATE TABLE `subscriber`  (
 -- ----------------------------
 -- Records of subscriber
 -- ----------------------------
-INSERT INTO `subscriber` VALUES ('1ed17415-9425-4ec7-8c49-1d0d43fa78aa', 'Juan', 'Carlos', 'Cuba-cu', '91102047481', 'udg', 1, 'e8d54dfa-f6e7-44e9-a0ce-86b7521629ee', '2023-01-09 19:16:47.246833');
-INSERT INTO `subscriber` VALUES ('3077e79f-009e-4700-8dcd-7e61039ed73e', 'Alejo', 'Pozo Castro', 'Cuba', '921102047481', 'Fajardo', 0, '5558ef20-6742-412a-a36a-a8f5f91f9c75', '2023-01-01 23:27:05.537561');
-INSERT INTO `subscriber` VALUES ('4d3f168a-a625-4845-b01b-c6daf802c2be', 'Alejandro', 'Pozo Castro', 'Albania-al', '92102047483', 'Fajardo', 0, '22ba0137-f30c-432a-b101-eb60c856d566', '2023-01-09 18:54:09.064440');
-INSERT INTO `subscriber` VALUES ('b9bec396-8fea-42b2-a603-ca7507046935', 'Jhon', 'Dae', 'Cuba-cu', '92122047481', 'UDG', 0, '06fe3665-321a-48c4-873a-76f109714f94', '2023-01-05 13:18:12.611238');
-INSERT INTO `subscriber` VALUES ('d2799673-1f5a-48ed-a144-8d3050e7400d', 'Alejandro', 'Pozo Castro', 'Albania-al', '92102047481', 'Fajardo', 0, 'ea05d24b-919d-4a5c-a593-987e34580202', '2023-01-09 18:32:00.570812');
+INSERT INTO `subscriber` VALUES ('76a7b956-ebca-44dd-adaa-2deaa58f55a4', 'Leandro', 'Pozo Castro', 'Cuba-cu', '93102548472', 'Fajardo', 1, '24051faa-c92f-4897-a561-2a385c6b8f59', '2023-02-09 16:22:24.000511');
+INSERT INTO `subscriber` VALUES ('922d76ab-75c0-4acc-9147-6e06568fadfd', 'SubscriberOne', 'Sosa Castillo', 'Emiratos Árabes', '23423423423', 'Fajardo', 0, 'a2a9679a-7727-48c4-aba0-a16cc68b6f4c', '2023-02-09 16:16:48.560604');
+INSERT INTO `subscriber` VALUES ('d5526b70-085b-4e04-b85e-95c0b3cec6f8', 'Alejandro', 'Suarez Cespedez', 'Cuba-cu', '92103045487', 'Fajardo', 1, 'b5417e2b-62be-457e-b884-c1f6c70a923e', '2023-02-07 18:34:05.803127');
+INSERT INTO `subscriber` VALUES ('ec33acc4-fcaf-4720-8b1a-5b104a60d6fe', 'Alejandro', 'Sosa Castillo', 'Anguila-ai', '93102548471', 'Fajardo', 1, '6feeb01e-6b7c-4d34-8610-4b2caf798e89', '2023-02-09 16:20:47.555853');
 
 -- ----------------------------
 -- Table structure for users
@@ -260,17 +260,13 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('06fe3665-321a-48c4-873a-76f109714f94', 'jhon@gmail.com', '$2a$10$zz9PmUmnHnMCeLsh.xJl1eEALOuhEZrkgMnraSM9JgXG6evhY/fgG', 136, 1);
-INSERT INTO `users` VALUES ('22ba0137-f30c-432a-b101-eb60c856d566', 'ale45@gmail.com', '$2a$10$AzpxGb4VyQMPB9y91hYNj.lTmBTVt7ZAzWSVyLCHh8dDj2xk1xky.', 136, 1);
-INSERT INTO `users` VALUES ('5558ef20-6742-412a-a36a-a8f5f91f9c75', 'ale@gmail.com', '$2a$10$yvZBHKzUJYqddmm2HxkEYOhE8t4FIHOVNOPdoy//sa.UwcSYpozo6', 136, 1);
-INSERT INTO `users` VALUES ('58290638-08c6-4cf6-a58b-a3313be05b4e', 'juanfd@gmail.com', '$2a$10$zX4FpMxOo/iTH/vZRXoZnOOISvEfVNFus.tjIz8lxXsOt9VLoEtPe', 137, 1);
-INSERT INTO `users` VALUES ('63fe7bd3-3e88-4647-a9e9-9b82b08650bf', 'admin@admin.com', '$2a$10$yGxHug98ZDTtq8mrVRagCOMQ3a6m4SZeNHFq3MMjd5gacbWT79z4S', 135, 1);
-INSERT INTO `users` VALUES ('799db7eb-b5dd-4f49-9e38-271fdb6e6959', 'manager@gmail.com', '$2a$10$aO3EEXvGFuDwHEpvSPc0H..mOtWw2zKTAe.DPX657QyEXUPZI.c1u', 138, 1);
-INSERT INTO `users` VALUES ('acc79c99-a3e2-4f16-a6da-7a63e6081546', 'rober@gmail.com', '$2a$10$kryCSdY1in/G8o9fbNOER.U50ZL6e8neGn1ffC4SwL.ADH6pms/Ce', 137, 1);
-INSERT INTO `users` VALUES ('ba5651f9-b0f3-4faa-ae91-99a39c0b96ca', 'economist@gamil.com', '$2a$10$g.AEPCvUEUUvjZgw9obm/.vwf7BWMY8zxBUmENrhbr0.bcwv0K5Am', 139, 1);
-INSERT INTO `users` VALUES ('c2d6bece-fa10-4e86-b94a-fd761f50ae16', 'john@gamil.com', '$2a$10$z1wH7yfH/kqoi8NQkV6TOeHWO.p53Fg9VdHv5VJYfrM8.nA3G4XgK', 137, 1);
-INSERT INTO `users` VALUES ('e8d54dfa-f6e7-44e9-a0ce-86b7521629ee', 'juan@gmail.com', '$2a$10$x1n82Fi9hIBOrEw9ba5apubx181z7jdCGW1UhhBikA9DLSQb0zSHC', 136, 1);
-INSERT INTO `users` VALUES ('ea05d24b-919d-4a5c-a593-987e34580202', 'ale92@gmail.com', '$2a$10$Bjla4/wM9uqxzNgxt/HdLe1Pr3/ZgbQALZtZuT7SR.ZN0mGJP7Kj6', 136, 1);
-INSERT INTO `users` VALUES ('ec7f0332-402c-418e-aefe-2cca0e392b3a', 'moderator@gmail.com', '$2a$10$OOcdKftx.vA8hsnN9YJTjuITnsgDIlu7YAzWyOp658zHbihV8t1ou', 137, 1);
+INSERT INTO `users` VALUES ('24051faa-c92f-4897-a561-2a385c6b8f59', 'leo@gmail.com', '$2a$10$94dR0Lb83YRnOo1BRd0zBuIvbkBYoCymVkkncakdjDlZvsMGJiuVi', 142, 1);
+INSERT INTO `users` VALUES ('6feeb01e-6b7c-4d34-8610-4b2caf798e89', 'ale@gmail.com', '$2a$10$Ed5NJDKxD3Lx7gVONiPFq.ui.lYmqtm/LRswCK1HEtjbHFqc.iD/m', 142, 1);
+INSERT INTO `users` VALUES ('72804c43-e3e7-4a1b-a87b-175f740b30c6', 'admin@admin.com', '$2a$10$CTJdPhPo7Kg/n0goh7i8luy9lpxLnqf7xP9RP6fSLq7MHQmCRRtXu', 140, 1);
+INSERT INTO `users` VALUES ('99a096cb-5429-407c-9b1e-f1fcc1fcab65', 'economist@gmail.com', '$2a$10$2OME2CBe7Ieyq8ZzNnr7/e6pJeXDuh2AbFBJ.yA7c6DoHxYGNketC', 144, 1);
+INSERT INTO `users` VALUES ('9d26d980-25a5-47ff-9938-5d1c5885c70a', 'man@gmail.com', '$2a$10$N8sFQlN7oeWoK1yG38zQOeenQLBSyFufXdG8HgdCMAV5CFoZMCgCe', 143, 1);
+INSERT INTO `users` VALUES ('a2a9679a-7727-48c4-aba0-a16cc68b6f4c', 'subs@gmail.com', '$2a$10$YrVQ4JqS03YR6sLbtHecTO5mxg7k1ew8hFVMcjXEykwi6Ag1LwPoy', 142, 1);
+INSERT INTO `users` VALUES ('b5417e2b-62be-457e-b884-c1f6c70a923e', 'alejo@gmail.com', '$2a$10$loI9etTo2ToNGH/WFVOpJuGjwOryF00rtA/bJi4a7nm5.7cmdh1mm', 142, 1);
+INSERT INTO `users` VALUES ('da13957f-f891-417b-aa93-ff2fa09e9819', 'mod@gmail.com', '$2a$10$Anu91zOFn8XaG6tZ05S80ucLL7AYo.JsRXoq4.JwBfuMLej0dRPDy', 141, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
