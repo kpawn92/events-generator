@@ -27,7 +27,7 @@ export const updateStatePaymentById = async (id, status) => {
 
 export const getStateBySubscriber = async (fk_subscriber) => {
     const [result] = await pool.query(
-        'SELECT transaction, status FROM payment_instance WHERE fk_subscriber = ?',
+        'SELECT id, transaction, fk_digestInstance, status, createdAt FROM payment_instance WHERE fk_subscriber = ?',
         [fk_subscriber]
     );
     return result;
