@@ -7,3 +7,9 @@ export const setDigestInstance = async (token, data) => {
             { "x-access-token": token }
     })
 }
+export const getDigestInstance = async (token) => {
+    return await axios.get(`${VITE_BACKEND_URL}/digest-instance/abstract`, {
+        headers:
+            { "x-access-token": token }
+    })
+}

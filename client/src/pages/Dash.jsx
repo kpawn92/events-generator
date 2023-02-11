@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { getSubscriber } from '../api/user.api';
 import User from '../components/contents/User';
 import UserAbstract from '../components/contents/UserAbstract';
+import UserStatus from '../components/contents/UserStatus';
 
 const Dash = () => {
 	const { selectLiving } = useEventContext();
@@ -37,6 +38,7 @@ const Dash = () => {
 				<>
 					<h5>Vista de operaciones</h5>
 					<Title>Panel de control</Title>
+					<UserStatus />
 					<User status={setVHttp} />
 					{selectLiving && <UserAbstract />}
 				</>

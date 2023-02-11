@@ -22,7 +22,7 @@ export const getInstances = async (status) => {
 
 export const getStatusBySubscriber = async (fk_subscriber) => {
     const [result] = await pool.query(
-        'SELECT id, abstract, status FROM digest_instance WHERE fk_subscriber = ?',
+        'SELECT digest_instance.id, abstract, living_room.name as nameLiving, `event`.`name` as nameEvent, digest_instance.status FROM digest_instance JOIN living_room ON living_room.id = digest_instance.fk_living JOIN `event` ON `event`.id = living_room.fk_event WHERE fk_subscriber = ?',
         [fk_subscriber]
     );
     return result;
