@@ -8,7 +8,7 @@ const Living = () => {
 	const { livings } = useEventContext();
 	return (
 		<Main>
-			{!livings && <Info msg={'Seleccione la sala que desea participar'} />}
+			{!livings && <Info msg={'Seleccione el evento que desea participar'} />}
 			{livings && (
 				<>
 					<h5>Listado disponible</h5>

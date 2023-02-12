@@ -3,6 +3,7 @@ import { getDigestInstance } from '../../api/digest.instance.api';
 import { getPayment } from '../../api/payment.api';
 import { useUserContext } from '../../context/UserProvider';
 import UserPayment from '../contents/UserPayment';
+import Job from './Job';
 
 const UserStatus = () => {
 	const { token } = useUserContext();
@@ -14,7 +15,7 @@ const UserStatus = () => {
 	const [pay, setPay] = useState(null);
 
 	const arrPaids = data => {
-		setPaid(data.map(item => item.fk_digestInstance));
+		setPaid(data.map(item => item.digestInstanceId));
 	};
 
 	useEffect(() => {
@@ -39,7 +40,7 @@ const UserStatus = () => {
 							setActiveStatus(!activeStatus);
 						}}
 					>
-						Trabajos
+						Res&uacute;menes
 					</div>
 					<div
 						className='px-2 hover:underline'
@@ -58,18 +59,24 @@ const UserStatus = () => {
 
 			{divs.payment && (
 				<div className='grid grid-cols-2'>
-					{pay.map(({ id, transaction, status, createdAt }) => (
-						<div
-							key={id}
-							className='mt-10 text-left border px-2 py-2 rounded-md mx-2'
-						>
-							<p>Fecha de ejecuci&oacute;n: {createdAt}</p>
-							<p>Transacci&oacute;n: {transaction}</p>
-							<div className='border px-3 py-1 rounded-md w-full text-center mt-1'>
-								{status === 0 ? 'Sin aprobar' : 'Aprobado'}
+					{pay.map(
+						({ id, transaction, digestInstanceId, status, createdAt }, i) => (
+							<div
+								key={id}
+								className='mt-10 text-left border px-2 py-2 rounded-md mx-2'
+							>
+								<p>Fecha de ejecuci&oacute;n: {createdAt}</p>
+								<p>Transacci&oacute;n: {transaction}</p>
+								<div className='border px-3 py-1 rounded-md w-full text-center mt-1'>
+									{status === 0 ? (
+										'Sin aprobar'
+									) : (
+										<Job index={i} instance={digestInstanceId} />
+									)}
+								</div>
 							</div>
-						</div>
-					))}
+						)
+					)}
 				</div>
 			)}
 

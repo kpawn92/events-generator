@@ -107,4 +107,6 @@ router.get('/all', [verifyToken, isUser], jobCtrl.getJobsBySubs);
 
 router.get('/', [verifyToken, isManager], jobCtrl.getJobs);
 
+router.patch('/', [verifyToken, isUser], jobCtrl.update);
+
 export default router;

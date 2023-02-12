@@ -40,7 +40,7 @@ const UserAbstract = () => {
 			{divs.home && (
 				<div className='static flex justify-center border rounded-md mx-56 py-10 border-blue-400'>
 					<div className='flex justify-center'>
-						<div className='relative px-2 font-semibold'>
+						<div className='relative px-2'>
 							Evento: {event.name}
 							<div className='px-2'>Sala: {selectLiving.name}</div>
 						</div>

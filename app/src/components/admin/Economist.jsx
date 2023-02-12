@@ -6,6 +6,8 @@ import Container from './interface/Container';
 import { getEvents } from '../../api/event.api';
 import Cards from '../content/Cards';
 import EditCostEvent from './interface/EditCostEvent';
+import Paid from './interface/Paid';
+import { getPayments } from '../../api/payment.api';
 
 const links = [
 	{ label: 'Editar evento', route: 'editEvent' },
@@ -19,6 +21,10 @@ const Economist = () => {
 
 	const [events, setEvents] = useState([]);
 	const [activeEvent, setActiveEvent] = useState(false);
+
+	const [activePay, setActivePay] = useState(false);
+
+	const [paid, setPaid] = useState(null);
 
 	const [divs, setDivs] = useState({
 		events: true,
@@ -37,6 +43,14 @@ const Economist = () => {
 			console.log(e);
 		}
 	}, [activeEvent]);
+
+	useEffect(() => {
+		async function payments(key) {
+			const response = await getPayments(key);
+			setPaid(response.data);
+		}
+		payments(token);
+	}, [activePay]);
 
 	return (
 		<>
@@ -59,7 +73,9 @@ const Economist = () => {
 						token={token}
 					/>
 				)}
-				{divs.payEvents && <div>Pagos de los eventos</div>}
+				{divs.payEvents && paid && (
+					<Paid items={paid} active={activePay} setActive={setActivePay} />
+				)}
 			</Container>
 		</>
 	);

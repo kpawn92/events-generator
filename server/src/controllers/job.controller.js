@@ -29,3 +29,13 @@ export const getJobs = async (req, res) => {
         return res.status(500).json({ message: e });
     }
 };
+
+export const update = async (req, res) => {
+    try {
+
+        const result = await Job.updatejob(req.body.id, req.body.fk_digest_instance)
+        res.status(200).json(result);
+    } catch (e) {
+        return res.status(500).json({ message: e });
+    }
+};
