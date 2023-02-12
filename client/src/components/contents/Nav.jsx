@@ -4,7 +4,7 @@ const Nav = ({ children, link }) => {
 	return (
 		<NavLink
 			to={link}
-			className='flex justify-center w-44 rounded-lg shadow-2xl hover:shadow-md duration-300 hover:cursor-pointer'
+			className='flex justify-center w-44 rounded-lg shadow-2xl hover:shadow-md duration-300 hover:cursor-pointer py-2'
 		>
 			{children}
 		</NavLink>

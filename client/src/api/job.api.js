@@ -18,3 +18,11 @@ export const updateJob = async (token, data) => {
             { "x-access-token": token }
     })
 }
+
+export const getNameJobs = async (token) => {
+
+    return await axios.get(`${VITE_BACKEND_URL}/job/all`, {
+        headers:
+            { "x-access-token": token }
+    })
+}

@@ -4,6 +4,7 @@ import { getPayment } from '../../api/payment.api';
 import { useUserContext } from '../../context/UserProvider';
 import UserPayment from '../contents/UserPayment';
 import Job from './Job';
+import Repository from './Repository';
 
 const UserStatus = () => {
 	const { token } = useUserContext();
@@ -65,7 +66,7 @@ const UserStatus = () => {
 					Men&uacute;
 				</span>
 			</div>
-			{divs.repository && 'Repository'}
+			{divs.repository && <Repository />}
 
 			{divs.payment && (
 				<div className='grid grid-cols-2'>
