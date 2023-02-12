@@ -38,7 +38,7 @@ const UserAbstract = () => {
 	return (
 		<div className='rounded-md'>
 			{divs.home && (
-				<div className='static flex justify-center border rounded-md mx-56 py-10 border-blue-400'>
+				<div className='static flex justify-center border rounded-md py-10 border-blue-400'>
 					<div className='flex justify-center'>
 						<div className='relative px-2'>
 							Evento: {event.name}

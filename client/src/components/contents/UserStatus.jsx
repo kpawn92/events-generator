@@ -51,11 +51,21 @@ const UserStatus = () => {
 					>
 						Pagos
 					</div>
+					<div
+						className='px-2 hover:underline'
+						onClick={() => {
+							setDivs({ repository: true });
+							setActiveStatus(!activeStatus);
+						}}
+					>
+						Repositorio
+					</div>
 				</div>
-				<span className='absolute flex justify-start bg-white px-1 text-blue-500'>
-					Estados
+				<span className='absolute flex text-xl font-semibold justify-start bg-white px-1 text-blue-400'>
+					Men&uacute;
 				</span>
 			</div>
+			{divs.repository && 'Repository'}
 
 			{divs.payment && (
 				<div className='grid grid-cols-2'>

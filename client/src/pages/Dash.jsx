@@ -43,13 +43,6 @@ const Dash = () => {
 					{selectLiving && <UserAbstract />}
 				</>
 			)}
-			{vhttp !== 200 && (
-				<Warning
-					msg={
-						'Solo se admiten suscriptores, para acceder debe crearse una cuenta'
-					}
-				/>
-			)}
 		</Main>
 	);
 };

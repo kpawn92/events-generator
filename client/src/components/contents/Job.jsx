@@ -41,7 +41,7 @@ const Job = ({ index, instance }) => {
 						<Alert msg={'Invalido el tipo de formato que desea guardar'} />
 					)}
 					<input
-						className='mt-2 block w-full mb-5 text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400'
+						className='mt-2 block w-full mb-5 text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none dark:border-gray-600 dark:placeholder-gray-400'
 						name='file'
 						type='file'
 						required
