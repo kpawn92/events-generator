@@ -1,3 +1,0 @@
-- Crear Add manager
-- Crear Events
-- Crear las salas (Darle un estado al select de event: mostrar los input al seleccionar el evento, ocultar al tener el campo del select vacio)

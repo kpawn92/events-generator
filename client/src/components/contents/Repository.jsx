@@ -26,7 +26,7 @@ const Repository = () => {
 								rel='noopener noreferrer'
 								href={VITE_PUBLIC_URL + '/' + item.name}
 							>
-								{item.name}
+								{i === 0 ? '1' : `${i}`}. {item.name}
 							</a>
 						</li>
 					))}

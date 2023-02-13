@@ -105,7 +105,7 @@ const UserAbstract = () => {
 									rows='2'
 									{...register('abstract', {
 										required: true,
-										pattern: /^[ .a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i,
+										pattern: /^[ ,;:.a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i,
 										maxLength: 400,
 									})}
 									className='border-b-2 border-blue-400 py-2 px-4 text-lg rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 block focus:shadow-outline focus:bg-blue-100/25'
