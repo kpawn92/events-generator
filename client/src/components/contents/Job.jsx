@@ -9,7 +9,11 @@ const Job = ({ index, instance }) => {
 
 	const { token } = useUserContext();
 
-	const temp = () => setTimeout(() => setHttp(null), 3000);
+	const temp = () =>
+		setTimeout(() => {
+			setHttp(null);
+			setField(!field);
+		}, 3000);
 
 	const handleSubmit = async e => {
 		try {
@@ -21,7 +25,6 @@ const Job = ({ index, instance }) => {
 			});
 			setHttp(200);
 			temp();
-			setField(!field);
 		} catch (e) {
 			setHttp(500);
 			temp();

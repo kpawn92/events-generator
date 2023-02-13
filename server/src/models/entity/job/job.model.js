@@ -20,7 +20,7 @@ export const jobsBySubs = async (fk_subscriber) => {
 };
 
 export const jobs = async () => {
-    const [result] = await pool.query('SELECT * FROM job');
+    const [result] = await pool.query('SELECT job.id, job.createdAt, subscriber.`name`, subscriber.lastname, subscriber.dni, subscriber.category, `event`.`name` as nameEvent, living_room.`name` as nameLiving, job.name as nameJob FROM job JOIN subscriber ON subscriber.id = job.fk_subscriber JOIN digest_instance ON digest_instance.id = job.fk_digest_instance JOIN living_room ON living_room.id = digest_instance.fk_living JOIN `event` ON `event`.id = living_room.fk_event');
     return result;
 };
 

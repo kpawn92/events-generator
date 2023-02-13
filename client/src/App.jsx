@@ -7,7 +7,7 @@ import Register from './pages/Register.page';
 import Login from './pages/Login';
 import Dash from './pages/Dash';
 import Living from './pages/Living.page';
-
+import NotFoundPage from './pages/NotFoundPage';
 export default function App() {
 	return (
 		<BrowserRouter>
@@ -20,6 +20,7 @@ export default function App() {
 						<Route path='/signin' element={<Login />} />
 						<Route path='/dash' element={<Dash />} />
 						<Route path='/living' element={<Living />} />
+						<Route path='*' element={<NotFoundPage />} />
 					</Routes>
 				</Layout>
 			</UserProvider>
